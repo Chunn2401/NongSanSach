@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<footer class="mt-30">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="footer-main">
+						<div class="col-md-4">
+							<div class="position-footer-left">
+								<div class="footer_aboutus">
+									<div class="about-cms">
+										<a title="Happy Trade" href="/ " rel="home">
+											<img width="250" height="50" class="header_logo header-logo"
+												alt="Happy Trade" src="/assets/images/logo/Logo.jpg" /></a>
+										<div class="footer-desc">
+											Địa chỉ: [[${information.address}]] <br>
+											Email: farmsys.contact@gmail.com <br>
+											SĐT: (+84) 99 221 2311 <br>
+										</div>
+									</div>
+								</div>
+								<div class="social-media">
+									<div class="social-media-inner">
+										<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
+												class="fa fa-twitter"></i></a> <a href="#"><i
+												class="fa fa-youtube-play"></i></a> <a href="#"><i
+												class="fa fa-google-plus"></i></a> <a href="#"><i
+												class="fa fa-pinterest-p"></i></a>
+									</div>
+								</div>
+								<div class="contact-detail col-sm-3">
+									<h5 class="toggled title">Liên hệ</h5>
+									<ul class="list-unstyled">
+										<li>
+											<div class="site">
+												<i class="fa fa-map-marker"></i>
+												<div class="contact_site">[[${information.address}]]</div>
+											</div>
+										</li>
+										<li>
+											<div class="phone">
+												<i class="fa fa-phone"></i>
+												<div class="contact_site">[[${information.fax}]]</div>
+											</div>
+										</li>
+										<li>
+											<div class="fax">
+												<i class="fa fa-fax"></i>
+												<div class="contact_site">(+84) 99 221 2311</div>
+											</div>
+										</li>
+										<li>
+											<div class="email">
+												<i class="fa fa-envelope"></i>
+												<div class="contact_site">
+													<a
+														th:href="@{|mailto:${information.email}|}">farmsys.contact@gmail.com</a>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="footer-right col-md-8">
+							<div class="footer-inner row">
+								<div class="col-sm-3">
+									<div class="footer-content">
+										<h5>Thông Tin</h5>
+										<ul class="list-unstyled">
+											<li><a href="">Về chúng tôi </a></li>
+											<li><a href="">Thông tin giao hàng</a></li>
+											<li><a href="">Chính sách</a></li>
+											<li><a href="">Điều khoản &amp; Quy định</a></li>
+											<li><a href="">Liên hệ chúng tôi</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="footer-content">
+										<h5>Tài khoản</h5>
+										<ul class="list-unstyled">
+											<li><a href="">Thông tin</a></li>
+											<li><a href="">Đơn hàng</a></li>
+											<li><a href="">Yêu thích</a></li>
+											<li><a href="">Tin tức</a></li>
+											<li><a href="">Đổi trả</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="footer-content">
+										<h5>Mở rộng</h5>
+										<ul class="list-unstyled">
+											<li><a href="">Thương hiệu</a></li>
+											<li><a href="">Ưu đãi</a></li>
+											<li><a href="">Blogs</a></li>
+											<li><a href="">Đổi quà</a></li>
+											<li><a href="">Giỏ hàng</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="footer_bottom col-xs-12">
+								<p class="powered">
+									Bản quyền thuộc về nhóm <a href="">PROTEAM</a> &copy; 2022
+								</p>
+								<div class="position-footer-bottom">
+									<div class="payment-link">
+										<img src="/assets/user/image/catalog/payment.png" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</footer>
+</body>
+
+</html>

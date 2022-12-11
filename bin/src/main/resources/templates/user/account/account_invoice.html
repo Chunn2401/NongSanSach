@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/account}">Tài khoản</a></li>
+			<li><a th:href="@{/account/order}">Lịch sử đơn hàng</a></li>
+			<li><a th:href="@{/account/order/invoice}">Hóa đơn</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/account/account_aside"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<h2>Lịch Sử Đơn Hàng</h2>
+			<div class="order-info">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td class="text-left" colspan="2">Hóa đơn</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-left" style="width: 50%;"><b>Mã Đơn
+									Hàng:</b> #[[${listProduct.get(0).code}]]<br /> <b>Ngày Đặt:</b>
+								[[${listProduct.get(0).date}]]</td>
+							<td class="text-left" style="width: 50%;"><b>Thanh Toán:</b>
+								<th:block th:if="${listProduct.get(0).method=='1'}">Online khi nhận hàng</th:block>
+								<th:block th:if="${listProduct.get(0).method=='0'}">Tiền mặt khi nhận hàng</th:block>
+								<br /> <b>Vận Chuyển:</b> Shipper</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td class="text-left" colspan="2">Địa Chỉ Giao Hàng</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-left" style="width: 50%;"><b>Họ và tên</b>:
+								[[${listProduct.get(0).address.user.Fullname}]] <br /> <b>Số
+									điện thoại</b>: [[${listProduct.get(0).address.phone}]] <br /> <b>Địa
+									chỉ</b>: [[${listProduct.get(0).address.detail}]]</td>
+							<td class="text-left" style="width: 50%;"><b>Tỉnh/ Thành phố</b>:
+								[[${listProduct.get(0).address.province}]] <br /> <b>Quận/
+									Huyện</b>: [[${listProduct.get(0).address.district}]] <br /> <b>Phường/
+									Xã</b>: [[${listProduct.get(0).address.ward}]]</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<td class="text-left">Hình Ảnh</td>
+								<td class="text-left">Tên Sản Phẩm</td>
+								<td class="text-left">Mã Sản Phẩm</td>
+								<td class="text-right">Số Lượng</td>
+								<td class="text-right">Giá</td>
+								<td class="text-right">Tổng Tiền</td>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="item: ${listProduct}">
+								<tr>
+									<td class="text-center"><img
+										th:src="@{|/assets/images/imageProduct/${item.product.image1}|}"
+										width="50px" height="50px" alt="Boat Headphone"
+										th:title="${item.product.name}" /></td>
+									<td class="text-left">[[${item.product.name}]]</td>
+									<td class="text-left">[[${item.product.code}]]</td>
+									<td class="text-right">[[${item.quality}]]</td>
+									<td class="text-right">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]</td>
+									<td class="text-right">[[${#numbers.formatInteger(item.product.price
+										* item.quality,3,'POINT')}]]</td>
+								</tr>
+							</th:block>
+						</tbody>
+
+						<tfoot>
+
+							<tr>
+								<td colspan="4"></td>
+								<td class="text-right"><b>Tạm Tính</b></td>
+								<td class="text-right">[[${#numbers.formatInteger(total,3,'POINT')}]]</td>
+								<!-- <td></td> -->
+							</tr>
+							<tr>
+								<td colspan="4"></td>
+								<td class="text-right"><b>Tiền Vận Chuyển</b></td>
+								<td class="text-right">50.000</td>
+								<!-- <td></td> -->
+							</tr>
+							<tr>
+								<td colspan="4"></td>
+								<td class="text-right"><b>Tiền Giảm Giá</b></td>
+								<td class="text-right"><th:block th:if="${discount != 0}">[[${#numbers.formatInteger(discount,3,'POINT')}]]</th:block>
+									<th:block th:if="${discount == 0}">0</th:block></td>
+								<!-- <td></td> -->
+							</tr>
+							<tr>
+								<td colspan="4"></td>
+								<td class="text-right"><b>Tổng</b></td>
+								<td class="text-right">[[${#numbers.formatInteger(total+50000-discount,3,'POINT')}]]</td>
+								<!-- <td></td> -->
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				<h3>Lịch Sử Đơn Hàng</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td class="text-left">Ngày</td>
+							<td class="text-left">Trạng Thái</td>
+							<td class="text-left">Ghi chú</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-left">[[${listProduct.get(0).date}]]</td>
+							<td class="text-left">
+								<th:block th:if="${listProduct.get(0).status == '0'}">Chờ duyệt</th:block>
+								<th:block th:if="${listProduct.get(0).status == '1'}">Đang ship</th:block>
+								<th:block th:if="${listProduct.get(0).status == '2'}">Thành công</th:block>
+								<th:block th:if="${listProduct.get(0).status == '3'}">Đã hủy</th:block>
+							</td>
+							<td class="text-left">[[${listProduct.get(0).comment}]]</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="buttons clearfix">
+					<div class="pull-right">
+						<a th:href="@{/account/order}" class="btn btn-primary">Tiếp
+							tục</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+<th:block id="material">
+</th:block>
+</html>

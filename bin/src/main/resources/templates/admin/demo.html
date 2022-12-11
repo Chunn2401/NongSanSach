@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<body ng-app="demo-app" ng-controller="demo-ctrl">
+	<table border="1">
+		<tr>
+			<td>Đơn hàng thành công</td>
+			<td>Đơn hàng đang chờ</td>
+ 			<td>Đơn hàng đang vận chuyển</td>
+			<td>Đơn hàng đã hủy</td>
+		</tr>
+		<tr>
+			<td>[[${success}]]</td>
+			<td>[[${wait}]]</td>
+			<td>[[${transport}]]</td>
+			<td>[[${cancel}]]</td>
+		</tr>
+	</table>
+</body>
+
+<script src="/assets/admin/angular/statisticalRevenue/demo.js"></script>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/account}">Tài khoản</a></li>
+			<li><a th:href="@{/account/order}">Lịch sử đơn hàng</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/account/account_aside"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<h2>Lịch Sử Đơn Hàng</h2>
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td class="text-center">Mã đơn hàng</td>
+							<td class="text-center">Tên người đặt</td>
+							<td class="text-center">Số sản phẩm</td>
+							<td class="text-center">Tiền giảm giá</td>
+							<td class="text-right">Tổng tiền</td>
+							<td class="text-right">Ngày đặt</td>
+							<td class="text-right">Trạng thái</td>
+							<td class="text-right">Hành động</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item: ${listOrder}">
+							<td class="text-center">#[[${item.id}]]</td>
+							<td class="text-center">[[${item.name}]]</td>
+							<td class="text-center">[[${item.quantity}]]</td>
+							<td class="text-center">
+								<th:block th:if="${item.discount == null}">0</th:block>
+								<th:block th:unless="${item.discount == null}">[[${#numbers.formatInteger(item.discount.price,3,'POINT')}]]₫</th:block>
+							</td>
+							<td class="text-right">
+								<div class="price">[[${#numbers.formatInteger(item.total + 50000 - (item.discount!=null?item.discount.price:0),3,'POINT')}]]₫</div>
+							</td>
+							<td class="text-right">[[${item.date}]]</td>
+							<td class="text-right">
+								[[${item.status=='0'?'Chờ duyệt':''}]]
+								[[${item.status=='1'?'Đang ship':''}]]
+								[[${item.status=='2'?'Thành công':''}]]
+								[[${item.status=='3'?'Đã hủy':''}]]
+							</td>
+							<td class="text-right"><a th:href="@{|/account/order/invoice/${item.id}|}"
+								title="Xem hóa đơn" class="btn btn-primary"><i class="fas fa-receipt"></i>
+							</a> <a data-toggle="tooltip" title="Hủy đơn" class="btn btn-danger" th:classappend="${(item.status=='3') || (item.status=='2')?'disabled':''}"><i
+									class="fa fa-times"></i></a></td>
+						</tr>
+					</tbody>
+
+				</table>
+			</div>
+			<div class="buttons clearfix">
+				<div class="pull-right">
+					<a th:href="@{/account}" class="btn btn-primary">Tiếp tục</a>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+<th:block id="material">
+</th:block>
+</html>

@@ -1,0 +1,62 @@
+<div class="related-products-block box">
+	<div class="box-content">
+		<div class="page-title">
+			<h3>Sản Phẩm Liên Quan</h3>
+		</div>
+		<div class="block_box row">
+			<div id="related-carousel"
+				class="box-product  related-carousel  clearfix" data-items="5">
+				<th:block th:each="item: ${listProductRelated}">
+					<div class="product-layout col-xs-12">
+						<div class="product-thumb">
+							<div class="image">
+								<a th:href="@{|/san-pham/${item.product.Namesearch}|}"> <img
+									th:src="@{|/assets/images/imageProduct/${item.product.image1}|}"
+									alt="JBL Headphone" th:title="${item.product.name}"
+									class="img-responsive" /> <img
+									class="img-responsive hover-img"
+									th:src="@{|/assets/images/imageProduct/${item.product.image2}|}"
+									th:title="${item.product.name}" alt="JBL Headphone" />
+								</a>
+								<!-- <div class="sale-text">
+								<span class="section-sale">On Sale!</span>
+							</div> -->
+							</div>
+							<div class="thumb-description clearfix">
+								<div class="caption">
+									<h4 class="product-title">
+										<a th:href="@{|/san-pham/${item.product.Namesearch}|}">[[${item.product.name}]]</a>
+									</h4>
+
+									<p class="price">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]₫</p>
+
+									<div class="rating">
+										<th:block th:if="${item.totalStar != 0}">
+											<th:block
+												th:each="i: ${#numbers.sequence(1, item.totalStar)}">
+												<span class="fa fa-stack"><i
+													class="fa fa-star fa-stack-1x"></i><i
+													class="fa fa-star-o fa-stack-1x"></i></span>
+											</th:block>
+										</th:block>
+										<th:block th:if="${item.totalStar != 5}">
+											<th:block
+												th:each="i: ${#numbers.sequence(1, 5 - item.totalStar)}">
+												<span class="fa fa-stack"><i
+													class="fa fa-star-o fa-stack-1x"></i></span>
+											</th:block>
+										</th:block>
+									</div>
+									<button type="button" class="addcart" title="Add to Cart"
+										th:onclick="location.href = '/san-pham/[(${item.product.Namesearch})]'">Mua
+										ngay</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</th:block>
+
+			</div>
+		</div>
+	</div>
+</div>

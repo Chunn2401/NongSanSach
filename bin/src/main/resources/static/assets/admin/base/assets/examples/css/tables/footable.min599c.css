@@ -1,0 +1,7 @@
+/*!
+ * Remark (http://getbootstrapadmin.com/remark)
+ * Copyright 2017 amazingsurge
+ * Licensed under the Themeforest Standard Licenses
+ */
+
+#exampleCustomFilter .footable-filtering{display:none}.form-group.required .control-label:after{content:"*";color:red;margin-left:4px}

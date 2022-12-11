@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/_form :: dynamic(
+				~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+
+	<link rel="stylesheet"
+		href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet"
+		href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<script
+		src="/assets/admin/global/vendor/datatables.net/jquery.dataTables599c.js?v4.0.2"></script>
+	<script
+		src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js"></script>
+	<script src="/assets/admin/angular/angular-datatables.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+
+	<!-- Page -->
+	<link rel="stylesheet"
+		href="/assets/admin/base/assets/examples/css/dashboard/ecommerce.min599c.css?v4.0.2">
+
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main ng-app="statistical-order-app"
+		ng-controller="statistical-order-ctrl">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">Thống Kê Đơn Hàng</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a th:href="@{/admin/index}">Trang
+							chủ</a></li>
+					<li class="breadcrumb-item"><a
+						th:href="@{/admin/statistical/order}">Thống kê</a></li>
+					<li class="breadcrumb-item active">Đơn hàng</li>
+				</ol>
+			</div>
+
+			<div class="page-content container-fluid">
+
+				<div class="row">
+					<!-- second Row -->
+					<div class="col-12" id="ecommerceChartView">
+						<div class="card card-shadow">
+							<div class="card-header card-header-transparent py-20">
+								<div class="btn-group dropdown">
+									<a id="chartPie" href=""
+										class="text-body dropdown-toggle blue-grey-700"
+										data-toggle="dropdown">BIỂU ĐỒ TRÒN</a>
+									<div class="dropdown-menu animate" role="menu">
+										<a id="chartPolar" class="dropdown-item"
+											onclick="changeChart()" href="" role="menuitem">BIỂU ĐỒ
+											VÙNG CỰC</a>
+									</div>
+								</div>
+								<ul class="nav nav-pills nav-pills-rounded chart-action">
+									<li class="nav-item"><a class="active nav-link"
+										data-toggle="tab" ng-click="statisticalByDay()"
+										href="#scoreLineToDay">Ngày</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab"
+										ng-click="statisticalByMonth()" href="#">Tháng</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab"
+										ng-click="statisticalByYear()" href="#scoreLineToMonth">Năm</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab"
+										id="tabOption" href="#scoreLineToMonth" onclick="showModal()">Tùy
+											chọn</a></li>
+								</ul>
+							</div>
+
+							<div class="widget-content tab-content bg-white p-20">
+								<canvas id="pie-chart-grouped-day" width="800" height="450"></canvas>
+								<canvas id="pie-chart-grouped-month" width="800" height="450"></canvas>
+								<canvas id="pie-chart-grouped-year" width="800" height="450"></canvas>
+								<canvas id="pie-chart-grouped-option" width="800" height="450"></canvas>
+							</div>
+						</div>
+					</div>
+					<!-- End Second Row -->
+
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade modal-info" id="optionModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">BỘ LỌC</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="exampleFormControlSelect1">Chọn năm</label> <select
+									class="form-control" id="year">
+									<option value="0">-- Chọn --</option>
+									<option ng-repeat="item in itemYear">{{item}}</option>
+								</select>
+							</div>	
+							<div class="form-group">
+								<label for="exampleFormControlSelect1">Chọn tháng</label> <select
+									class="form-control" id="month">
+									<option value="0">-- Chọn --</option>								
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlSelect1">Chọn ngày</label> <select
+									class="form-control" id="day">
+									<option value="0">-- Chọn --</option>								
+								</select>
+							</div>									
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Đóng</button>
+						<button type="button" class="btn btn-primary" ng-click="statisticalByOption()" id="btnFind">Tìm kiếm</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+<th:block id="javascriptResource">
+	<script
+		src="/assets/admin/base/assets/examples/js/tables/datatable.min599c.js?v4.0.2"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script
+		src="/assets/admin/angular/statisticalOrder/statistical-order-ctrl.js"></script>
+</th:block>
+</html>

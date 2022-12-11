@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/_form :: dynamic(
+				~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+	<!-- Angular -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<!-- Plugins For This Page -->
+	<link rel="stylesheet"
+		href="/assets/admin/global/vendor/formvalidation/formValidation.min599c.css?v4.0.2">
+
+	<link rel="stylesheet"
+		href="/assets/admin/base/assets/examples/css/forms/validation.min599c.css?v4.0.2">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main ng-app="product-form-app" ng-controller="product-form-ctrl">
+		<!-- Page -->
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">Thông Tin Sản Phẩm</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="../index.html">Trang
+							chủ</a></li>
+					<li class="breadcrumb-item"><a href="javascript:void(0)">Sản
+							Phẩm</a></li>
+					<li class="breadcrumb-item active">Thông tin</li>
+				</ol>
+			</div>
+
+			<div class="page-content container-fluid">
+				<!-- Panel Full Example -->
+				<div class="panel">
+					<div class="panel-body">
+						<form th:action="@{/admin/product/form}" method="post"
+							id="exampleFullForm" name="formProduct">
+							<div class="row row-lg">
+								<div class="col-xl-6 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Mã
+											sản phẩm <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-user" aria-hidden="true"></i>
+												</span> <input id="code" ng-model="form.code" data-maxlength="10"
+													data-minlength="5" type="text" class="form-control"
+													placeholder="OPPORENO">
+												<div class="invalid-tooltip" id="showErrorCode"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Tên
+											sản phẩm <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-id-badge" aria-hidden="true"></i>
+												</span> <input id="name" ng-model="form.name"
+													data-maxlength="
+													50" data-minlength="10"
+													type="text" class="form-control"
+													placeholder="Điện thoại iPhone 12 128GB">
+												<div class="invalid-tooltip" id="showErrorName"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Giá
+											sản phẩm <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-phone-square" aria-hidden="true"></i>
+												</span> <input type="number" class="form-control"
+													ng-model="form.price" placeholder="21000000" id="price">
+												<div class="invalid-tooltip" id="showErrorPrice"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Điểm
+											đổi thưởng <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-calendar" aria-hidden="true"></i>
+												</span> <input type="number" placeholder="200" class="form-control"
+													id="point" ng-model="form.point">
+												<div class="invalid-tooltip" id="showErrorPoint"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Số
+											lượng <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-calendar" aria-hidden="true"></i>
+												</span> <input type="number" placeholder="30" class="form-control"
+													id="quality" ng-model="form.quality">
+												<div class="invalid-tooltip" id="showErrorQuality"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Hình
+											ảnh 1 <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file"
+												data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+													class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+														type="file" id="chooseImage1" accept=".png,.jpg,.jpeg">
+												</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly"
+													id="valueImage1" ng-model="form.image1">
+												<div class="invalid-tooltip" id="showErrorImage1"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Hình
+											ảnh 2 <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file"
+												data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+													class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+														type="file" id="chooseImage2" accept=".png,.jpg,.jpeg">
+												</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly"
+													id="valueImage2" ng-model="form.image2">
+												<div class="invalid-tooltip" id="showErrorImage2"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Hình
+											ảnh 3 <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file"
+												data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+													class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+														type="file" id="chooseImage3" accept=".png,.jpg,.jpeg">
+												</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly"
+													id="valueImage3" ng-model="form.image3">
+												<div class="invalid-tooltip" id="showErrorImage3"></div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="col-xl-6 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Tên
+											tìm kiếm <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-money" aria-hidden="true"></i>
+												</span> <input type="text" class="form-control" name="nameSearch"
+													ng-model="form.nameSearch" placeholder="iphone-12-64gb"
+													id="nameSearch" data-maxlength="50"
+													data-minlength="5">
+												<div class="invalid-tooltip" id="showErrorNameSearch"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Hình
+											ảnh 4 <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file"
+												data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+													class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+														type="file" id="chooseImage4" accept=".png,.jpg,.jpeg">
+												</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly"
+													id="valueImage4" ng-model="form.image4">
+												<div class="invalid-tooltip" id="showErrorImage4"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Hình
+											ảnh 5 <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file"
+												data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+													class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+														type="file" id="chooseImage5" accept=".png,.jpg,.jpeg">
+												</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly"
+													id="valueImage5" ng-model="form.image5">
+												<div class="invalid-tooltip" id="showErrorImage5"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Màu
+											sắc </label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-money" aria-hidden="true"></i>
+												</span> <input type="text" class="form-control" name="color"
+													ng-model="form.color" placeholder="Đỏ" id="color"
+													data-maxlength="
+													15">
+												<div class="invalid-tooltip" id="showErrorColor"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Bộ
+											nhớ </label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-money" aria-hidden="true"></i>
+												</span> <input type="text" class="form-control" name="memory"
+													ng-model="form.memory" placeholder="64GB" id="memory"
+													data-maxlength="
+													7">
+												<div class="invalid-tooltip" id="showErrorMemory"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Trạng
+											thái <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-university" aria-hidden="true"></i>
+												</span> <select class="form-control" id="active"
+													ng-model="form.active">
+													<option ng-value="">Choose a active</option>
+													<option ng-value="true">Hiển thị</option>
+													<option ng-value="false">Vô hiệu hóa</option>
+												</select>
+												<div class="invalid-tooltip" id="showErrorActive"></div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Chọn danh mục <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-list" aria-hidden="true"></i>
+												</span> <select ng-model="form.cateId" class="form-control"
+													id="category">
+													<option value="">Choose a category</option>
+													<option ng-repeat="item in itemCate" ng-value="{{item.id}}">{{item.name}}</option>
+												</select>
+												<div class="invalid-tooltip" id="showErrorCategory"></div>
+											</div>
+
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Chọn nhà sản xuất <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-list" aria-hidden="true"></i>
+												</span> <select ng-model="form.manuId" class="form-control"
+													id="manufacturer">
+													<option value="">Choose a manufacturer</option>
+													<option ng-repeat="item in itemManu" ng-value="{{item.id}}">{{item.name}}</option>
+												</select>
+												<div class="invalid-tooltip" id="showErrorManufacturer"></div>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+								
+								<div class="col-xl-12 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Mô
+											tả <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="icon wb-info-circle" aria-hidden="true"></i>
+												</span>
+												<textarea data-minlength="200" rows="3"
+													cols="5" class="form-control" id="description"
+													placeholder="Describe something..."
+													ng-model="form.description"></textarea>
+												<div class="invalid-tooltip" id="showErrorDescription"></div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-xl-12 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Thông số <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="icon wb-info-circle" aria-hidden="true"></i>
+												</span>
+												<textarea data-minlength="7" rows="3"
+													cols="5" class="form-control" id="specification"
+													placeholder="Describe something..."
+													ng-model="form.specification"></textarea>
+												<div class="invalid-tooltip" id="showErrorSpecification"></div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								
+								<div class="form-group col-xl-12 text-right padding-top-m">
+									<th:block th:if="${!enableBtnUpdate}">
+										<a th:href="@{/admin/product/form}"
+											class="btn btn-success text-light" id="validateButton1">
+											<i class="fa fa-refresh" aria-hidden="true"></i> Làm mới
+										</a>
+										<button id="btnSave" type="button" ng-click="save()"
+											class="btn btn-primary">
+											<i class="fa fa-save" aria-hidden="true"></i> Lưu
+										</button>
+									</th:block>
+									<th:block th:if="${enableBtnUpdate}">
+										<input type="hidden" id="demo" th:value="${productId}" />
+										<a th:href="@{/admin/product/update/{id}(id=${productId})}"
+											class="btn btn-success text-light" id="validateButton1">
+											<i class="fa fa-refresh" aria-hidden="true"></i> Khôi phục
+										</a>
+										<button id="btnUpdate" type="button" ng-click="update()"
+											class="btn btn-info">
+											<i class="fa fa-pencil" aria-hidden="true"></i> Cập nhật
+										</button>
+									</th:block>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- End Panel Full Example -->
+			</div>
+
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade"
+			ng-class="{true:'modal-info', false:'modal-danger'}[info.status]"
+			id="modalSuccess">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="modal-title">Thông Báo!</h4>
+					</div>
+					<div class="modal-body">
+						<p>{{info.content}}</p>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-primary text-light">Xác nhận</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal -->
+	</main>
+</body>
+<th:block id="javascriptResource">
+	<!-- Plugins For This Page -->
+	<script
+		src="/assets/admin/global/vendor/formvalidation/framework/bootstrap4.min599c.js?v4.0.2"></script>
+
+	<script
+		src="/assets/admin/base/assets/examples/js/forms/validation.min599c.js?v4.0.2"></script>
+
+	<!-- Plugins For This Page -->
+	<script
+		src="/assets/admin/global/vendor/jquery-placeholder/jquery.placeholder599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/js/Plugin/input-group-file.min599c.js?v4.0.2"></script>
+	<th:block th:if="${!enableBtnUpdate}">
+		<script
+			src="/assets/admin/angular/product/product-form-create-ctrl.js"></script>
+	</th:block>
+	<th:block th:if="${enableBtnUpdate}">
+		<script
+			src="/assets/admin/angular/product/product-form-update-ctrl.js"></script>
+	</th:block>
+</th:block>
+</html>

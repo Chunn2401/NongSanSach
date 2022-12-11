@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/_form :: dynamic(
+				~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+
+	<link rel="stylesheet"
+		href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet"
+		href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<script
+		src="/assets/admin/global/vendor/datatables.net/jquery.dataTables599c.js?v4.0.2"></script>
+	<script
+		src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js"></script>
+	<script src="/assets/admin/angular/angular-datatables.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main ng-app="top-product-day-app" ng-controller="top-product-day-ctrl">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">Danh Sách Sản Phẩm Bán Chạy Theo Ngày</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a th:href="@{/admin/index}">Trang
+							chủ</a></li>
+					<li class="breadcrumb-item"><a
+						th:href="@{/admin/statistical/product/day}">Sản phẩm</a></li>
+					<li class="breadcrumb-item active">Bán chạy theo ngày</li>
+				</ol>
+			</div>
+
+			<div class="page-content">
+				<!-- Panel Basic -->
+				<div class="panel">
+					<div class="panel-body">
+						<table
+							class="table table-hover dataTable table-striped w-full dt-responsive nowrap"
+							datatable="ng" dt-options="vm.dtOptions"
+							dt-instance="vm.dtInstance" dt-column-defs="vm.dtColumnDefs">
+							<thead>
+								<tr>
+									<th>Mã sản phẩm</th>
+									<th>Tên sản phẩm</th>
+									<th>Giá sản phẩm</th>
+									<th>Số lượng</th>
+									<th>Đã bán</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>Mã sản phẩm</th>
+									<th>Tên sản phẩm</th>
+									<th>Giá sản phẩm</th>
+									<th>Số lượng</th>
+									<th>Đã bán</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<tr ng-repeat="item in items">
+									<td>{{item.code}}</td>
+									<td>{{item.name}}</td>
+									<td>{{item.price | currency : '' : 0}}</td>
+									<td>{{item.quantity}}</td>
+									<td>{{item.selled}}</td>								
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- End Panel Basic -->
+			</div>
+		</div>
+
+	</main>
+</body>
+<th:block id="javascriptResource">
+	<script
+		src="/assets/admin/base/assets/examples/js/tables/datatable.min599c.js?v4.0.2"></script>
+	<script src="/assets/admin/angular/statisticalProduct/statistical-product-day-ctrl.js"></script>
+</th:block>
+</html>

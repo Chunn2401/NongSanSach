@@ -1,0 +1,106 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+.card-body .img-inter{
+margin-left: 46.5%;
+}
+.view-blog{
+display: block;
+}
+
+.content-blog{
+text-align: justify;
+}
+
+.img-blog{
+border-radius: 5px ;
+}
+
+
+/* tablet $ mobile */
+@media (max-width:63.9375em) {
+    
+	.content-blog,
+    .view-blog,
+    .page-title{
+    padding: 15px 18px;
+    }
+    
+    
+    
+    .card-body .img-inter{
+    margin-left: 41%;
+    }
+
+}
+
+/* TABLET 740px 1023px */
+@media (min-width:46.25em) and (max-width:63.9375em) {
+    .card-body .img-inter{
+    margin-left: 43%;
+    }
+}
+
+/* MOBILE 739px*/
+@media (max-width:46.1875em) {
+    .s-col-full,
+    .s-full-width{
+        width: 100% !important;
+    }
+    
+    .content-blog,
+    .view-blog,
+    .page-title{
+    padding: 15px 18px;
+    }
+    
+    .content-blog{
+    align-items: center;
+    justify-content: center;
+    }
+    
+    .card-body .img-inter{
+    margin-left: 37%;
+    }
+}
+</style>
+<body>
+<div class="row box mblog section mt-30" >
+	<div class="box-content">
+		<div class="page-title " style="margin-left: -10px;" id="Blogs">
+	     <a href="/" style="font-weight: bold; margin-left:10px;font-size: 20px; color: #6abd45;">Trang chủ </a> /<a class="" href="/blog" style="font-weight: bold; margin-left:10px; font-size: 20px; color: #6abd45;"> Kiến thức</a>
+		</div>
+		<!-- th:each="b: ${items}" -->
+		<div th:object="${item}" class="block_box">
+			<span class="view-blog">Bạn đang xem bài viết <div class="card-title" th:utext="*{title}" style="font-weight: bold; display: inline-block; font-size: 18px; margin-bottom: 10px;"></div></span>
+			<div id="blogcarousel" class="blogs-block  blog-carousel  clearfix"
+				data-items="2">
+				<div class="card-body" style="line-height: 25px;">					
+					<img class="img-blog" th:src="@{|/assets/images/blog/*{image1}|}" width="310px" height="280px" style="display: block;margin-left: auto; margin-right: auto;">
+					<div>
+					<span class="img-inter">Hình ảnh từ Internet</span>
+					</div>					
+					
+					<div class="content-blog" th:text="*{content1}" 
+					style="text-shadow: 0.5px 0.2px black; font-size: 18px; margin-left:10px; margin-bottom: 8px;"></div>
+					
+					<img class="img-blog" th:src="@{|/assets/images/blog/*{image2}|}" width="310px" height="280px" style="display: block;margin-left: auto; margin-right: auto;">
+					<span class="img-inter">Hình ảnh từ Internet</span>
+					
+					<div class="content-blog" th:text="*{content2}"
+					style="text-shadow: 0.5px 0.2px black; font-size: 18px; margin-left:10px; margin-bottom: 8px"></div>
+					
+					<img class="img-blog" th:src="@{|/assets/images/blog/*{image3}|}" width="310px" height="280px" style="display: block;margin-left: auto; margin-right: auto;">
+					<span class="img-inter">Hình ảnh từ Internet</span>
+					
+					<div class="content-blog" th:text="*{content3}"
+					style="text-shadow: 0.5px 0.2px black; font-size: 18px; margin-left:10px; margin-bottom: 8px"></div>
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

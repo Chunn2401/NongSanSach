@@ -1,0 +1,41 @@
+<div class="slideshow">
+	<div class="swiper-viewport">
+		<div id="slideshow0" class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide text-center Main-banner1">
+					<a href="#"><img
+						src="/assets/user/image/cache/catalog/banners/mainbanner1-1130x560.jpg"
+						alt="Main-banner1" class="img-responsive" /></a>
+				</div>
+				<div class="swiper-slide text-center Main-banner2">
+					<a href="#"><img
+						src="/assets/user/image/cache/catalog/banners/mainbanner2-1130x560.jpg"
+						alt="Main-banner2" class="img-responsive" /></a>
+				</div>
+			</div>
+		</div>
+		<div class="swiper-pagination slideshow0"></div>
+		<div class="swiper-pager hidden">
+			<div class="swiper-button-prev">
+				<i class="fa fa-caret-left"></i>
+			</div>
+			<div class="swiper-button-next">
+				<i class="fa fa-caret-right"></i>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$('#slideshow0').swiper({
+		mode : 'horizontal',
+		slidesPerView : 1,
+		pagination : '.slideshow0',
+		paginationClickable : true,
+		nextButton : '.swiper-button-next',
+		prevButton : '.swiper-button-prev',
+		spaceBetween : 0,
+		autoplay : 4000,
+		autoplayDisableOnInteraction : true,
+		loop : true
+	});
+</script>

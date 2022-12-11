@@ -1,0 +1,7 @@
+/*!
+ * Remark (http://getbootstrapadmin.com/remark)
+ * Copyright 2017 amazingsurge
+ * Licensed under the Themeforest Standard Licenses
+ */
+
+!function(global,factory){if("function"==typeof define&&define.amd)define("/widgets/weather",["jquery","Site"],factory);else if("undefined"!=typeof exports)factory(require("jquery"),require("Site"));else{var mod={exports:{}};factory(global.jQuery,global.Site),global.widgetsWeather=mod.exports}}(this,function(_jquery,_Site){"use strict";var _jquery2=babelHelpers.interopRequireDefault(_jquery),Site=babelHelpers.interopRequireWildcard(_Site);(0,_jquery2.default)(document).ready(function(){Site.run()}),function(){var ex1_sunny=new Skycons({color:"white"});ex1_sunny.set(document.getElementById("ex4-rain"),"rain"),ex1_sunny.play()}(),function(){var ex5_i,ex5=new Skycons({color:"white"}),ex5_list=["ex5-partly-cloudy","ex5-sunny","ex5-cloudy","ex5-rain"],ex5_type=["partly-cloudy-day","clear-day","cloudy","rain"];for(ex5_i=ex5_list.length;ex5_i--;)ex5.set(ex5_list[ex5_i],ex5_type[ex5_i]);ex5.play()}(),function(){var ex6_snow=new Skycons({color:"white"});ex6_snow.set(document.getElementById("ex6-snow"),"snow"),ex6_snow.play()}(),function(){var ex7_sleet=new Skycons({color:"#212121"});ex7_sleet.set(document.getElementById("ex7-sleet"),"sleet"),ex7_sleet.play()}()});

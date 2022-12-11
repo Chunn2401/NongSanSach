@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/layout/_form :: dynamic(
+				~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+	<!-- Plugins For This Page -->
+	<link rel="stylesheet" href="/assets/admin/global/vendor/summernote/summernote.min599c.css?v4.0.2">
+</th:block>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<main>
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">Tạo Mô Tả Nâng Cao</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/admin/index">Trang
+							chủ</a></li>
+					<li class="breadcrumb-item"><a href="javascript:void(0)">Tiện
+							ích</a></li>
+					<li class="breadcrumb-item active">Mô tả nâng cao</li>
+				</ol>
+			</div>
+
+			<div class="page-content container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<!-- Panel Standard Editor -->
+						<div class="panel">
+							<div class="panel-heading">
+								<h3 class="panel-title">Standard Editor</h3>
+							</div>
+							<div class="panel-body">
+								<div id="summernote" data-plugin="summernote">
+
+								</div>
+							</div>
+						</div>
+						<!-- End Panel Standard Editor -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Page -->
+	</main>
+</body>
+<th:block id="javascriptResource">
+	<!-- Plugins For This Page -->
+	<script src="/assets/admin/global/vendor/summernote/summernote.min599c.js?v4.0.2"></script>
+	<script src="/assets/admin/global/js/Plugin/summernote.min599c.js?v4.0.2"></script>
+	<script src="/assets/admin/base/assets/examples/js/forms/editor-summernote.min599c.js?v4.0.2"></script>
+</th:block>
+
+</html>

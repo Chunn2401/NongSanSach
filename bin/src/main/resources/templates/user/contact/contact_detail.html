@@ -1,0 +1,67 @@
+<div id="content" class="col-sm-9">
+
+	<div class="row">
+		<div class="col-sm-12">
+			<h1 class="contact-title">Thông tin về chúng tôi</h1>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 contact-left">
+			<div class="content-details">
+				<div class="location-info">
+					<div class="location-title title">
+						<i class="fa fa-home"></i>Your Store
+					</div>
+					<div class="content-address">[[${information.address}]]</div>
+					<iframe class="responsive-iframe"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6590.912968172792!2d106.68041494889788!3d10.81281941342658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528dfcf546de7%3A0xf872809fb8deded!2zVHLGsMahzIBuZyBDYW8gxJDEg8yJbmcgRlBUIFBvbHl0ZWNobmlj!5e0!3m2!1svi!2s!4v1668948967273!5m2!1svi!2s"
+						width="430" height="450" style="border:2px;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade">
+					</iframe>
+				</div>
+				<div class="phone-info">
+					<div class="phone-title title">
+						<i class="fa fa-mobile"></i> Số điện thoại
+					</div>
+					<div class="content-number">(+84) 358 570 211</div>
+				</div>
+				<div class="comment-info">
+					<div class="fax-title title">
+						<i class="fa fa-fax"></i> Fax
+					</div>
+					<div class="fax-number">[[${information.fax}]]</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 contact-right">
+			<form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+				<fieldset>
+					<legend>Liên hệ với chúng tôi</legend>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-name">Họ tên</label>
+						<div class="col-sm-10">
+							<input type="text" name="name" value="" id="input-name" class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-email">Email</label>
+						<div class="col-sm-10">
+							<input type="text" name="email" value="" id="input-email" class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-enquiry">Lời nhắn</label>
+						<div class="col-sm-10">
+							<textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"></textarea>
+						</div>
+					</div>
+
+				</fieldset>
+				<div class="buttons clearfix">
+					<div class="pull-right">
+						<input class="btn btn-primary" type="submit" value="Gửi">
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>

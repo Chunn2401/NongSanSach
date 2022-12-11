@@ -1,0 +1,70 @@
+<div class="box carousel brand">
+	<div class="page-title" id="brand">
+		<h3>Brand Logo</h3>
+	</div>
+	<div class="brand-main">
+		<div class="row">
+			<div class="swiper-viewport">
+				<div id="carousel0" class="swiper-container">
+					<div class="swiper-wrapper">
+						<th:block th:each="item: ${manufacturer}">
+							<div class="swiper-slide col-sm-12">
+								<div class="text-center">
+									<img th:src="@{|/assets/images/logo/${item.logo}|}" alt="Starbucks"
+										class="img-responsive m-auto" />
+								</div>
+							</div>
+						</th:block>
+					</div>
+				</div>
+				<div class="swiper-pagination carousel0"></div>
+				<div class="swiper-pager">
+					<div class="swiper-button-prev">
+						<i class="fa fa-caret-left"></i>
+					</div>
+					<div class="swiper-button-next">
+						<i class="fa fa-caret-right"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$('#carousel0').swiper({
+		mode: 'horizontal',
+		slidesPerView: 5,
+		paginationClickable: false,
+		nextButton: '.swiper-button-next',
+		prevButton: '.swiper-button-prev',
+		loop: false,
+		autoplay: false,
+		autoplayDisableOnInteraction: true,
+		breakpoints: {
+			1340: {
+				slidesPerView: 4,
+				spaceBetween: 0
+			},
+			1199: {
+				slidesPerView: 3,
+				spaceBetween: 0
+			},
+			991: {
+				slidesPerView: 4,
+				spaceBetween: 0
+			},
+			540: {
+				slidesPerView: 3,
+				spaceBetween: 0
+			},
+			425: {
+				slidesPerView: 2,
+				spaceBetween: 0
+			},
+			300: {
+				slidesPerView: 1,
+				spaceBetween: 0
+			}
+		}
+	});
+</script>

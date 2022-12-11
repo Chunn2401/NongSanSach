@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	th:fragment="dynamic(main,javascriptResource,cssResource)">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+
+<title>Dashboard Ecommerce | Remark Admin Template</title>
+
+<link rel="apple-touch-icon"
+	href="/assets/admin/base/assets/images/apple-touch-icon.png">
+<link rel="shortcut icon"
+	href="/assets/admin/base/assets/images/favicon.ico">
+
+<!-- Stylesheets -->
+<link rel="stylesheet"
+	href="/assets/admin/global/css/bootstrap.min599c.css?v4.0.2">
+<link rel="stylesheet"
+	href="/assets/admin/global/css/bootstrap-extend.min599c.css?v4.0.2">
+<link rel="stylesheet"
+	href="/assets/admin/base/assets/css/site.min599c.css?v4.0.2">
+
+<!-- Skin tools (demo site only) -->
+<link rel="stylesheet"
+	href="/assets/admin/global/css/skintools.min599c.css?v4.0.2">
+<script
+	src="/assets/admin/base/assets/js/Plugin/skintools.min599c.js?v4.0.2"></script>
+
+<!-- Plugins -->
+<link rel="stylesheet"
+	href="/assets/admin/global/vendor/animsition/animsition.min599c.css?v4.0.2">
+<link rel="stylesheet"
+	href="/assets/admin/global/vendor/asscrollable/asScrollable.min599c.css?v4.0.2">
+<link rel="stylesheet"
+	href="/assets/admin/global/vendor/switchery/switchery.min599c.css?v4.0.2">
+<link rel="stylesheet"
+	href="/assets/admin/global/vendor/intro-js/introjs.min599c.css?v4.0.2">
+<link rel="stylesheet"
+	href="/assets/admin/global/vendor/slidepanel/slidePanel.min599c.css?v4.0.2">
+<link rel="stylesheet"
+	href="/assets/admin/global/vendor/flag-icon-css/flag-icon.min599c.css?v4.0.2">
+
+<th:block th:replace="${cssResource}"></th:block>
+
+<!-- Fonts -->
+<link rel="stylesheet"
+	href="/assets/admin/global/fonts/web-icons/web-icons.min599c.css?v4.0.2">
+<link rel="stylesheet"
+	href="/assets/admin/global/fonts/brand-icons/brand-icons.min599c.css?v4.0.2">
+<link rel='stylesheet'
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
+
+<link rel="stylesheet"
+	href="/assets/admin/global/fonts/font-awesome/font-awesome.min599c.css?v4.0.2">
+
+<!-- Scripts -->
+<script
+	src="/assets/admin/global/vendor/breakpoints/breakpoints.min599c.js?v4.0.2"></script>
+<script>
+	Breakpoints();
+</script>
+</head>
+<body class="animsition ecommerce_dashboard">
+	<th:block th:replace="/admin/layout/_menu.html"></th:block> 
+	
+	<th:block th:replace="/admin/layout/_aside.html"></th:block> 
+
+	<!-- Page -->
+	<div th:replace="${main}"></div>
+	<!-- End Page -->
+
+	<!-- Footer -->
+	<th:block th:replace="/admin/layout/_footer.html"></th:block> 
+	<!-- Core  -->
+	<script
+		src="/assets/admin/global/vendor/babel-external-helpers/babel-external-helpers599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/jquery/jquery.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/popper-js/umd/popper.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/bootstrap/bootstrap.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/animsition/animsition.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/mousewheel/jquery.mousewheel599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/asscrollbar/jquery-asScrollbar.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/asscrollable/jquery-asScrollable.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/ashoverscroll/jquery-asHoverScroll.min599c.js?v4.0.2"></script>
+
+	<!-- Plugins -->
+	<script
+		src="/assets/admin/global/vendor/switchery/switchery.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/intro-js/intro.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/screenfull/screenfull599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/vendor/slidepanel/jquery-slidePanel.min599c.js?v4.0.2"></script>
+
+	<!-- Scripts -->
+	<script src="/assets/admin/global/js/Component.min599c.js?v4.0.2"></script>
+	<script src="/assets/admin/global/js/Plugin.min599c.js?v4.0.2"></script>
+	<script src="/assets/admin/global/js/Base.min599c.js?v4.0.2"></script>
+	<script src="/assets/admin/global/js/Config.min599c.js?v4.0.2"></script>
+
+	<script
+		src="/assets/admin/base/assets/js/Section/Menubar.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/base/assets/js/Section/GridMenu.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/base/assets/js/Section/Sidebar.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/base/assets/js/Section/PageAside.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/base/assets/js/Plugin/menu.min599c.js?v4.0.2"></script>
+	
+	
+	<!-- Config -->
+	<script src="/assets/admin/global/js/config/colors.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/base/assets/js/config/tour.min599c.js?v4.0.2"></script>
+	<script>
+		Config.set('assets', 'assets');
+	</script>
+	
+	<!-- Page -->
+	<script src="/assets/admin/base/assets/js/Site.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/js/Plugin/asscrollable.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/js/Plugin/slidepanel.min599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/js/Plugin/switchery.min599c.js?v4.0.2"></script>
+	
+	<th:block th:replace="${javascriptResource}"></th:block>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<div class="panel panel-default filter">
+	<div class="box-content">
+		<div id="filter">
+			<h3 class="panel-heading toggled">Lọc Sản Phẩm</h3>
+			
+				<div class="filter_box">
+					<div class="list-group list-group-filter">						
+						<div class="list-group-items">
+							<a class="list-group-item">Giá</a>
+							<div class="list-group-item">
+								<div id="filter-group2">
+									<div class="checkbox">
+										<label> <input type="checkbox" name="gia" th:checked="${price=='1'}" value="1" />
+											Dưới 3 triệu
+										</label>
+									</div>
+									<div class="checkbox">
+										<label> <input type="checkbox" name="gia" th:checked="${price=='2'}" value="2" />
+											Từ 3 - 5 triệu
+										</label>
+									</div>
+									<div class="checkbox">
+										<label> <input type="checkbox" name="gia" th:checked="${price=='3'}" value="3" />
+											Từ 5 - 8 triệu
+										</label>
+									</div>
+									<div class="checkbox">
+										<label> <input type="checkbox" name="gia" th:checked="${price=='4'}" value="4" />
+											Từ 8 - 13 triệu
+										</label>
+									</div>
+									<div class="checkbox">
+										<label> <input type="checkbox" name="gia" th:checked="${price=='5'}"
+											value="5" /> Trên 13 triệu
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="list-group-items">
+							<a class="list-group-item">Hãng</a>
+							<div class="list-group-item">
+								<div id="filter-group3">
+									<th:block th:each="item: ${listManu}">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="hang" th:checked="${manu== '' + item.id}" th:value="${item.id}" />
+												[[${item.name}]]
+											</label>
+										</div>
+									</th:block>									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer text-center">
+						<button type="submit" id="button-filter" class="btn btn-primary"><i class="fa fa-search"></i> Tìm
+							Kiếm</button>
+					</div>
+				</div>
+			<!-- </form> -->
+		</div>
+	</div>
+</div>

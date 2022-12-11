@@ -1,0 +1,143 @@
+<div id="content" class="col-sm-9">
+	<h2 class="page_title">[[${inforCategory.name}]]</h2>
+	<div class="row">
+		<div class="col-sm-12">
+			<img th:src="@{|/assets/images/banner/${inforCategory.banner}|}"
+				alt="Electronics" title="Electronics"
+				class="img-thumbnail cat-banner" />
+		</div>
+		<div class="col-sm-12 cat-description">
+			<p>[[${inforCategory.description}]]</p>
+		</div>
+	</div>
+	<div class="refine-search">
+		<h3 class="refine-text">Danh Mục Liên Quan</h3>
+		<div class="row">
+			<div class="col-sm-12">
+				<ul class="cat-name">
+					<th:block th:each="item: ${inforCategory.listMenuOne}">
+						<li><a href=""> [[${item.name}]]</a></li>
+					</th:block>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="cat_info">
+		<div class="row">
+			<div class="col-sm-2 col-xs-5 cat_list_gird">
+				<div class="btn-group btn-group-sm">
+					<button type="button" id="grid-view" class="btn btn-default"
+						data-toggle="tooltip" title="Lưới">
+						<i class="fa fa-th-large"></i>
+					</button>
+					<button type="button" id="list-view" class="btn btn-default"
+						data-toggle="tooltip" title="Danh sách">
+						<i class="fa fa-th-list"></i>
+					</button>
+				</div>
+			</div>
+			<div class="col-sm-3 col-xs-6 com-total">
+				<a href="" id="compare-total" class="btn btn-link">So Sánh SP
+					(0)</a>
+			</div>
+			<div class="col-sm-7 col-xs-12 cat-pagination-right">
+				<div class="cat-sort">
+					<div class="text-right show-text clearfix">
+						<label class="control-label text_sort" for="input-sort">Xếp
+							Theo:</label>
+					</div>
+					<div class="text-right show-select clearfix">
+						<div class="select-filter-sort">
+							<select id="input-sort" name="xep"
+								class="form-control sort-order" onchange="this.form.submit()">
+								<option value="0" th:selected="${sort == '0'}">Mặc định</option>
+								<option value="1" th:selected="${sort == '1'}">Tên (A -
+									Z)</option>
+								<option value="2" th:selected="${sort == '2'}">Tên (Z -
+									A)</option>
+								<option value="3" th:selected="${sort == '3'}">Giá
+									(Thấp &gt; Cao)</option>
+								<option value="4" th:selected="${sort == '4'}">Giá (Cao
+									&gt; Thấp)</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row category-row">
+		<th:block th:each="item: ${listProduct.content}">
+			<div class="product-layout product-list col-xs-12">
+				<div class="product-thumb">
+					<div class="image">
+						<a th:href="@{|/san-pham/${item.product.Namesearch}|}"> <img
+							th:src="@{|/assets/images/imageProduct/${item.product.image1}|}"
+							alt="Boat Headphone" th:title="${item.product.name}"
+							class="img-responsive" /> <img class="img-responsive hover-img"
+							th:src="@{|/assets/images/imageProduct/${item.product.image2}|}"
+							th:title="${item.product.name}" alt="Boat Headphone" />
+						</a>
+					</div>
+					<div class="thumb-description clearfix">
+						<div class="caption">
+							<h4 class="product-title">
+								<a th:href="@{|/san-pham/${item.product.Namesearch}|}">[[${item.product.name}]]</a>
+							</h4>
+							<p class="price">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]₫</p>
+							<div class="rating">
+								<th:block th:if="${item.totalStar != 0}">
+									<th:block th:each="i: ${#numbers.sequence(1, item.totalStar)}">
+										<span class="fa fa-stack"><i
+											class="fa fa-star fa-stack-1x"></i><i
+											class="fa fa-star-o fa-stack-1x"></i></span>
+									</th:block>
+								</th:block>
+								<th:block th:if="${item.totalStar != 5}">
+									<th:block
+										th:each="i: ${#numbers.sequence(1, 5 - item.totalStar)}">
+										<span class="fa fa-stack"><i
+											class="fa fa-star-o fa-stack-1x"></i></span>
+									</th:block>
+								</th:block>
+							</div>
+							<p class="description">[[${item.product.description.substring(0,200)}]]...</p>
+							<div class="btn-all">
+								<button type="button" class="addcart" title="Mua ngay"
+									th:onclick="location.href = '/san-pham/[(${item.product.Namesearch})]'">Mua
+									ngay</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</th:block>
+	</div>
+
+	<div class="pro_pagination">
+		<div class="row">
+			<div class="col-sm-6 text-left">Hiển thị 1 đến 15 của
+				[[${listProduct.totalElements}]] SP ([[${listProduct.totalPages}]]
+				Trang)</div>
+			<div class="col-sm-6 text-right">
+				<input id="indexPage" name="p" value="0" type="hidden">
+				<ul class="pagination">
+					<li id="first" th:class="${(listProduct.number==0)?'disabled':''}"><a
+						onclick="firstPage(0)">|&lt;</a></li>
+					<li id="prev" th:class="${(listProduct.number==0)?'disabled':''}"><a
+						th:onclick="prevPage([(${listProduct.number-1})])">&lt;</a></li>
+					<li id="next"
+						th:class="${(listProduct.number>=listProduct.totalPages-1)?'disabled':''}">
+						<a th:onclick="nextPage([(${listProduct.number+1})])">&gt;</a>
+					</li>
+					<li id="last"
+						th:class="${(listProduct.number>=listProduct.totalPages-1)?'disabled':''}">
+						<a th:onclick="lastPage([(${listProduct.totalPages-1})])">&gt;|</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>

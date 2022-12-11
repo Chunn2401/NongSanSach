@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="site-menubar">
+		<div class="site-menubar-body">
+			<div>
+				<div>
+					<ul class="site-menu" data-plugin="menu">
+						<li class="site-menu-category">Chung</li>
+						<li class="site-menu-item has-sub"><a
+							th:href="@{/admin/index}"> <i
+								class="site-menu-icon wb-dashboard"></i> <span
+								class="site-menu-title">Tổng Quan</span>
+						</a></li>
+						<li class="site-menu-category">QUẢN LÝ</li>
+						<th:block th:if="${#request.isUserInRole('ROLE_DIRECTOR')}">
+							<li class="site-menu-item has-sub"><a
+								href="javascript:void(0)"> <i
+									class="site-menu-icon wb-user-circle" aria-hidden="true"></i> <span
+									class="site-menu-title">Nhân Viên</span> <span
+									class="site-menu-arrow"></span>
+							</a>
+								<ul class="site-menu-sub">
+									<li class="site-menu-item"><a
+										th:href="@{/admin/employees/list}"> <span
+											class="site-menu-title">Danh sách nhân viên</span>
+									</a></li>
+									<li class="site-menu-item"><a
+										th:href="@{/admin/employees/form}"> <span
+											class="site-menu-title">Thông tin nhân viên</span>
+									</a></li>
+								</ul></li>
+						</th:block>
+
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i class="site-menu-icon wb-list"
+								aria-hidden="true"></i> <span class="site-menu-title">Danh
+									Mục</span> <span class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a
+									th:href="@{/admin/categories/list}"> <span
+										class="site-menu-title">Danh Sách Danh Mục</span>
+								</a></li>
+								<li class="site-menu-item"><a
+									th:href="@{/admin/categories/form}"> <span
+										class="site-menu-title">Thông Tin Danh Mục</span>
+								</a></li>
+							</ul></li>
+
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i
+								class="site-menu-icon wb-memory" aria-hidden="true"></i> <span
+								class="site-menu-title">Thương Hiệu</span> <span
+								class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a
+									th:href="@{/admin/manufactures/list}"> <span
+										class="site-menu-title">Danh Sách Thương Hiệu</span>
+								</a></li>
+								<li class="site-menu-item"><a
+									th:href="@{/admin/manufactures/form}"> <span
+										class="site-menu-title">Thông Tin Thương Hiệu</span>
+								</a></li>
+							</ul></li>
+
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i class="site-menu-icon wb-users"
+								aria-hidden="true"></i> <span class="site-menu-title">Người
+									Dùng</span> <span class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a href=""> <span
+										class="site-menu-title">Danh Sách</span>
+								</a></li>
+								<li class="site-menu-item"><a href=""> <span
+										class="site-menu-title">Form</span>
+								</a></li>
+							</ul></li>
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i
+								class="site-menu-icon wb-mobile" aria-hidden="true"></i> <span
+								class="site-menu-title">Sản Phẩm</span> <span
+								class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a
+									th:href="@{/admin/product/list}"> <span
+										class="site-menu-title">Danh Sách Sản Phẩm</span>
+								</a></li>
+								<li class="site-menu-item"><a
+									th:href="@{/admin/product/form}"> <span
+										class="site-menu-title">Thông Tin Sản Phẩm</span>
+								</a></li>
+							</ul></li>
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i
+								class="site-menu-icon wb-chat-text" aria-hidden="true"></i> <span
+								class="site-menu-title">Bình Luận</span> <span
+								class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a
+									th:href="@{/admin/comment/list/pending}"> <span
+										class="site-menu-title">Đang chờ duyệt</span>
+								</a></li>
+								<li class="site-menu-item"><a
+									th:href="@{/admin/comment/list/approved}"> <span
+										class="site-menu-title">Đã duyệt</span>
+								</a></li>
+							</ul></li>
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i
+								class="site-menu-icon wb-shopping-cart" aria-hidden="true"></i> <span
+								class="site-menu-title">Đơn hàng</span> <span
+								class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a
+									th:href="@{/admin/order/list/pending}"> <span
+										class="site-menu-title">Đang chờ duyệt</span>
+								</a></li>
+								<li class="site-menu-item"><a
+									th:href="@{/admin/order/list/shipping}"> <span
+										class="site-menu-title">Chờ vận chuyển</span>
+								</a></li>
+								<li class="site-menu-item"><a
+									th:href="@{/admin/order/list/success}"> <span
+										class="site-menu-title">Đã hoàn thành</span>
+								</a></li>
+								<li class="site-menu-item"><a
+									th:href="@{/admin/order/list/cancel}"> <span
+										class="site-menu-title">Đã hủy</span>
+								</a></li>
+							</ul></li>
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i
+								class="site-menu-icon wb-extension" aria-hidden="true"></i> <span
+								class="site-menu-title">Mở Rộng</span> <span
+								class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item has-sub"><a
+									href="javascript:void(0)"> <span class="site-menu-title">Menu
+											Bậc 1</span> <span class="site-menu-arrow"></span>
+								</a>
+									<ul class="site-menu-sub">
+										<li class="site-menu-item"><a
+											th:href="@{/admin/nav1/list}"> <span
+												class="site-menu-title">Danh Sách Menu Bậc 1</span>
+										</a></li>
+										<li class="site-menu-item"><a
+											th:href="@{/admin/nav1/form}"> <span
+												class="site-menu-title">Thông Tin Menu Bậc 1</span>
+										</a></li>
+									</ul></li>
+							</ul>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item has-sub"><a
+									href="javascript:void(0)"> <span class="site-menu-title">Menu
+											Bậc 2</span> <span class="site-menu-arrow"></span>
+								</a>
+									<ul class="site-menu-sub">
+										<li class="site-menu-item"><a
+											th:href="@{/admin/nav2/list}"> <span
+												class="site-menu-title">Danh Sách Menu Bậc 2</span>
+										</a></li>
+										<li class="site-menu-item"><a
+											th:href="@{/admin/nav2/form}"> <span
+												class="site-menu-title">Thông Tin Menu Bậc 2</span>
+										</a></li>
+									</ul></li>
+							</ul>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item has-sub"><a
+									href="javascript:void(0)"> <span class="site-menu-title">Cửa
+											Hàng</span> <span class="site-menu-arrow"></span>
+								</a>
+									<ul class="site-menu-sub">
+										<li class="site-menu-item"><a
+											th:href="@{/admin/shop/list}"> <span
+												class="site-menu-title">Danh Sách Thông Tin</span>
+										</a></li>
+										<li class="site-menu-item"><a
+											th:href="@{/admin/shop/form}"> <span
+												class="site-menu-title">Thông Tin Shop</span>
+										</a></li>
+									</ul></li>
+							</ul>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item has-sub"><a
+									href="javascript:void(0)"> <span class="site-menu-title">Mã
+											Giảm Giá</span> <span class="site-menu-arrow"></span>
+								</a>
+									<ul class="site-menu-sub">
+										<li class="site-menu-item"><a
+											th:href="@{/admin/discount/list}"> <span
+												class="site-menu-title">Danh Sách Mã</span>
+										</a></li>
+										<li class="site-menu-item"><a
+											th:href="@{/admin/discount/form}"> <span
+												class="site-menu-title">Thông Tin Mã</span>
+										</a></li>
+									</ul></li>
+							</ul></li>
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i class="site-menu-icon wb-users"
+								aria-hidden="true"></i> <span class="site-menu-title">Tiện
+									Ích</span> <span class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a
+									th:href="@{/admin/extend/specification}"> <span
+										class="site-menu-title">Tạo Thông Số</span>
+								</a></li>
+								<li class="site-menu-item"><a
+									th:href="@{/admin/extend/description}"> <span
+										class="site-menu-title">Tạo Mô Tả</span>
+								</a></li>
+								<li class="site-menu-item"><a
+									th:href="@{/admin/extend/crop-image}"> <span
+										class="site-menu-title">Chỉnh Hình</span>
+								</a></li>
+							</ul></li>
+						<li class="site-menu-category">Thống kê</li>
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i
+								class="site-menu-icon wb-mobile" aria-hidden="true"></i> <span
+								class="site-menu-title">Sản Phẩm</span> <span
+								class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a
+									th:href="@{/admin/statistical/product/day}"> <span
+										class="site-menu-title">Danh Sách Bán Chạy</span>
+								</a></li>								
+							</ul></li>
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i
+								class="site-menu-icon wb-mobile" aria-hidden="true"></i> <span
+								class="site-menu-title">Doanh Thu</span> <span
+								class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a
+									th:href="@{/admin/statistical/revenue}"> <span
+										class="site-menu-title">Danh Sách Doanh Thu</span>
+								</a></li>								
+							</ul></li>
+						<li class="site-menu-item has-sub"><a
+							href="javascript:void(0)"> <i
+								class="site-menu-icon wb-mobile" aria-hidden="true"></i> <span
+								class="site-menu-title">Đơn Hàng</span> <span
+								class="site-menu-arrow"></span>
+						</a>
+							<ul class="site-menu-sub">
+								<li class="site-menu-item"><a
+									th:href="@{/admin/statistical/order}"> <span
+										class="site-menu-title">Danh Sách Đơn Hàng</span>
+								</a></li>								
+							</ul></li>
+						
+					</ul>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="site-menubar-footer">
+			<a href="javascript: void(0);" class="fold-show" data-placement="top"
+				data-toggle="tooltip" data-original-title="Cài đặt"> <span
+				class="icon wb-settings" aria-hidden="true"></span>
+			</a> <a href="javascript: void(0);" data-placement="top"
+				data-toggle="tooltip" data-original-title="Khóa màn hình"> <span
+				class="icon wb-eye-close" aria-hidden="true"></span>
+			</a> <a th:href="@{/logout}" data-placement="top" data-toggle="tooltip"
+				data-original-title="Đăng xuất"> <span class="icon wb-power"
+				aria-hidden="true"></span>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

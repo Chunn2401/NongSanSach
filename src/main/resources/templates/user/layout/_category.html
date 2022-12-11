@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<div class="main-category left-column-main-category hidden-sm hidden-xs">
+		<div class="vertical-category-wrapper navbar-collapse navbar-ex2-collapse">
+			<div class="vertical-category" data-more=More&nbsp; data-less=Less&nbsp;>
+				<ul class="category-list nav navbar-nav">
+					<th:block th:each="item: ${categories}">
+						<li class="menu-item" th:classappend="${!item.listMenuOne.empty}?dropdown"><a
+								th:href="@{|/danh-sach/${item.Namesearch}|}" class="dropdown-toggle"> <span
+									class="category-img hidden-sm hidden-xs"></span>
+								[[${item.name}]]
+							</a>
+							<th:block th:if="${!item.listMenuOne.empty}">
+								<div class="dropdown-menu single-dropdown">
+									<div class="dropdown-inner">
+										<ul class="list-unstyled megamenu-dropdown">
+											<th:block th:each="item2: ${item.listMenuOne}">
+												<li class="menu-item"
+													th:classappend="${!item2.listMenuTwo.empty}?dropdown"><a href=""
+														class="dropdown-toggle single-dropdown1">[[${item2.name}]]</a>
+													<th:block th:if="${!item2.listMenuTwo.empty}">
+														<div class="dropdown-menu">
+															<div class="dropdown-inner">
+																<ul class="list-unstyled megamenu-dropdown">
+																	<th:block th:each="item3: ${item2.listMenuTwo}">
+																		<li class="menu-item "><a href=""
+																				class="dropdown-toggle">[[${item3.name}]]</a>
+																		</li>
+																	</th:block>
+																</ul>
+															</div>
+														</div>
+													</th:block>
+												</li>
+											</th:block>
+										</ul>
+									</div>
+								</div>
+							</th:block>
+						</li>
+
+					</th:block>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

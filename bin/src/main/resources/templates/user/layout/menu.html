@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <header style="background: white;" class="header has-sticky sticky-jump" id="header">
+        <div class="header-wrapper">
+            <div class="header-top hide-for-sticky hide-for-medium" id="top-bar">
+                <div class="flex-row container">
+                    <div class="flex-col hide-for-medium flex-left">
+                        <ul class="nav nav-left medium-nav-center nav-small nav-divided">
+                            <li class="header-contact-wrapper">
+                                <ul class="nav nav-divided nav-uppercase header-contact" id="header-contact">
+                                    <li>
+                                        <a class="tooltip tooltipstered" href="mailto:trungvuong528@gmail.com">
+                                            <i class="fa fa-envelope" aria-hidden="true" style="font-size: 16px"></i>
+                                            <span>trungvuong528@gmail.com</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="tooltip tooltipstered" href="tel:0358570211">
+                                            <i class="fa fa-phone" aria-hidden="true" style="font-size: 16px"></i>
+                                            <span>035 857 0211</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- flex-col left -->
+
+                    <div class="flex-col hide-for-medium flex-center">
+                        <ul class="nav nav-center nav-small nav-divided"></ul>
+                    </div>
+                    <!-- center -->
+
+                    <div class="flex-col hide-for-medium flex-right">
+                        <ul class="nav top-bar-nav nav-right nav-small nav-divided">
+                            <li class="account-item has-icon&#10;">
+                                <a class="nav-top-link nav-top-not-logged-in" href="">
+                                    <th:block th:unless="${#request.remoteUser}">
+                                        <a th:href="@{/login}"><span> Đăng nhập / Đăng ký </span></a>
+                                        <!-- .account-login-link -->
+                                    </th:block>
+                                </a>
+                            </li>
+                            <th:block th:if="${#request.remoteUser}" class="has-dropdown">
+                                <span></span>
+                                <li>
+                                    <th:block
+                                        th:if="${#request.isUserInRole('ROLE_ADMIN') || #request.isUserInRole('ROLE_DIRECTOR')}">
+                                        <a th:href="@{/admin/index}">Quản lý</a>
+                                    </th:block>
+                                </li>
+                                <li><a th:href="@{/account}">Thông tin</a></li>
+                                <li><a th:href="@{/account/order}">Đơn hàng</a></li>
+                                <li><a th:href="@{/logout}">Đăng xuất</a></li>
+                            </th:block>
+                            <li class="cart-item has-icon has-dropdown">
+                                <a title="Giỏ hàng" class="header-cart-link is-small" href="">
+                                    <span class="header-cart-title">
+                                        Giỏ hàng [[${session.sessionProduct.countAllProduct}]] /
+                                        <span class="cart-price"><span
+                                                class="woocommerce-Price-amount amount">[[${#numbers.formatInteger(session.sessionProduct.amount,session.sessionProduct.amount==0?0:3,'POINT')}]]&nbsp;<span
+                                                    class="woocommerce-Price-currencySymbol">₫</span></span></span>
+                                    </span>
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </a>
+                                <ul class="nav-dropdown nav-dropdown-simple">
+                                    <th:block th:if="${session.sessionProduct.getCount() != 0}">
+                                        <li class="cart-content-product">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <th:block th:each="item: ${session.sessionProduct.items}">
+                                                        <tr>
+                                                            <td class="text-center product-cart-thumb"><a href=""><img
+                                                                        th:src="@{|/assets/images/imageProduct/${item.product.image1}|}"
+                                                                        th:title="${item.product.name}"
+                                                                        class="img-thumbnail">
+                                                                </a></td>
+                                                            <td class="text-left product-cart-details"><a href=""
+                                                                    class="product-item-name">[[${item.product.name}]]</a>
+                                                                <div class="product-cart-info">
+                                                                    <span class="product-cart-qty">[[${item.quality}]]
+                                                                        x </span> <span
+                                                                        class="product-cart-price">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]₫</span>
+                                                                </div>
+                                                            </td>
+
+                                                        </tr>
+                                                    </th:block>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-left"><strong>Tổng</strong></td>
+                                                            <td class="text-right">
+                                                                [[${#numbers.formatInteger(session.sessionProduct.amount,3,'POINT')}]]₫
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p class="text-right product-cart-button">
+                                                    <a th:href="@{/shop/cart}" class="btn cart-btn addtocart-btn">Giỏ
+                                                        hàng</a>&nbsp;&nbsp;&nbsp;<a th:href="@{/shop/cart/checkout}"
+                                                        class="btn cart-btn checkout-btn">Thanh toán</a>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </th:block>
+                                    <th:block th:unless="${session.sessionProduct.getCount() != 0}">
+                                        <li>
+                                            <p class="text-center product-cart-empty">Giỏ hàng của
+                                                bạn đang trống!</p>
+                                        </li>
+                                    </th:block>
+                                </ul>
+                                <!-- .nav-dropdown -->
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- .flex-col right -->
+                </div>
+                <!-- .flex-row -->
+            </div>
+            <!-- #header-top -->
+            <div class="header-main" id="masthead">
+                <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
+                    <!-- Logo -->
+                    <div class="flex-col logo" id="logo">
+                        <!-- Header logo -->
+                        <a title="Happy Trade" href="/ " rel="home">
+                            <img width="250" height="100" class="header_logo header-logo" alt="Happy Trade"
+                                src="/assets/images/logo/Logo.jpg" /><img width="250" height="100"
+                                class="header-logo-dark" alt="Happy Trade" src="/assets/images/logo/2.jpg" /></a>
+                    </div>
+
+                    <!-- Mobile Left Elements -->
+                    <div class="flex-col show-for-medium flex-left">
+                        <ul class="mobile-nav nav nav-left">
+                            <li class="nav-icon has-icon">
+                                <div class="header-button">
+                                    <a class="icon button round is-outline is-small" aria-expanded="false"
+                                        aria-controls="main-menu" href="#" data-color="" data-open="#main-menu"
+                                        data-bg="main-menu-overlay" data-pos="left">
+                                        <i class="icon-menu"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Left Elements -->
+                    <div class="flex-col hide-for-medium flex-left&#10; flex-grow">
+                        <ul
+                            class="header-nav header-nav-main nav nav-left nav-box nav-size-large nav-spacing-xsmall nav-uppercase">
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22"
+                                id="menu-item-22">
+                                <a class="nav-top-link" href="/">Trang chủ</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22"
+                                id="menu-item-22">
+                                <a class="nav-top-link" href="">Giới thiệu</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-54 has-dropdown"
+                                id="menu-item-54">
+                                <a class="nav-top-link" href="/shop">Cửa hàng <i class="fa fa-angle-down"
+                                        aria-hidden="true"></i></a>
+                                <ul class="nav-dropdown nav-dropdown-simple">
+                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-699"
+                                        id="menu-item-699">
+                                        <a href="">Rau củ</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-700"
+                                        id="menu-item-700">
+                                        <a href="">Hải sản</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-701"
+                                        id="menu-item-701">
+                                        <a href="">Trái cây</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-702"
+                                        id="menu-item-702">
+                                        <a href="">Đồ uống</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-703"
+                                        id="menu-item-703">
+                                        <a href="">Đồ khô</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-704"
+                                        id="menu-item-704">
+                                        <a href="">Thịt trứng</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-25"
+                                id="menu-item-25">
+                                <a class="nav-top-link" href="#blogs">Blogs</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"
+                                id="menu-item-23">
+                                <a class="nav-top-link" href="/contact">Liên hệ</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right Elements -->
+                    <div class="flex-col hide-for-medium flex-right">
+                        <ul
+                            class="header-nav header-nav-main nav nav-right nav-box nav-size-large nav-spacing-xsmall nav-uppercase">
+                            <li class="header-search-form search-form html relative has-icon">
+                                <div class="header-search-form-wrapper">
+                                    <div class="searchform-wrapper ux-search-box relative form-flat is-normal">
+                                        <form class="searchform" role="search"
+                                            action="http://mauweb.monamedia.net/happytrade/" method="get">
+                                            <div class="flex-row relative">
+                                                <div class="flex-col flex-grow">
+                                                    <input name="s" class="search-field mb-0" type="search"
+                                                        placeholder="Tìm kiếm…" value="" autocomplete="off" />
+                                                    <input name="post_type" type="hidden" value="product" />
+                                                </div>
+                                                <!-- .flex-col -->
+                                                <div class="flex-col">
+                                                    <button
+                                                        class="ux-search-submit submit-button secondary button icon mb-0"
+                                                        type="submit">
+                                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                                <!-- .flex-col -->
+                                            </div>
+                                            <!-- .flex-row -->
+                                            <div class="live-search-results text-left z-top">
+                                                <div class="autocomplete-suggestions" style="
+                            display: none;
+                            position: absolute;
+                            z-index: 9999;
+                            max-height: 300px;
+                          "></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile Right Elements -->
+                    <div class="flex-col show-for-medium flex-right">
+                        <ul class="mobile-nav nav nav-right">
+                            <li class="header-search header-search-lightbox has-icon">
+                                <div class="header-button">
+                                    <a class="icon button round is-outline is-small" href="#search-lightbox"
+                                        data-open="#search-lightbox" data-focus="input.search-field">
+                                        <i class="icon-search" style="font-size: 16px"></i></a>
+                                </div>
+
+                                <div class="mfp-hide dark text-center" id="search-lightbox">
+                                    <div class="searchform-wrapper ux-search-box relative form-flat is-large">
+                                        <form class="searchform" role="search"
+                                            action="http://mauweb.monamedia.net/happytrade/" method="get">
+                                            <div class="flex-row relative">
+                                                <div class="flex-col flex-grow">
+                                                    <input name="s" class="search-field mb-0" type="search"
+                                                        placeholder="Tìm kiếm…" value="" autocomplete="off" />
+                                                    <input name="post_type" type="hidden" value="product" />
+                                                </div>
+                                                <!-- .flex-col -->
+                                                <div class="flex-col">
+                                                    <button
+                                                        class="ux-search-submit submit-button secondary button icon mb-0"
+                                                        type="submit">
+                                                        <i class="icon-search"></i>
+                                                    </button>
+                                                </div>
+                                                <!-- .flex-col -->
+                                            </div>
+                                            <!-- .flex-row -->
+                                            <div class="live-search-results text-left z-top">
+                                                <div class="autocomplete-suggestions" style="
+                            display: none;
+                            position: absolute;
+                            z-index: 9999;
+                            max-height: 300px;
+                          "></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- .header-inner -->
+            </div>
+            <!-- .header-main -->
+            <div class="header-bg-container fill">
+                <div class="header-bg-image fill"></div>
+                <div class="header-bg-color fill"></div>
+            </div>
+            <!-- .header-bg-container -->
+        </div>
+        <!-- header-wrapper-->
+    </header>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/account}">Tài khoản</a></li>
+			<li><a th:href="@{/account/address}">Sổ địa chỉ</a></li>
+			<li><a th:href="@{/account/address/add}">Thêm địa chỉ</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/account/account_aside"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9" ng-app="address-add-app"
+			ng-controller="address-add-ctrl">
+			<div class="alert alert-dismissible alert-success"
+				style="display: none;" id="alert">
+				Bạn đã thêm mới địa chỉ thành công!
+				<button type="button" class="close" data-dismiss="alert">×</button>
+			</div>
+			<h2>Thêm địa chỉ giao hàng</h2>
+			<div class="form-horizontal">
+				<fieldset>
+					<div class="form-group required" id="divFullName">
+						<label id="lblFullName" class="col-sm-2 control-label">Họ
+							và tên</label>
+						<div class="col-sm-10">
+							<input type="text" ng-model="form.fullName" id="fullName"
+								placeholder="Vui lòng nhập đầy đủ họ và tên"
+								class="form-control">
+							<div id="errorFullName" style="color: #dc3545;"></div>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label id="lblPhone" class="col-sm-2 control-label">Số
+							điện thoại</label>
+						<div class="col-sm-10">
+							<input type="text" ng-model="form.phone" id="phone"
+								placeholder="Vui lòng nhập số điện thoại liên hệ"
+								class="form-control">
+							<div id="errorPhone" style="color: #dc3545;"></div>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label id="lblDetail" class="col-sm-2 control-label">Địa
+							chỉ nhận hàng</label>
+						<div class="col-sm-10">
+							<input type="text" ng-model="form.detail" id="detail"
+								placeholder="Vui lòng nhập địa chỉ của bạn" class="form-control">
+							<div id="errorDetail" style="color: #dc3545;"></div>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" id="lblProvince"
+							for="input-payment-country">Tỉnh/ Thành phố</label>
+						<div class="col-sm-10">
+							<select class="form-control" id="province">
+								<option hidden="true" value="">Vui lòng chọn tỉnh/thành
+									phố</option>
+								<option ng-repeat="item in province" ng-value="$index" ng-selected="item.name == form.province">
+									{{item.name}}</option>
+							</select>
+							<div id="errorProvince" style="color: #dc3545;"></div>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" id="lblDistrict"
+							for="input-payment-zone">Quận/ Huyện</label>
+						<div class="col-sm-10">
+							<select class="form-control" id="district">
+								<option hidden="true" value="">Vui lòng chọn quận/huyện</option>
+								<option ng-repeat="item in district" ng-value="$index" ng-selected="item.name == form.district">
+									{{item.name}}</option>
+							</select>
+							<div id="errorDistrict" style="color: #dc3545;"></div>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" id="lblWard"
+							for="input-payment-zone">Phường/ Xã</label>
+						<div class="col-sm-10">
+							<select class="form-control" id="ward">
+								<option hidden="true" value="">Vui lòng chọn phường/xã</option>
+								<option ng-repeat="item in ward" ng-value="$index" ng-selected="item.name == form.ward">
+									{{item.prefix}} {{item.name}}</option>
+							</select>
+							<div id="errorWard" style="color: #dc3545;"></div>
+						</div>
+					</div>
+				</fieldset>
+				<div class="buttons clearfix">
+					<input type="hidden" id="demo" th:value="${addressId}" />
+					<div class="pull-left">
+						<a th:href="@{/account/address}" class="btn btn-default">Trở
+							lại</a>
+					</div>
+					<div class="pull-right">
+						<a ng-click="updateAddress()" class="btn btn-primary">Tiếp tục</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+<th:block id="material">
+	<th:block th:if="${!enableBtnUpdate}">
+		<script src="/assets/user/angular/address-add.js"></script>
+	</th:block>
+	<th:block th:if="${enableBtnUpdate}">
+		<script src="/assets/user/angular/address-update.js"></script>
+	</th:block>
+	
+	
+</th:block>
+</html>

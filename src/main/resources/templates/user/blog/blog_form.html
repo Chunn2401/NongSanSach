@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main,aside,material,breadcums)">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nông Sản Sạch</title>
+
+    <script src="/assets/user/catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
+    <link href="/assets/user/catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <script src="/assets/user/catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ -->
+    <script src="/assets/user/catalog/view/javascript/mahardhi/jquery.elevateZoom.min.js"></script>
+    <script src="/assets/user/catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/user/catalog/view/javascript/mahardhi/owl.carousel.min.js"></script>
+    <link href="/assets/user/catalog/view/theme/mahardhi/stylesheet/mahardhi/owl.carousel.min.css" rel="stylesheet">
+    <link href="/assets/user/catalog/view/theme/mahardhi/stylesheet/mahardhi/owl.theme.default.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="/assets/user/catalog/view/javascript/jquery/magnific/magnific-popup.css">
+    <style>
+        /* .font{
+  		font-family: "Jost", serif;
+  	} */
+        :root {
+            --primary-color: #111111;
+            --primary-hover-color: #6abd45;
+            --secondary-color: #16202c;
+            --secondary-hover-color: #6abd45;
+            --secondary-light-color: #777777;
+            --background-color: #f7f7f7;
+            --border-color: #e5e5e5
+        }
+    </style>
+
+    <link href="/assets/user/catalog/view/theme/mahardhi/stylesheet/stylesheet.css" rel="stylesheet">
+    <link href="/assets/user/catalog/view/javascript/jquery/magnific/magnific-popup.css" type="text/css"
+        rel="stylesheet" media="screen" />
+    <link href="/assets/user/catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css"
+        type="text/css" rel="stylesheet" media="screen" />
+    <link href="/assets/user/catalog/view/javascript/jquery/swiper/css/swiper.min.css" type="text/css" rel="stylesheet"
+        media="screen" />
+    <link href="/assets/user/catalog/view/javascript/jquery/swiper/css/opencart.css" type="text/css" rel="stylesheet"
+        media="screen" />
+    <script src="/assets/user/catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/user/catalog/view/javascript/jquery/datetimepicker/moment/moment.min.js"></script>
+    <script src="/assets/user/catalog/view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js"></script>
+    <script src="/assets/user/catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets/user/catalog/view/javascript/jquery/swiper/js/swiper.jquery.js"></script>
+    <script src="/assets/user/catalog/view/javascript/common.js"></script>
+    <script src="/assets/user/catalog/view/javascript/mahardhi/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="/assets/user/catalog/view/theme/mahardhi/stylesheet/mahardhi/jquery-ui.min.css">
+    <script src="/assets/user/catalog/view/javascript/mahardhi/custom.js"></script>
+    <link rel="shortcut icon" href="/assets/images/logo/favicon32.ico" type="image/x-icon">
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body class="common-home">
+    <th:block th:replace="/user/layout/_menu.html"></th:block>
+    <div id="product-page" class="container">
+        <div class="row">
+            <aside id="column-left" class="col-sm-3 hidden-xs">
+            </aside>
+
+            <th:block th:replace="/user/blog/blog.html"></th:block>
+        </div>
+    </div>
+    <div th:replace="/user/layout/_footer.html"></div>
+    <!-- top scroll -->
+    <a href="#" class="scrollToTop back-to-top" data-toggle="tooltip" title="Top"><i class="fa fa-caret-up"></i></a>
+</body>
+<th:block th:replace="${material}"></th:block>
+
+</html>

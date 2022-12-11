@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/layout/_form :: dynamic(
+				~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<script src="/assets/admin/global/vendor/datatables.net/jquery.dataTables599c.js?v4.0.2"></script>
+	<script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js"></script>
+	<script src="/assets/admin/angular/angular-datatables.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+</th:block>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<main ng-app="order-success-app" ng-controller="order-success-ctrl">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">Danh Sách Đơn Hàng Thành Công</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a th:href="@{/admin/index}">Trang
+							chủ</a></li>
+					<li class="breadcrumb-item"><a th:href="@{/admin/order/list/success}">Đơn hàng</a></li>
+					<li class="breadcrumb-item active">Thành công</li>
+				</ol>
+			</div>
+
+			<div class="page-content">
+				<!-- Panel Basic -->
+				<div class="panel">
+					<div class="panel-body">
+						<table class="table table-hover dataTable table-striped w-full dt-responsive nowrap"
+							datatable="ng" dt-options="vm.dtOptions" dt-instance="vm.dtInstance"
+							dt-column-defs="vm.dtColumnDefs">
+							<thead>
+								<tr>
+									<th>Mã đơn hàng</th>
+									<th>Tên người đặt</th>
+									<th>Số sản phẩm</th>
+									<th>Ngày đặt</th>
+									<th>Tiền giảm giá</th>
+									<th>Tổng tiền</th>
+									<th>Hoạt động</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>Mã đơn hàng</th>
+									<th>Tên người đặt</th>
+									<th>Số sản phẩm</th>
+									<th>Ngày đặt</th>
+									<th>Tiền giảm giá</th>
+									<th>Tổng tiền</th>
+									<th>Hoạt động</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<tr ng-repeat="item in items">
+									<td>#{{item.id}}</td>
+									<td>{{item.name}}</td>
+									<td>{{item.quantity}}</td>
+									<td>{{item.date | date:'dd/MM/yyyy'}}</td>
+									<td ng-if="item.discount != null">{{item.discount.price | currency : '' : 0}}</td>
+									<td ng-if="item.discount == null">0</td>
+									<td>{{item.total + 50000 | currency : '' : 0}}</td>
+									<td><a ng-click="modalDetail(item)"
+											class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"
+											title="Xem chi tiết"> <i class="icon wb-info-circle"></i>
+										</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- End Panel Basic -->
+			</div>
+		</div>
+
+		<!-- Modal detail -->
+		<div class="modal fade modal-info" id="modalDetail">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="modal-title">Đơn Hàng Chi Tiết!</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="recipient-name" class="col-form-label">Mã
+									đơn hàng:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.id">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Ngày
+									đặt:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.date | date:'dd/MM/yyyy'">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Phương
+									thức thanh toán:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.method">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Vận
+									chuyển:</label> <input type="text" readonly="readonly" class="form-control"
+									value="Shipper">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Họ tên
+									người nhận:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.fullName">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Địa
+									chỉ:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.address">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Số điện
+									thoại:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.phone">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Tỉnh/Thành
+									phố:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.province">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Quận/Huyện:</label>
+								<input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.district">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Phường/Xã:</label>
+								<input type="text" readonly="readonly" class="form-control" ng-model="formDetail.ward">
+							</div>
+							<div class="form-group">
+								<table class="table table-hover table-striped w-full">
+									<thead>
+										<tr>
+											<th>Tên sản phẩm</th>
+											<th>Mã sản phẩm</th>
+											<th>Số lượng</th>
+											<th>Giá</th>
+											<th>Tổng tiền</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in formDetail.listOrder">
+											<td>{{item.product.code}}</td>
+											<td>{{item.product.name}}</td>
+											<td>{{item.quality}}</td>
+											<td>{{item.product.price | currency : '' : 0}}</td>
+											<td>{{item.product.price * item.quality | currency : ''
+												:0}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Tạm
+									tính:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.subTotal | currency : '' : 0">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Tiền
+									vận chuyển:</label> <input type="text" readonly="readonly" class="form-control"
+									value="50,000">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Tiền
+									giảm giá:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.discount | currency : '' : 0">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Tổng
+									tiền:</label> <input type="text" readonly="readonly" class="form-control"
+									ng-model="formDetail.total | currency : '' : 0">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Ghi
+									chú:</label>
+								<textarea class="form-control" readonly="readonly" cols="3" rows="4"
+									ng-model="formDetail.comment"></textarea>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Xác
+							nhận</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal detail -->
+	</main>
+</body>
+<th:block id="javascriptResource">
+	<script src="/assets/admin/base/assets/examples/js/tables/datatable.min599c.js?v4.0.2"></script>
+	<script src="/assets/admin/angular/order/order-list-success-ctrl.js"></script>
+</th:block>
+
+</html>

@@ -1,0 +1,313 @@
+<div id="content" class="col-sm-9" ng-app="favorite-app"
+	ng-controller="favorite-ctrl">
+	<div class="alert alert-success alert-dismissible"
+		th:style="${infor}?'display: block;':'display: none;'">
+		Thông báo: Bạn đã thêm mới <a
+			th:href="@{|/san-pham/${inforProduct.Namesearch}|}">[[${inforProduct.name}]]</a>
+		vào <a th:href="@{/shop/cart}">giỏ hàng</a> của bạn!
+		<button type="button" class="close" data-dismiss="alert">×</button>
+	</div>
+	<div class="pro-deatil row">
+		<div class="col-sm-6 product-img">
+			<div class="thumbnails">
+				<div class="pro-image">
+					<a
+						th:href="@{|/assets/images/imageProduct/${inforProduct.image1}|}"
+						title="Microwaves" class="thumbnail"> <img
+						th:src="@{|/assets/images/imageProduct/${inforProduct.image1}|}"
+						title="Microwaves" id="zoom" alt="Microwaves"
+						th:data-zoom-image="@{|/assets/images/imageProduct/${inforProduct.image1}|}" />
+					</a>
+				</div>
+
+				<div class="product-additional">
+					<div id="additional-carousel"
+						class="owl-carousel owl-theme clearfix">
+						<div class="image-additional">
+							<a
+								th:href="@{|/assets/images/imageProduct/${inforProduct.image1}|}"
+								title="Microwaves" class="elevatezoom-gallery"
+								th:data-image="@{|/assets/images/imageProduct/${inforProduct.image1}|}"
+								th:data-zoom-image="@{|/assets/images/imageProduct/${inforProduct.image1}|}">
+								<img
+								th:src="@{|/assets/images/imageProduct/${inforProduct.image1}|}"
+								title="Microwaves" alt="Microwaves" width="80" height="80" />
+							</a>
+						</div>
+						<div class="image-additional">
+							<a
+								th:href="@{|/assets/images/imageProduct/${inforProduct.image2}|}"
+								title="Microwaves" class="elevatezoom-gallery"
+								th:data-image="@{|/assets/images/imageProduct/${inforProduct.image2}|}"
+								th:data-zoom-image="@{|/assets/images/imageProduct/${inforProduct.image2}|}">
+								<img
+								th:src="@{|/assets/images/imageProduct/${inforProduct.image2}|}"
+								title="Microwaves" alt="Microwaves" width="80" height="80" />
+							</a>
+						</div>
+						<div class="image-additional">
+							<a
+								th:href="@{|/assets/images/imageProduct/${inforProduct.image3}|}"
+								title="Microwaves" class="elevatezoom-gallery"
+								th:data-image="@{|/assets/images/imageProduct/${inforProduct.image3}|}"
+								th:data-zoom-image="@{|/assets/images/imageProduct/${inforProduct.image3}|}">
+								<img
+								th:src="@{|/assets/images/imageProduct/${inforProduct.image3}|}"
+								title="Microwaves" alt="Microwaves" width="80" height="80" />
+							</a>
+						</div>
+						<div class="image-additional">
+							<a
+								th:href="@{|/assets/images/imageProduct/${inforProduct.image4}|}"
+								title="Microwaves" class="elevatezoom-gallery"
+								th:data-image="@{|/assets/images/imageProduct/${inforProduct.image4}|}"
+								th:data-zoom-image="@{|/assets/images/imageProduct/${inforProduct.image4}|}">
+								<img
+								th:src="@{|/assets/images/imageProduct/${inforProduct.image4}|}"
+								title="Microwaves" alt="Microwaves" width="80" height="80" />
+							</a>
+						</div>
+						<div class="image-additional">
+							<a
+								th:href="@{|/assets/images/imageProduct/${inforProduct.image5}|}"
+								title="Microwaves" class="elevatezoom-gallery"
+								th:data-image="@{|/assets/images/imageProduct/${inforProduct.image5}|}"
+								th:data-zoom-image="@{|/assets/images/imageProduct/${inforProduct.image5}|}">
+								<img
+								th:src="@{|/assets/images/imageProduct/${inforProduct.image5}|}"
+								title="Microwaves" alt="Microwaves" width="80" height="80" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<form th:action="@{|/san-pham/${inforProduct.Namesearch}|}"
+			method="post">
+			<div class="col-sm-6 right_info">
+				<h1 class="">[[${inforProduct.name}]]</h1>
+				<div class="rating clearfix">
+					<div class="product-rating">
+						<th:block th:if="${totalStar != 0}">
+							<th:block th:each="i: ${#numbers.sequence(1, totalStar)}">
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
+								class="fa fa-star-o fa-stack-1x"></i></span>
+							</th:block>
+						</th:block>
+						<th:block th:if="${totalStar != 5}">
+							<th:block th:each="i: ${#numbers.sequence(1, 5 - totalStar)}">
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+							</th:block>
+						</th:block>
+						<!-- <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
+							class="fa fa-star-o fa-stack-1x"></i></span> 
+						<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
+							class="fa fa-star-o fa-stack-1x"></i></span> 
+						<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
+							class="fa fa-star-o fa-stack-1x"></i></span>  -->
+						
+					</div>
+					<a href="" class="reviews"
+						onclick="$('a[href=\'#tab-review\']').trigger('click'); $('body,html').animate({scrollTop: $('.nav-tabs').offset().top}, 800); return false;">[[${countComment}]]
+						đánh giá</a> <a href="" class="write-review"
+						onclick="$('a[href=\'#tab-review\']').trigger('click'); $('body,html').animate({scrollTop: $('.nav-tabs').offset().top}, 800); return false;"><i
+						class="fa fa-pencil" aria-hidden="true"></i>Viết đánh giá</a>
+				</div>
+				<hr>
+				<ul class="list-unstyled">
+					<li><span class="disc">Hãng:</span> <a class="disc1" href="">[[${inforProduct.manufacturer.name}]]</a>
+					</li>
+					<li><span class="disc">Mã sản phẩm:</span><span class="disc1">
+							[[${inforProduct.code}]]</span></li>
+					<li><span class="disc">Điểm thưởng:</span><span class="disc1">
+							[[${inforProduct.point}]]</span></li>
+					<li><span class="disc">Trạng thái:</span><span class="disc1">
+							[[${inforProduct.quality > 0?'Còn hàng':'Hết hàng'}]]</span></li>
+				</ul>
+				<hr>
+				<ul class="list-unstyled">
+					<li><span class="pro_price">[[${#numbers.formatInteger(inforProduct.price,3,'POINT')}]]₫</span></li>
+					<!-- <li class="tax">Ex Tax: $100.00</li> -->
+					<li>Giao hàng trong vòng 24h</li>
+				</ul>
+				<hr>
+				<div id="product" class="product-options">
+					<!-- <h3>Available Options</h3>
+				<div class="form-group required ">
+					<label class="control-label" for="input-option225">Delivery
+						Date</label>
+					<div class="input-group date">
+						<input type="text" name="option[225]" value="2011-04-22"
+							data-date-format="YYYY-MM-DD" id="input-option225"
+							class="form-control" /> <span class="input-group-btn">
+							<button class="btn btn-default" type="button">
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div> -->
+					<div class="form-group">
+						<!-- <label class="control-label qty" for="input-quantity">Số
+						lượng</label> -->
+						<div class="product-btn-quantity">
+							<!-- <div class="minus-plus">
+							<button class="minus">
+								<i class="fa fa-minus"></i>
+							</button>
+							<input type="text" name="quantity" value="1" size="2"
+								id="input-quantity" class="form-control" />
+							<button class="plus">
+								<i class="fa fa-plus"></i>
+							</button>
+						</div> -->
+							<div class="btn-groups pro-btns">
+								<!-- <form th:action="@{/favorite}" method="post"> -->
+								<button type="submit" id="button-cart"
+									data-loading-text="Loading..."
+									class="btn btn-primary btn-lg btn-block">Thêm vào giỏ</button>
+								<button class="pro_wish" id="favorite" type="button"
+									th:onclick="addFavorite([(${inforProduct.id})])"
+									title="Yêu thích">
+									<i class="fa fa-heart"></i>
+								</button>
+								<button type="button" class="pro_comper" title="So sánh"
+									onclick="">
+									<i class="fa fa-exchange"></i>
+								</button>
+								<!-- </form> -->
+							</div>
+						</div>
+						<input type="hidden" id="productId" th:value="${inforProduct.id}" />
+						<div th:if="${inforProduct.quality < 10}" class="alert alert-info">
+							<i class="fa fa-info-circle"></i> Chỉ còn tối đa
+							[[${inforProduct.quality}]] sản phẩm
+						</div>
+					</div>
+
+				</div>
+				<hr>
+				<!-- AddThis Button BEGIN -->
+				<div class="addthis_toolbox addthis_default_style" data-url="">
+					<a class="addthis_button_facebook_like"
+						fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a>
+					<a class="addthis_button_pinterest_pinit"></a> <a
+						class="addthis_counter addthis_pill_style"></a>
+				</div>
+				<script type="text/javascript"
+					src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
+				<!-- AddThis Button END -->
+			</div>
+		</form>
+	</div>
+	<div class="col-sm-12">
+		<div class="row propage-tab">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab-description" data-toggle="tab">Mô
+						tả</a></li>
+				<li><a href="#tab-specification" data-toggle="tab">Cấu hình</a></li>
+				<li><a href="#tab-review" data-toggle="tab">Đánh giá ([[${countComment}]])</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab-description">
+					<th:block th:utext="${inforProduct.description}"></th:block>
+				</div>
+				<div class="tab-pane" id="tab-specification">
+					<th:block th:utext="${inforProduct.specification}"></th:block>
+				</div>
+				<div class="tab-pane" id="tab-review">
+					<form class="form-horizontal" id="form-review">
+						<p id="noComment">Sản phẩm chưa có lượt bình luận.</p>
+						<div id="review">
+							<table class="table table-striped table-bordered">
+								<tbody ng-repeat="item in pager.items">
+									<tr>
+										<td style="width: 50%;"><strong>{{item.user.fullname}}</strong></td>
+										<td class="text-right">{{item.date | date:'dd/MM/yyyy'}}</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<p>{{item.content}}</p> <!-- {{starYellow(item.star)}} --> <span
+											ng-repeat="i in starYellow(item.star)" class="fa fa-stack"><i
+												class="fa fa-star fa-stack-2x"></i><i
+												class="fa fa-star-o fa-stack-2x"></i></span><span
+											ng-repeat="i in greyYellow(item.star)" class="fa fa-stack"><i
+												class="fa fa-star-o fa-stack-2x"></i></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<th:block th:unless="${#request.remoteUser}">
+							<p id="noComment">
+								Vui lòng <a th:href="@{/login}">đăng nhập</a> hoặc <a
+									th:href="@{/login}">đăng ký</a> để bình luận.
+							</p>
+						</th:block>
+
+						<th:block th:if="${#request.remoteUser}">
+							<div id="notification" style="display: none;"
+								class="alert alert-dismissible">
+
+								<button type="button" class="close" data-dismiss="alert">×</button>
+							</div>
+
+							<h2>Viết 1 đánh giá</h2>
+							<div class="form-group required">
+								<div class="col-sm-2">
+									<label class="control-label" for="input-review">Viết
+										đánh giá</label>
+								</div>
+								<div class="col-sm-10">
+									<textarea name="text" rows="5" id="input-review"
+										class="form-control"></textarea>
+									<div class="help-block">
+										<span class="text-danger">Chú ý:</span> HTML là không khả
+										dụng!
+									</div>
+								</div>
+							</div>
+							<div class="form-group required">
+								<div class="col-sm-2">
+									<label class="control-label">Số sao</label>
+								</div>
+								<div class="col-sm-10">
+									<input type="radio" name="rating" title="1 sao" value="1" />
+									&nbsp; <input type="radio" name="rating" title="2 sao"
+										value="2" /> &nbsp; <input type="radio" name="rating"
+										title="3 sao" value="3" /> &nbsp; <input type="radio"
+										name="rating" title="4 sao" value="4" /> &nbsp; <input
+										type="radio" name="rating" title="5 sao" value="5" /> &nbsp;
+								</div>
+							</div>
+						</th:block>
+
+						<div class="buttons clearfix">
+							<div id="pagination" class="pull-left">
+								<button type="button" id="button-review" title="Lùi"
+									ng-click="pager.prev()" class="btn btn-primary">|<<</button>
+								<button type="button" class="btn btn-primary disabled">{{pager.page
+									+1}}</button>
+								<button type="button" id="button-review" title="Tiếp"
+									ng-click="pager.next()" class="btn btn-primary">>>|</button>
+							</div>
+
+							<th:block th:if="${#request.remoteUser}">
+								<div class="pull-right">
+									<button type="button" id="button-review"
+										th:onclick="addComment([(${inforProduct.id})])"
+										class="btn btn-primary">Bình luận</button>
+								</div>
+							</th:block>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div th:replace="/user/detail/related_product.html"></div>
+
+</div>

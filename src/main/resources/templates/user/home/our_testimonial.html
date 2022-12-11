@@ -1,0 +1,100 @@
+<div class="testimonial-block">
+	<div class="testimonial-container box-module">
+		<div class="page-title">
+			<h3 class="toggled">Our Testimonial</h3>
+		</div>
+		<div class="owl-container">
+			<div class="block-content">
+				<div class="slideTestimonial owl-carousel owl-theme">
+
+					<div class="row-items">
+						<div class="testimonial-images">
+							<img src="/assets/user/image/cache/catalog/testimonial/1-100x100.jpg"
+								alt="Alexa Gomez" class="m-image-auto m-auto img-circle">
+						</div>
+						<div class="testimonial-content">
+
+							<div class="testimonial-text">
+								<p>Lorem Ipsum is simply dummy text of the printing and
+									typesetting industry. Ut enim ad minim veniam, quis nostrud
+									exercitation ullamco laboris nisi ut aliquip ex ea commod ...</p>
+							</div>
+							<div class="testimonial-author">Alexa Gomez</div>
+							<div class="testimonial-customer">Customer</div>
+						</div>
+					</div>
+
+
+					<div class="row-items">
+						<div class="testimonial-images">
+							<img src="/assets/user/image/cache/catalog/testimonial/2-100x100.jpg"
+								alt="Luies Charles" class="m-image-auto m-auto img-circle">
+						</div>
+						<div class="testimonial-content">
+
+							<div class="testimonial-text">
+								<p>Lorem Ipsum is simply dummy text of the printing and
+									typesetting industry. Ut enim ad minim veniam, quis nostrud
+									exercitation ullamco laboris nisi ut aliquip ex ea commod ...</p>
+							</div>
+							<div class="testimonial-author">Luies Charles</div>
+							<div class="testimonial-customer">Customer</div>
+						</div>
+					</div>
+
+
+					<div class="row-items">
+						<div class="testimonial-images">
+							<img src="/assets/user/image/cache/catalog/testimonial/3-100x100.jpg"
+								alt="Michael Jack" class="m-image-auto m-auto img-circle">
+						</div>
+						<div class="testimonial-content">
+
+							<div class="testimonial-text">
+								<p>Lorem Ipsum is simply dummy text of the printing and
+									typesetting industry. Ut enim ad minim veniam, quis nostrud
+									exercitation ullamco laboris nisi ut aliquip ex ea commod ...</p>
+							</div>
+							<div class="testimonial-author">Michael Jack</div>
+							<div class="testimonial-customer">Customer</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(document).ready(
+			function() {
+				const direct = $('html').attr('dir');
+				const items = 1;
+				$(".slideTestimonial").each(
+						function() {
+							const sliderOptions = {
+								loop : false,
+								nav : true,
+								navText : [ '<i class="fa fa-caret-left"></i>',
+										'<i class="fa fa-caret-right"></i>' ],
+								dots : false,
+								items : items,
+								autoplay : true,
+								autoplayTimeout : 3000,
+								responsiveRefreshRate : 200,
+								responsive : {
+									0 : {
+										items : 1
+									},
+									1201 : {
+										items : 1
+									}
+								}
+							};
+
+							if (direct == 'rtl')
+								sliderOptions['rtl'] = true;
+							$(this).owlCarousel(sliderOptions);
+						});
+			});
+</script>

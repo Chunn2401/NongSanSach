@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/shop/cart}">Giỏ hàng</a></li>			
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/home/bestseller.html"></div>		
+	</th:block>
+
+	<main>
+		<div th:replace="/user/cart/cart_detail.html"></div>
+	</main>
+
+</body>
+<th:block id="material">
+</th:block>
+</html>

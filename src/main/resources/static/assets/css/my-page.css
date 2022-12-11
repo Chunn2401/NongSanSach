@@ -1,0 +1,33 @@
+.mypage-alo-ph-circle {
+    border-color: #cc9a00;
+}
+
+.mypage-alo-ph-circle-fill {
+    background-color: #cc9a00;
+}
+
+.mypage-alo-ph-img-circle {
+    background-color: #cc9a00;
+}
+
+.mypage-alo-phone:hover .mypage-alo-ph-circle {
+    border-color: #43b91e;
+}
+
+.mypage-alo-phone:hover .mypage-alo-ph-circle-fill {
+    background-color: #43b91e;
+}
+
+.mypage-alo-phone:hover .mypage-alo-ph-img-circle {
+    background-color: #43b91e;
+}
+
+.bg {
+    opacity: 0;
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+}
+
+.bg-loaded {
+    opacity: 1;
+}

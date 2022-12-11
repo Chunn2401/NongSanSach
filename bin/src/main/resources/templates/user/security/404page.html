@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+
+</head>
+
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/register}">Trang 404</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/layout/_aside.html"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<h1>Lỗi 404!</h1>
+			<p>Trang bạn tìm kiếm không tồn tại. Vui lòng thử lại!</p>
+
+			<div class="buttons">
+				<div class="pull-right">
+					<a th:href="@{/index}" class="btn btn-primary">Tiếp tục</a>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+<th:block id="material">
+</th:block>
+
+</html>

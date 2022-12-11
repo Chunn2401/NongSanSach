@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/_form :: dynamic(
+				~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+
+	<link rel="stylesheet"
+		href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet"
+		href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<script
+		src="/assets/admin/global/vendor/datatables.net/jquery.dataTables599c.js?v4.0.2"></script>
+	<script
+		src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js"></script>
+	<script src="/assets/admin/angular/angular-datatables.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main ng-app="category-app" ng-controller="category-ctrl">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">Danh Sách Danh Mục</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a th:href="@{/admin/index}">Trang
+							chủ</a></li>
+					<li class="breadcrumb-item"><a
+						th:href="@{/admin/categories/list}">Danh mục</a></li>
+					<li class="breadcrumb-item active">Danh sách</li>
+				</ol>
+			</div>
+
+			<div class="page-content">
+				<!-- Panel Basic -->
+				<div class="panel">
+					<div class="panel-body">
+						<table
+							class="table table-hover dataTable table-striped w-full dt-responsive nowrap"
+							datatable="ng" dt-options="vm.dtOptions"
+							dt-instance="vm.dtInstance" dt-column-defs="vm.dtColumnDefs">
+							<thead>
+								<tr>
+									<th>Tên</th>
+									<th>Tên tìm kiếm</th>
+									<th>Logo</th>
+									<th>Banner</th>
+									<th>Mô tả</th>
+									<th>Hoạt động</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>Tên</th>
+									<th>Tên tìm kiếm</th>
+									<th>Logo</th>
+									<th>Banner</th>
+									<th>Mô tả</th>
+									<th>Hoạt động</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<tr ng-repeat="item in items">
+									<td>{{item.name}}</td>
+									<td>{{item.namesearch}}</td>
+									<td>{{item.logo}}</td>
+									<td>{{item.banner}}</td>
+									<td>{{item.description.slice(0,25)}}...</td>
+									<td><a ng-click="update(item)"
+											class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"
+											title="Cập nhật">
+											<i class="icon wb-edit"></i>
+										</a> <a ng-click="showModal(item)"
+										class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row"><i
+											class="icon wb-trash" title="Xóa"></i></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- End Panel Basic -->
+			</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade modal-warning" id="modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="modal-title">Thông Báo!</h4>
+					</div>
+					<div class="modal-body">
+						<p>Bạn có chắc muốn xóa danh mục này hay không?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+						<button type="button" ng-click="delete()" id="checkClick"
+							class="btn btn-primary" data-dismiss="modal">Xác nhận</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal -->
+
+		<!-- Modal -->
+		<div class="modal fade"
+			ng-class="{true:'modal-info', false:'modal-danger'}[info.status]"
+			id="modalInfo">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="modal-title">{{info.alert}}</h4>
+					</div>
+					<div class="modal-body">
+						<p>{{info.content}}</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn"
+							ng-class="{true:'btn-info', false:'btn-danger'}[info.status]"
+							data-dismiss="modal">Xác nhận</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal -->
+	</main>
+</body>
+<th:block id="javascriptResource">
+	<script
+		src="/assets/admin/base/assets/examples/js/tables/datatable.min599c.js?v4.0.2"></script>
+	<script src="/assets/admin/angular/category/category-list-ctrl.js"></script>
+</th:block>
+</html>

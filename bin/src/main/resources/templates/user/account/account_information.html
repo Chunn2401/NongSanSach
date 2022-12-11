@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/account}">Tài khoản</a></li>
+			<li><a th:href="@{/account/information}">Thông tin tài khoản</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/account/account_aside"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9" ng-app="information-app"
+			ng-controller="information-ctrl">
+			<form class="form-horizontal">
+				<fieldset>
+					<legend>Thông Tin Tài Khoản</legend>
+					<div class="form-group required" id="divFullName">
+						<label id="lblFullName" class="col-sm-2 control-label">Họ và tên </label>
+						<div class="col-sm-10">
+							<input type="text" id="fullName" ng-model="form.fullName" placeholder="Vui lòng nhập họ và tên"
+								class="form-control" />
+							<div id="errorFullName" style="color: #dc3545;"></div>
+						</div>
+					</div>				
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Ngày sinh</label>
+						<div class="col-sm-10">
+							<input type="date" ng-model="form.birthday" id="birthday" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Giới tính</label>
+						<div class="col-sm-10">
+							<select class="form-control" ng-model="form.gender">
+								<option hidden="true" ng-value="0">Chọn giới tính</option>
+								<option ng-value="1">Nam</option>
+								<option ng-value="2">Nữ</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Bản tin</label>
+						<div class="col-sm-10">
+							<select class="form-control" ng-model="form.news">
+								<option hidden="true" ng-value="0">Bạn có muốn nhận
+									thông tin hàng tháng</option>
+								<option ng-value="1">Đăng ký</option>
+								<option ng-value="2">Không phải lúc này</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				<div class="buttons clearfix">
+					<div class="pull-left">
+						<a th:href="@{/account}" class="btn btn-default">Trở lại</a>
+					</div>
+					<div class="pull-right">
+						<input type="button" ng-click="update()" value="Tiếp tục" class="btn btn-primary" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</main>
+
+</body>
+<th:block id="material">
+	<script src="/assets/user/angular/information-app.js"></script>
+</th:block>
+</html>

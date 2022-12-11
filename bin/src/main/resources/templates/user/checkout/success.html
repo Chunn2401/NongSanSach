@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+
+</head>
+
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/shop/cart}">Giỏ hàng</a></li>
+			<li><a th:href="@{/shop/cart/checkout}">Thanh toán</a></li>
+			<li><a th:href="@{/shop/cart/checkout/success}">Thành công</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/layout/_aside.html"></div>
+	</th:block>
+
+	<main>
+		<div class="container" style="text-align: center;">
+			<div id="content" class="col-sm-9">
+				<img src="/assets/images/checkout/success.png" style="width: 200px; height: 200px; padding: 20px;"
+					alt="">
+				<h1>Đặt thành công!</h1>
+
+				<p>
+					Bạn có thể xem lịch sử đặt hàng bằng cách vào trang <a style="color: #6abd45;"
+						th:href="@{/account}">tài
+						khoản</a> và nhấp
+					vào <a style="color: #6abd45;" th:href="@{/account/order}">lịch sử</a>.
+				</p>
+				<p>Nếu có câu hỏi gì. Vui lòng liên hệ <a style="color: #6abd45;" th:href="@{/contact}">chúng tôi</a> để
+					nhận được sự tư vấn.</p>
+				<p>Trân trọng cảm ơn!</p>
+				<div class="buttons">
+					<div class="pull-right">
+						<a th:href="@{/index}" class="btn btn-primary">Tiếp tục</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+</body>
+<th:block id="material">
+	<script src="/assets/user/angular/register.js"></script>
+</th:block>
+
+</html>

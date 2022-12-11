@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/account}">Tài khoản</a></li>
+			<li><a th:href="@{/account/favorite}">Yêu thích</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/account/account_aside"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<h2>Danh Sách Yêu Thích</h2>
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<td class="text-center">Hình ảnh</td>
+							<td class="text-left">Tên sản phẩm</td>
+							<td class="text-left">Điểm đổi thưởng</td>
+							<td class="text-right">Giá</td>
+							<td class="text-right">Hành động</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item: ${listFavorite}">
+							<td class="text-center"><a th:href="@{|/san-pham/${item.product.Namesearch}|}"><img
+									th:src="@{|/assets/images/imageProduct/${item.product.image1}|}" width="50px" height="50px"
+									alt="Boat Headphone" th:title="${item.product.name}" /></a></td>
+							<td class="text-left"><a th:href="@{|/san-pham/${item.product.Namesearch}|}">[[${item.product.name}]]</a></td>
+							<td class="text-left">[[${item.product.point}]]</td>
+							<td class="text-right">
+								<div class="price">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]₫</div>
+							</td>
+							<td class="text-right"><a
+									th:href="@{|/san-pham/${item.product.Namesearch}|}" data-toggle="tooltip"
+									title="Mua ngay" class="btn btn-primary">
+									<i class="fa fa-shopping-cart"></i>
+								</a> <a th:href="@{|/account/favorite/delete/${item.id}|}" data-toggle="tooltip" title="Xóa"
+								class="btn btn-danger"><i class="fa fa-times"></i></a></td>
+						</tr>					
+					</tbody>
+
+				</table>
+			</div>
+			<div class="buttons clearfix">
+				<div class="pull-right">
+					<a th:href="@{/account}" class="btn btn-primary">Tiếp tục</a>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+<th:block id="material">
+</th:block>
+</html>

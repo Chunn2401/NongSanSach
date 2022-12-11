@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+</head>
+
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/login}">Đăng nhập</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/layout/_aside.html"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="well">
+						<h2>Khách Hàng Mới</h2>
+						<p>
+							<strong>Đăng Ký Tài Khoản</strong>
+						</p>
+						<p>Bằng cách tạo tài khoản, bạn sẽ có thể mua sắm nhanh hơn,
+							cập nhật trạng thái đơn hàng và theo dõi các đơn hàng bạn đã thực
+							hiện trước đó.</p>
+						<a th:href="@{/register}" class="btn btn-primary">Đăng ký</a>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="well">
+						<h2>Đã có tài khoản!</h2>
+						<p>
+							<strong>Nhập thông tin để đăng nhập vào hệ thống!</strong>
+						</p>
+						<form th:action="@{/login}" th:object="${userLogin}" method="post">
+							<div class="form-group required">
+								<label class="control-label">Email</label>
+								<div>
+									<input th:field="*{username}" class="form-control">
+									<div class="text-danger" th:if="${#fields.hasErrors('username')}"
+										th:errors="*{username}"></div>
+								</div>
+							</div>
+							<div class="form-group required">
+								<label class="control-label" for="input-password">Mật
+									khẩu</label>
+								<div>
+									<input name="password" th:value="*{password}" type="password"
+										class="form-control" />
+									<div class="text-danger" th:if="${#fields.hasErrors('password')}"
+										th:errors="*{password}"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<a th:href="@{/forget-password}">Quên mật khẩu?</a>
+							</div>
+							<input type="submit" value="Đăng nhập" class="btn btn-primary" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+<th:block id="material">
+	<!-- <script type="text/javascript">
+		alert("This is page login!");
+	</script> -->
+</th:block>
+
+</html>

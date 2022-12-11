@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<div class="top-header">
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 hidden-sm hidden-xs">
+						<!-- start account -->
+						<div id="header_ac">
+							<ul class="nav navbar-nav">
+								<li class="nav-item">
+									<a class="nav-link active" href="mailto:farmsys.contact@gmail.com">
+										<span class="account-main">
+											<i class="fa fa-envelope"></i>
+											<span><strong>cskh@gmail.com</strong></span>
+										</span>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" href="tel:0358570211">
+										<span class="account-main">
+											<i class="fa fa-phone"></i>
+											<span><strong>035 857 0211</strong></span>
+										</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+					<div class="header-links col-md-3">
+
+
+					</div>
+					<div class="header-links col-md-6">
+						<!-- start account -->
+						<div id="header_ac" class="dropdown">
+							<a href="#" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="account-main hidden-sm hidden-xs">
+									<th:block th:unless="${#request.remoteUser}">
+										<span><strong>Đăng nhập</strong></span>
+									</th:block>
+									<th:block th:if="${#request.remoteUser}">
+										<span><strong>Xin chào</strong></span>
+									</th:block>
+								</span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
+								<th:block th:if="${#request.remoteUser}">
+									<th:block
+										th:if="${#request.isUserInRole('ROLE_ADMIN') || #request.isUserInRole('ROLE_DIRECTOR')}">
+										<li><a th:href="@{/admin/index}">Quản lý</a></li>
+									</th:block>
+									<li><a th:href="@{/account}">Thông tin</a></li>
+									<li><a th:href="@{/order}">Đơn hàng</a></li>
+									<li><a th:href="@{/logout}">Đăng xuất</a></li>
+								</th:block>
+								<th:block th:unless="${#request.remoteUser}">
+									<li><a th:href="@{/register}">Đăng ký</a></li>
+									<li><a th:href="@{/login}">Đăng nhập</a></li>
+									<li><a th:href="@{/forget-password}">Quên mật khẩu</a></li>
+								</th:block>
+								<li class="language">
+									<div class="language-box">
+										<form action="#" method="post" enctype="multipart/form-data" id="form-language">
+											<button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+												<span class="drop-text">Ngôn ngữ:</span> <span class="code">vi-en</span>
+											</button>
+											<ul class="language-dropdown lang">
+												<li>
+													<button class="btn btn-link btn-block language-select" type="button"
+														name="en-gb">
+														<img src="/assets/user/catalog/language/vi/vi.png"
+															alt="VietName" title="VietName" /> VietNam
+													</button>
+												</li>
+												<li>
+													<button class="btn btn-link btn-block language-select" type="button"
+														name="ar">
+														<img src="/assets/user/catalog/language/en-gb/en-gb.png"
+															alt="English" title="English" /> English
+													</button>
+												</li>
+											</ul>
+											<input type="hidden" name="code" value="" /> <input type="hidden"
+												name="redirect" value="#" />
+										</form>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!-- start cart -->
+						<div class="header_cart">
+							<div id="cart" class="btn-group btn-block">
+								<button type="button" data-toggle="dropdown" data-loading-text="Loading..."
+									class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+									<span id="cart-total">
+										<span class="hidden-sm hidden-xs">
+											<strong>
+												<i class="fa fa-cart-arrow-down" aria-hidden="true"><strong>
+														[[${session.sessionProduct.countAllProduct}]] |
+														[[${#numbers.formatInteger(session.sessionProduct.amount,session.sessionProduct.amount==0?0:3,'POINT')}]]₫
+													</strong>
+
+												</i>
+											</strong>
+										</span>
+									</span>
+
+								</button>
+								<ul class="dropdown-menu header-cart-toggle pull-right ">
+									<th:block th:if="${session.sessionProduct.getCount() != 0}">
+										<li class="cart-content-product">
+											<table class="table table-striped">
+												<tbody>
+													<th:block th:each="item: ${session.sessionProduct.items}">
+														<tr>
+															<td class="text-center product-cart-thumb"><a href=""><img
+																		th:src="@{|/assets/images/imageProduct/${item.product.image1}|}"
+																		th:title="${item.product.name}"
+																		class="img-thumbnail">
+																</a></td>
+															<td class="text-left product-cart-details"><a href=""
+																	class="product-item-name">[[${item.product.name}]]</a>
+																<div class="product-cart-info">
+																	<span class="product-cart-qty">[[${item.quality}]]
+																		x </span> <span
+																		class="product-cart-price">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]₫</span>
+																</div>
+															</td>
+
+														</tr>
+													</th:block>
+												</tbody>
+											</table>
+										</li>
+										<li>
+											<div>
+												<table class="table table-bordered">
+													<tbody>
+														<tr>
+															<td class="text-left"><strong>Tổng</strong></td>
+															<td class="text-right">
+																[[${#numbers.formatInteger(session.sessionProduct.amount,3,'POINT')}]]₫
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												<p class="text-right product-cart-button">
+													<a th:href="@{/shop/cart}" class="btn cart-btn addtocart-btn">Giỏ
+														hàng</a>&nbsp;&nbsp;&nbsp;<a th:href="@{/shop/cart/checkout}"
+														class="btn cart-btn checkout-btn">Thanh toán</a>
+												</p>
+											</div>
+										</li>
+									</th:block>
+									<th:block th:unless="${session.sessionProduct.getCount() != 0}">
+										<li>
+											<p class="text-center product-cart-empty">Giỏ hàng của
+												bạn đang trống!</p>
+										</li>
+									</th:block>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="header-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="header-left col-lg-3 col-md-3 hidden-sm hidden-xs">
+							<a title="Happy Trade" href="/ " rel="home">
+								<img width="250" height="50" class="header_logo header-logo" alt="Happy Trade"
+									src="/assets/images/logo/Logo.jpg" /></a>
+						</div>
+						<div class="header-center col-md-6 col-xs-3">
+							<!-- start menu -->
+							<nav id="menu" class="navbar navbar_menu">
+								<div class="navbar-header">
+									<button type="button" class="btn btn-navbar navbar-toggle" id="btnMenuBar">
+										<span class="addcart-icon"></span>
+									</button>
+								</div>
+								<div id="topCategoryList" class="main-menu menu-navbar clearfix" data-more=More>
+									<div class="menu-close hidden-lg hidden-md">
+										<span id="category" class="">Menu</span><i class="icon-close"></i>
+									</div>
+									<ul class="nav navbar-nav">
+										<li class="menulist home"><a id="home" th:href="@{/index}"><strong>Trang
+													chủ</strong></a></li>
+										<li class="menulist"><a th:href="@{/contact}"><strong>Liên hệ</strong></a></li>
+										<li class="menulist"><a href="/index/#brand"><strong>Thương hiệu</strong></a></li>
+										<li class="blog"><a href="/index/#"><strong>Kiến thức</strong></a></li>
+
+									</ul>
+								</div>
+							</nav>
+
+						</div>
+						<div class="header-right col-md-3 col-xs-9">
+							<!-- start search -->
+							<div class="btn_search">
+								<div class="header-search">
+									<div id="mahardhiSearch" class="input-group mahardhi-search">
+										<input type="text" name="search" value="" placeholder="Tìm sản phẩm..."
+											class="form-control input-lg ui-autocomplete-input" /> <span
+											class="btn-search input-group-btn">
+											<button type="button" class="btn btn-default btn-lg">
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</header>
+	</div>
+</body>
+
+</html>

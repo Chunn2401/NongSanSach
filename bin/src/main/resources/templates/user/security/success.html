@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+
+</head>
+
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/register}">Đăng ký</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/layout/_aside.html"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<h1>[[${alert}]]</h1>
+			<p>[[${message}]]</p>
+			<p>
+				Tiến hành <a style="color: #6abd45;" th:href="@{/login}">đăng nhập</a> nếu bạn đã có tài khoản!
+			</p>
+			<p>
+				Bạn là khách hàng mới? <a style="color: #6abd45;" th:href="@{/register}">Đăng ký</a> một tài khoản ngay!
+			</p>
+
+			<p>Trân trọng cảm ơn!</p>
+			<div class="buttons">
+				<div class="pull-right">
+					<a href="" class="btn btn-primary">Tiếp tục</a>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+<th:block id="material">
+	<script src="/assets/user/angular/register.js"></script>
+</th:block>
+
+</html>

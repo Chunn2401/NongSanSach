@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+
+</head>
+
+<body>
+	<th:block id="breadcums">
+		<div th:if="${checkTerm}" class="alert alert-danger alert-dismissible">
+			<i class="fa fa-exclamation-circle"></i> Lỗi: Bạn phải đồng ý với
+			chính sách bảo mật!
+			<button type="button" class="close" data-dismiss="alert">×</button>
+		</div>
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/register}">Đăng ký</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/layout/_aside.html"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<h1>Đăng Ký</h1>
+			<p>
+				Nếu bạn đã có tài khoản với chúng tôi, vui lòng đăng nhập tại trang
+				<a style="color: #6abd45;" th:href="@{/login}">đăng nhập</a>.
+			</p>
+			<form th:action="@{/register}" method="post" th:object="${userRegister}" class="form-horizontal">
+				<fieldset id="account">
+					<legend>Thông tin cá nhân</legend>
+					<div class="form-group required" style="display: none;">
+						<label class="col-sm-2 control-label">Customer Group</label>
+						<div class="col-sm-10">
+							<div class="radio">
+								<label> <input type="radio" name="customer_group_id" value="1" checked="checked" />
+									Default
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label">Họ và tên</label>
+						<div class="col-sm-10">
+							<input th:field="*{fullName}" class="form-control">
+							<div class="text-danger" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">
+							</div>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label">E-Mail</label>
+						<div class="col-sm-10">
+							<input th:field="*{email}" name="email" class="form-control" />
+							<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Mật khẩu của bạn</legend>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label">Mật khẩu</label>
+						<div class="col-sm-10">
+							<input type="password" name="password" th:value="*{password}" class="form-control" />
+							<div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+							</div>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label">Xác nhận mật khẩu</label>
+						<div class="col-sm-10">
+							<input type="password" name="confirmPassword" th:value="*{confirmPassword}"
+								class="form-control" />
+							<div class="text-danger" th:if="${#fields.hasErrors('confirmPassword')}"
+								th:errors="*{confirmPassword}"></div>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Bản tin</legend>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Đăng ký</label>
+						<div class="col-sm-10">
+							<label class="radio-inline"> <input type="radio" th:field="*{subscribe}" value="1" /> Có
+							</label> <label class="radio-inline"> <input type="radio" th:field="*{subscribe}" value="0"
+									checked="checked" /> Không
+							</label>
+						</div>
+					</div>
+				</fieldset>
+
+				<div class="buttons">
+					<div class="text-right">
+						Tôi đã đọc và đồng ý với <a href="" class="agree"><b>chính
+								sách bảo mật</b></a> <input type="checkbox" th:field="*{confirmTerm}" />
+						&nbsp; <input type="submit" value="Tiếp tục" class="btn btn-primary" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</main>
+</body>
+<th:block id="material">
+	<script src="/assets/user/angular/register.js"></script>
+</th:block>
+
+</html>

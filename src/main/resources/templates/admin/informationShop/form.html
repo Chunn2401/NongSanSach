@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/_form :: dynamic(
+				~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+	<!-- Angular -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<!-- Plugins For This Page -->
+	<link rel="stylesheet"
+		href="/assets/admin/global/vendor/formvalidation/formValidation.min599c.css?v4.0.2">
+
+	<link rel="stylesheet"
+		href="/assets/admin/base/assets/examples/css/forms/validation.min599c.css?v4.0.2">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main ng-app="shop-form-app" ng-controller="shop-form-ctrl">
+		<!-- Page -->
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">Thông Tin Cửa Hàng</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="../index.html">Trang
+							chủ</a></li>
+					<li class="breadcrumb-item"><a href="javascript:void(0)">Cửa
+							hàng</a></li>
+					<li class="breadcrumb-item active">Thông tin</li>
+				</ol>
+			</div>
+
+			<div class="page-content container-fluid">
+				<!-- Panel Full Example -->
+				<div class="panel">
+					<div class="panel-body">
+						<form th:action="@{/admin/shop/form}" method="post"
+							id="exampleFullForm" name="formShop">
+							<div class="row row-lg">
+								<div class="col-xl-6 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Tên
+											cửa hàng <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-user" aria-hidden="true"></i>
+												</span> <input id="name" ng-model="form.name" data-maxlength="30"
+													data-minlength="7" type="text" class="form-control"
+													placeholder="Ex: Ecart Shop">
+												<div class="invalid-tooltip" id="showErrorName"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Thời
+											gian mở cửa <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-id-badge" aria-hidden="true"></i>
+												</span> <input id="time" ng-model="form.time"
+													data-maxlength="
+													25" data-minlength="15"
+													type="text" class="form-control"
+													placeholder="Ex: 11:00 AM To 7:00 PM">
+												<div class="invalid-tooltip" id="showErrorTime"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Số
+											điện thoại <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-phone-square" aria-hidden="true"></i>
+												</span> <input type="text" class="form-control"
+													ng-model="form.phone" placeholder="Ex: 0923456789"
+													id="phone" data-maxlength="10">
+												<div class="invalid-tooltip" id="showErrorPhone"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Số
+											Fax <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i class="fa fa-fax"
+													aria-hidden="true"></i>
+												</span> <input type="text" class="form-control" ng-model="form.fax"
+													placeholder="Ex: 0923456789" id="fax" data-maxlength="10">
+												<div class="invalid-tooltip" id="showErrorFax"></div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="col-xl-6 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Email
+											<span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-envelope" aria-hidden="true"></i>
+												</span> <input type="email" class="form-control" id="email"
+													ng-model="form.email" placeholder="Ex: email@email.com">
+												<div class="invalid-tooltip" id="showErrorEmail"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Logo
+											<span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file"
+												data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+													class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+														type="file" id="chooseLogo" accept=".png,.jpg,.jpeg">
+												</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly"
+													id="valueLogo" ng-model="form.logo">
+												<div class="invalid-tooltip" id="showErrorLogo"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Logo
+											Footer <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file"
+												data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+													class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+														type="file" id="chooseLogoFooter" accept=".png,.jpg,.jpeg">
+												</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly"
+													id="valueLogoFooter" ng-model="form.logoFooter">
+												<div class="invalid-tooltip" id="showErrorLogoFooter"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Địa
+											chỉ <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-envelope" aria-hidden="true"></i>
+												</span> <input type="text" class="form-control" id="address"
+													data-maxlength="
+													100" data-minlength="20"
+													ng-model="form.address"
+													placeholder="Ex: 520/2 ql 13, đường Hai Bà Trưng">
+												<div class="invalid-tooltip" id="showErrorAddress"></div>
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+								<div class="form-group col-xl-12 text-right padding-top-m">
+									<th:block th:if="${!enableBtnUpdate}">
+										<a th:href="@{/admin/shop/form}"
+											class="btn btn-success text-light" id="validateButton1">
+											<i class="fa fa-refresh" aria-hidden="true"></i> Làm mới
+										</a>
+										<button id="btnSave" type="button" ng-click="save()"
+											class="btn btn-primary">
+											<i class="fa fa-save" aria-hidden="true"></i> Lưu
+										</button>
+									</th:block>
+									<th:block th:if="${enableBtnUpdate}">
+										<input type="hidden" id="demo" th:value="${shopId}" />
+										<a th:href="@{/admin/shop/update/{id}(id=${shopId})}"
+											class="btn btn-success text-light" id="validateButton1">
+											<i class="fa fa-refresh" aria-hidden="true"></i> Khôi phục
+										</a>
+										<button id="btnUpdate" type="button" ng-click="update()"
+											class="btn btn-info">
+											<i class="fa fa-pencil" aria-hidden="true"></i> Cập nhật
+										</button>
+									</th:block>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- End Panel Full Example -->
+			</div>
+
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade"
+			ng-class="{true:'modal-info', false:'modal-danger'}[info.status]"
+			id="modalSuccess">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="modal-title">Thông Báo!</h4>
+					</div>
+					<div class="modal-body">
+						<p>{{info.content}}</p>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-primary text-light">Xác nhận</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal -->
+	</main>
+</body>
+<th:block id="javascriptResource">
+	<!-- Plugins For This Page -->
+	<script
+		src="/assets/admin/global/vendor/formvalidation/framework/bootstrap4.min599c.js?v4.0.2"></script>
+
+	<script
+		src="/assets/admin/base/assets/examples/js/forms/validation.min599c.js?v4.0.2"></script>
+
+	<!-- Plugins For This Page -->
+	<script
+		src="/assets/admin/global/vendor/jquery-placeholder/jquery.placeholder599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/js/Plugin/input-group-file.min599c.js?v4.0.2"></script>
+	<th:block th:if="${!enableBtnUpdate}">
+		<script
+			src="/assets/admin/angular/informationShop/shop-form-create-ctrl.js"></script>
+	</th:block>
+	<th:block th:if="${enableBtnUpdate}">
+		<script
+			src="/assets/admin/angular/informationShop/shop-form-update-ctrl.js"></script>
+	</th:block>
+</th:block>
+</html>

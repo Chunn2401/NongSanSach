@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+</head>
+
+<body>
+	<th:block id="breadcums"></th:block>
+	<th:block id="aside">
+		<div th:replace="/user/home/bestseller.html"></div>
+		<div th:replace="/user/home/our_testimonial.html"></div>
+		<div class="swiper-viewport">
+			<div id="banner0" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img src="/assets/user/image/cache/catalog/banners/cat-leftbanner-290x450.jpg"
+								alt="Left Banner" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="/user/home/special_product.html"></div>
+
+		<div th:replace="/user/home/newsletter.html"></div> -->
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<div style="width: 100%;" th:replace="/user/home/slideshow.html" ></div>
+			<div th:replace="/user/home/latest_product.html"></div>
+			<!-- <div class="banner-outer container-outer html1">
+				<div class="html1-inner">
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="banner1">
+								<div class="inner1">
+									<a href="#"><img src="/assets/user/image/catalog/banners/banner1.jpg" alt=""
+											class="img-responsive"></a>
+								</div>
+								<div class="inner2">
+									<div class="promo-text-box">
+										<div class="promo-desc">Get Save 35% Off</div>
+										<h3 class="promo-title">Samsung Charger</h3>
+										<a class="button btn" href="#">shop now</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="banner2">
+								<div class="inner1">
+									<a href="#"><img src="/assets/user/image/catalog/banners/banner2.jpg" alt=""
+											class="img-responsive"></a>
+								</div>
+								<div class="inner2">
+									<div class="promo-text-box">
+										<div class="promo-desc">Get Save 45% Off</div>
+										<h3 class="promo-title">Google Home Mini</h3>
+										<a class="button btn" href="#">shop now</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+			<div th:replace="/user/home/blog.html"></div>
+
+			<div th:replace="/user/home/featured_products.html"></div>
+			<div th:replace="/user/home/manufacturer.html"></div>
+		</div>
+		
+	</main>
+
+</body>
+
+</html>

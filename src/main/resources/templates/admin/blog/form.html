@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/layout/_form :: dynamic(
+				~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+	<!-- Angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<!-- Plugins For This Page -->
+	<link rel="stylesheet" href="/assets/admin/global/vendor/formvalidation/formValidation.min599c.css?v4.0.2">
+
+	<link rel="stylesheet" href="/assets/admin/base/assets/examples/css/forms/validation.min599c.css?v4.0.2">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</th:block>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<main ng-app="blog-form-app" ng-controller="blog-form-ctrl">
+		<!-- Page -->
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">Thông Tin Sản Phẩm</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="../index.html">Trang
+							chủ</a></li>
+					<li class="breadcrumb-item"><a href="javascript:void(0)">
+							Blog</a></li>
+					<li class="breadcrumb-item active">Thông tin</li>
+				</ol>
+			</div>
+
+			<div class="page-content container-fluid">
+				<!-- Panel Full Example -->
+				<div class="panel">
+					<div class="panel-body">
+						<form th:action="@{/admin/blog/form}" method="post" id="exampleFullForm" name="formProduct">
+							<div class="row row-lg">
+								<div class="col-xl-6 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Mã
+											Blog <span class="required" style="color: red;">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i class="fa fa-user"
+														aria-hidden="true"></i>
+												</span> <input id="code" ng-model="form.id" data-maxlength="5"
+													data-minlength="1" type="text" class="form-control" placeholder="">
+												<div class="invalid-tooltip" id="showErrorCode"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Tên
+											Blog <span class="required" style="color: red;">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i class="fa fa-id-badge"
+														aria-hidden="true"></i>
+												</span> <input id="name" ng-model="form.title" type="text" class="form-control" data-maxlength="
+													300" data-minlength="10"  placeholder="">
+												<div class="invalid-tooltip" id="showErrorName"></div>
+											</div>
+
+										</div>
+									</div>
+
+							
+
+								
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Hình
+											ảnh 1 <span class="required" style="color: red;">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file" data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+														class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+															type="file" id="chooseImage1" accept=".png,.jpg,.jpeg">
+													</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly" id="valueImage1"
+													ng-model="form.image1">
+												<div class="invalid-tooltip" id="showErrorImage1"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Hình
+											ảnh 2 <span class="required" style="color: red;">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file" data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+														class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+															type="file" id="chooseImage2" accept=".png,.jpg,.jpeg">
+													</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly" id="valueImage2"
+													ng-model="form.image2">
+												<div class="invalid-tooltip" id="showErrorImage2"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Hình
+											ảnh 3 <span class="required" style="color: red;">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file" data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+														class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+															type="file" id="chooseImage3" accept=".png,.jpg,.jpeg">
+													</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly" id="valueImage3"
+													ng-model="form.image3">
+												<div class="invalid-tooltip" id="showErrorImage3"></div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="col-xl-6 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Hình
+											ảnh 4 <span class="required" style="color: red;">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group input-group-file" data-plugin="inputGroupFile">
+												<span class="input-group-btn "> <span
+														class="btn btn-outline btn-file input-group-addon">
+														<i class="icon wb-upload" aria-hidden="true"></i> <input
+															type="file" id="chooseImage4" accept=".png,.jpg,.jpeg">
+													</span>
+												</span> <input type="text" class="form-control"
+													placeholder="Choose a picture" readonly="readonly" id="valueImage4"
+													ng-model="form.image4">
+												<div class="invalid-tooltip" id="showErrorImage4"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="col-xl-12 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Nội dung 1</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i class="icon wb-info-circle"
+														aria-hidden="true"></i>
+												</span>
+												<textarea data-minlength="100" rows="3" cols="5" class="form-control"
+													id="content1" placeholder="Mô tả..."
+													ng-model="form.content1"></textarea>
+												<div class="invalid-tooltip" id="showErrorDescription1"></div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-xl-12 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Nội dung 2</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i class="icon wb-info-circle"
+														aria-hidden="true"></i>
+												</span>
+												<textarea data-minlength="100" rows="3" cols="5" class="form-control"
+													id="content2" placeholder="Mô tả..."
+													ng-model="form.content2"></textarea>
+												<div class="invalid-tooltip" id="showErrorDescription2"></div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-xl-12 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Nội dung 3</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i class="icon wb-info-circle"
+														aria-hidden="true"></i>
+												</span>
+												<textarea data-minlength="100" rows="3" cols="5" class="form-control"
+													id="content3" placeholder="Mô tả..."
+													ng-model="form.content3"></textarea>
+												<div class="invalid-tooltip" id="showErrorDescription3"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-xl-12 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Nội dung 4</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i class="icon wb-info-circle"
+														aria-hidden="true"></i>
+												</span>
+												<textarea data-minlength="100" rows="3" cols="5" class="form-control"
+													id="content4" placeholder="Mô tả..."
+													ng-model="form.content4"></textarea>
+												<div class="invalid-tooltip" id="showErrorDescription4"></div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								
+																
+
+								<div class="form-group col-xl-12 text-right padding-top-m">
+									<th:block th:if="${!enableBtnUpdate}">
+										<a th:href="@{/admin/blog/form}" class="btn btn-success text-light"
+											id="validateButton1">
+											<i class="fa fa-refresh" aria-hidden="true"></i> Làm mới
+										</a>
+										<button id="btnSave" type="button" ng-click="save()" class="btn btn-primary">
+											<i class="fa fa-save" aria-hidden="true"></i> Lưu
+										</button>
+									</th:block>
+									<th:block th:if="${enableBtnUpdate}">
+										<input type="hidden" id="demo" th:value="${blogId}" />
+										<a th:href="@{/admin/blog/update/{id}(id=${blogId})}"
+											class="btn btn-success text-light" id="validateButton1">
+											<i class="fa fa-refresh" aria-hidden="true"></i> Khôi phục
+										</a>
+										<button id="btnUpdate" type="button" ng-click="update()" class="btn btn-info">
+											<i class="fa fa-pencil" aria-hidden="true"></i> Cập nhật
+										</button>
+									</th:block>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- End Panel Full Example -->
+			</div>
+
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" ng-class="{true:'modal-info', false:'modal-danger'}[info.status]" id="modalSuccess">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="modal-title">Thông Báo!</h4>
+					</div>
+					<div class="modal-body">
+						<p>{{info.content}}</p>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-primary text-light">Xác nhận</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal -->
+	</main>
+</body>
+<th:block id="javascriptResource">
+	<!-- Plugins For This Page -->
+	<script src="/assets/admin/global/vendor/formvalidation/framework/bootstrap4.min599c.js?v4.0.2"></script>
+
+	<script src="/assets/admin/base/assets/examples/js/forms/validation.min599c.js?v4.0.2"></script>
+
+	<!-- Plugins For This Page -->
+	<script src="/assets/admin/global/vendor/jquery-placeholder/jquery.placeholder599c.js?v4.0.2"></script>
+	<script src="/assets/admin/global/js/Plugin/input-group-file.min599c.js?v4.0.2"></script>
+	<th:block th:if="${!enableBtnUpdate}">
+		<script src="/assets/admin/angular/blog/blog-form-create-ctrl.js"></script>
+	</th:block>
+	<th:block th:if="${enableBtnUpdate}">
+		<script src="/assets/admin/angular/blog/blog-form-update-ctrl.js"></script>
+	</th:block>
+</th:block>
+
+</html>

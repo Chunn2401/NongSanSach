@@ -1,0 +1,219 @@
+<div id="content" class="col-sm-9 checkout">
+	<div class="alert alert-dismissible" th:classappend="${alertModel.alert}" th:style="${alertModel.display?'display: block;':'display:none'}">
+		[[${alertModel.content}]]
+		<button type="button" class="close" data-dismiss="alert">×</button>
+	</div> 
+	<h1>Giỏ Hàng</h1>
+	<form action="" method="post" enctype="multipart/form-data">
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<td class="text-center">Hình ảnh</td>
+						<td class="text-left">Tên sản phẩm</td>
+						<td class="text-left">Mã sản phẩm</td>
+						<td class="text-left">Số lượng</td>
+						<td class="text-right">Giá tiền</td>
+						<td class="text-right">Tổng tiền</td>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="item: ${cart.items}">
+						<tr>
+							<td class="text-center"><a
+								th:href="@{|/san-pham/${item.product.Namesearch}|}"><img
+									width="100px" height="100px"
+									th:src="@{|/assets/images/imageProduct/${item.product.image1}|}"
+									th:title="${item.product.name}" class="img-thumbnail" /></a></td>
+							<td class="text-left"><a
+								th:href="@{|/san-pham/${item.product.Namesearch}|}">[[${item.product.name}]]</a></td>
+							<td class="text-left">[[${item.product.code}]]</td>
+							<td class="text-left">
+								<form th:action="@{|/cart/update/${item.id}|}" method="post">
+									<div class="cart_input_block input-group btn-block"
+										style="max-width: 200px;">
+										<input type="text" name="quantity" th:value="${item.quality}"
+											size="1" class="form-control" /> <span
+											class="input-group-btn">
+											<button th:formaction="@{|/cart/update/${item.id}|}"
+												type="submit" data-toggle="tooltip" title="Cập nhật"
+												class="btn btn-primary">
+												<i class="fa fa-refresh"></i>
+											</button>
+											<button th:formaction="@{|/cart/remove/${item.id}|}"
+												type="submit" data-toggle="tooltip" title="Xóa sản phẩm"
+												class="btn btn-danger">
+												<i class="fa fa-times-circle"></i>
+											</button>
+										</span>
+									</div>
+								</form>
+							</td>
+							<td class="text-right">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]</td>
+							<td class="text-right">[[${#numbers.formatInteger(item.product.price
+								* item.quality,3,'POINT')}]]</td>
+						</tr>
+					</th:block>
+				</tbody>
+
+			</table>
+		</div>
+	</form>
+	<h3>Bạn thích làm gì tiếp theo?</h3>
+	<p>Chọn xem bạn có mã giảm giá hoặc điểm thưởng muốn sử dụng hoặc
+		muốn ước tính chi phí giao hàng của mình.</p>
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a href="#collapse-coupon" class="accordion-toggle"
+						data-toggle="collapse" data-parent="#accordion">Sử dụng mã
+						giảm giá <i class="fa fa-caret-down"></i>
+					</a>
+				</h4>
+			</div>
+			
+			<form th:action="@{/shop/cart/discount}" method="post">
+			<div id="collapse-coupon" class="panel-collapse collapse" th:classappend="${showDiscount?'show':''}">
+				<div class="panel-body">
+					<label class="col-sm-2 control-label" for="input-coupon">Nhập
+						mã giảm giá ở đây</label>
+					<div class="input-group">
+						<input type="text" name="discount" th:value="${discount}"
+							placeholder="Mã giảm giá" id="input-coupon" class="form-control" />
+						<span class="input-group-btn"> <!-- <input
+							type="button" ng-click="demo()" value="Áp dụng mã" id="button-coupon"
+							class="btn btn-primary" /> -->
+							<button class="btn btn-primary" type="submit"
+								id="button-coupon">Áp dụng mã</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			</form>
+
+		</div>
+
+		<!-- <div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a href="#collapse-shipping" class="accordion-toggle"
+						data-toggle="collapse" data-parent="#accordion">Ước tính chi
+						phí vận chuyển &amp; Thuế <i class="fa fa-caret-down"></i>
+					</a>
+				</h4>
+			</div>
+			<div id="collapse-shipping" class="panel-collapse collapse">
+				<div class="panel-body">
+					<p>Nhập địa chỉ của bạn để ước tính chi phí vận chuyển.</p>
+					<div class="form-horizontal">
+						<div class="form-group required">
+							<label class="col-sm-2 control-label" for="input-country">Country</label>
+							<div class="col-sm-10">
+								<select name="country_id" id="input-country"
+									class="form-control">
+									<option value="">--- Please Select ---</option>
+									<option value="222">United Kingdom</option>
+									<option value="223">United States</option>
+									<option value="224">United States Minor Outlying
+										Islands</option>
+									<option value="225">Uruguay</option>
+									<option value="226">Uzbekistan</option>
+									<option value="227">Vanuatu</option>
+									<option value="228">Vatican City State (Holy See)</option>
+									<option value="229">Venezuela</option>
+									<option value="230" selected="selected">Viet Nam</option>
+									<option value="231">Virgin Islands (British)</option>
+									<option value="232">Virgin Islands (U.S.)</option>
+									<option value="233">Wallis and Futuna Islands</option>
+									<option value="234">Western Sahara</option>
+									<option value="235">Yemen</option>
+									<option value="238">Zambia</option>
+									<option value="239">Zimbabwe</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group required">
+							<label class="col-sm-2 control-label" for="input-zone">Region
+								/ State</label>
+							<div class="col-sm-10">
+								<select name="zone_id" id="input-zone" class="form-control">
+								</select>
+							</div>
+						</div>
+						<div class="form-group required">
+							<label class="col-sm-2 control-label" for="input-postcode">Post
+								Code</label>
+							<div class="col-sm-10">
+								<input type="text" name="postcode" value="70104"
+									placeholder="Post Code" id="input-postcode"
+									class="form-control" />
+							</div>
+						</div>
+						<button type="button" id="button-quote"
+							data-loading-text="Loading..." class="btn btn-primary">Ước
+							tính</button>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<!-- <div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a href="#collapse-voucher" data-toggle="collapse"
+						data-parent="#accordion" class="accordion-toggle">Use Gift
+						Certificate <i class="fa fa-caret-down"></i>
+					</a>
+				</h4>
+			</div>
+			<div id="collapse-voucher" class="panel-collapse collapse">
+				<div class="panel-body">
+					<label class="col-sm-2 control-label" for="input-voucher">Enter
+						your gift certificate code here</label>
+					<div class="input-group">
+						<input type="text" name="voucher" value=""
+							placeholder="Enter your gift certificate code here"
+							id="input-voucher" class="form-control" /> <span
+							class="input-group-btn"> <input type="submit"
+							value="Apply Gift Certificate" id="button-voucher"
+							data-loading-text="Loading..." class="btn btn-primary" />
+						</span>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-8">
+			<table class="table table-bordered">
+				<tr>
+					<td class="text-left cart-total-title">Tạm tính:</td>
+					<td class="text-right cart-total-price">[[${#numbers.formatInteger(total,total==0?0:3,'POINT')}]]</td>
+				</tr>
+				<tr>
+					<td class="text-left cart-total-title">Giảm giá:</td>
+					<td class="text-right cart-total-price">[[${#numbers.formatInteger(cart.discount.price,cart.discount.price==0?0:3,'POINT')}]]</td>
+				</tr>
+<!-- 				<tr>
+					<td class="text-left cart-total-title">Tạm tính:</td>
+					<td class="text-right cart-total-price">[[${#numbers.formatInteger(total,total==0?0:3,'POINT')}]]</td>
+				</tr> -->
+				<tr>
+					<td class="text-left cart-total-title">Tổng tiền:</td>
+					<td class="text-right cart-total-price">[[${#numbers.formatInteger(cart.amount,cart.amount==0?0:3,'POINT')}]]</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="buttons clearfix">
+		<div class="pull-left">
+			<a th:href="@{/index}" class="btn btn-default">Tiếp tục mua hàng</a>
+		</div>
+		<div class="pull-right">
+			<a th:href="@{/shop/cart/checkout}" class="btn btn-primary" th:classappend="${cart.map.isEmpty()?'disabled':''}">Thanh toán</a>
+		</div>
+	</div>
+</div>

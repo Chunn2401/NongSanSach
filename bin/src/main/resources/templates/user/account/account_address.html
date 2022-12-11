@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/formtesst :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/account}">Tài khoản</a></li>
+			<li><a th:href="@{/account/address}">Sổ địa chỉ</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/account/account_aside"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<h2>Địa chỉ giao hàng</h2>
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<tr th:each="item: ${listAddress}">
+						<td class="text-left">[[${item.Fullname}]]<br />[[${item.detail}]]<br />[[${item.phone}]]<br />[[${item.ward}]],
+							[[${item.district}]], [[${item.province}]]
+						</td>
+						<td class="text-right"><a th:href="@{|/account/address/update/${item.id}|}" class="btn btn-info">Chỉnh
+								sửa</a> &nbsp; <a th:href="@{|/account/address/delete/${item.id}|}" class="btn btn-danger">Xóa</a></td>
+					</tr>
+				</table>
+			</div>
+			<div class="buttons clearfix">
+				<div class="pull-left">
+					<a th:href="@{/account}" class="btn btn-default">Trở lại</a>
+				</div>
+				<div class="pull-right">
+					<a th:href="@{/account/address/add}" class="btn btn-primary">Thêm
+						địa chỉ</a>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+<th:block id="material">
+</th:block>
+</html>
