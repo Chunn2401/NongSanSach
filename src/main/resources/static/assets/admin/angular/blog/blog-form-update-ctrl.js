@@ -144,7 +144,7 @@ $(document).ready(function () {
     if (description == "") {
       $("#content1").addClass("is-invalid");
       $("#showErrorDescription1").text("Vui lòng nhập Nội dung 1!");
-      checkDescription = 10;
+      checkContent1 = 10;
     } else {
       var length = description.length;
       var minLength = $("#content1").attr("data-minlength");
@@ -152,11 +152,11 @@ $(document).ready(function () {
       if (length < minLength) {
         $("#content1").addClass("is-invalid");
         $("#showErrorDescription1").text("Nội dung 1 phải lớn hơn 100 ký tự!");
-        checkDescription = 10;
+        checkContent1 = 10;
       } else {
         $("#content1").removeClass("is-invalid");
         $("#showErrorDescription1").text("");
-        checkDescription = 1;
+        checkContent1 = 1;
       }
     }
     handlerButtonSave();
@@ -167,7 +167,7 @@ $(document).ready(function () {
     if (description == "") {
       $("#content2").addClass("is-invalid");
       $("#showErrorDescription2").text("Vui lòng nhập nội dung 2!");
-      checkDescription = 10;
+      checkContent2 = 10;
     } else {
       var length = description.length;
       var minLength = $("#content2").attr("data-minlength");
@@ -175,11 +175,11 @@ $(document).ready(function () {
       if (length < minLength) {
         $("#content2").addClass("is-invalid");
         $("#showErrorDescription2").text("Nội dung 2 phải lớn hơn 100 ký tự!");
-        checkDescription = 10;
+        checkContent2 = 10;
       } else {
         $("#content2").removeClass("is-invalid");
         $("#showErrorDescription2").text("");
-        checkDescription = 1;
+        checkContent2 = 1;
       }
     }
     handlerButtonSave();
@@ -190,7 +190,7 @@ $(document).ready(function () {
     if (description == "") {
       $("#content3").addClass("is-invalid");
       $("#showErrorDescription3").text("Vui lòng nhập nội dung 3!");
-      checkDescription = 10;
+      checkContent3 = 10;
     } else {
       var length = description.length;
       var minLength = $("#content3").attr("data-minlength");
@@ -198,11 +198,11 @@ $(document).ready(function () {
       if (length < minLength) {
         $("#content3").addClass("is-invalid");
         $("#showErrorDescription3").text("Nội dung 3 phải lớn hơn 100 ký tự!");
-        checkDescription = 10;
+        checkContent3 = 10;
       } else {
         $("#content3").removeClass("is-invalid");
         $("#showErrorDescription3").text("");
-        checkDescription = 1;
+        checkContent3 = 1;
       }
     }
     handlerButtonSave();
@@ -213,7 +213,7 @@ $(document).ready(function () {
     if (description == "") {
       $("#content4").addClass("is-invalid");
       $("#showErrorDescription4").text("Vui lòng nhập nội dung 4!");
-      checkDescription = 10;
+      checkContent4 = 10;
     } else {
       var length = description.length;
       var minLength = $("#content4").attr("data-minlength");
@@ -221,11 +221,11 @@ $(document).ready(function () {
       if (length < minLength) {
         $("#content4").addClass("is-invalid");
         $("#showErrorDescription4").text("Nội dung 4 phải lớn hơn 100 ký tự!");
-        checkDescription = 10;
+        checkContent4 = 10;
       } else {
         $("#content4").removeClass("is-invalid");
         $("#showErrorDescription4").text("");
-        checkDescription = 1;
+        checkContent4 = 1;
       }
     }
     handlerButtonSave();

@@ -10,6 +10,7 @@ package poly.store.common;
 public class Constants {
 
 	/* List man hinh user */
+	public static final String USER_DISPLAY_LOAD = "user/layout/load";
 	// Duong dan den man hinh trang chu nguoi dung
 	public static final String USER_DISPLAY_INDEX = "user/home/index";
 	// Duong dan den man hinh login nguoi dung

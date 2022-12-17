@@ -2,70 +2,123 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
 <style>
 
 /* TABLET and Mobile < 1023px*/
-@media (max-width:63.9375em) {
-    
-
+@media ( max-width :63.9375em) {
 }
 
-
 /* TABLET 740px 1023px */
-@media (min-width:46.25em) and (max-width:63.9375em) {
-    .col-blog-6{
-    width: 50%;
-    }
+@media ( min-width : 46.25em) and (max-width: 63.9375em) {
+	.col-blog-6 {
+		width: 50%;
+	}
+	.caption {
+		min-height: 220px;
+	}
 }
 
 /* MOBILE 739px*/
-@media (max-width:46.1875em) {
-    .s-col-full,
-    .s-full-width{
-        width: 100% !important;
-    }
-    
-    .col-lg-4{
-    padding-left: 0;
-    } 
-    .col-blog-6{
-    padding-left: 0;
-    }
+@media ( max-width :46.1875em) {
+	.s-col-full, .s-full-width {
+		width: 100% !important;
+	}
+	.place-body, .place-img {
+		width: 358px;
+	}
+	.col-lg-4 {
+		padding-left: 0;
+	}
+	.col-blog-6 {
+		padding-left: 0;
+	}
 }
-
 </style>
 </head>
 <body>
 	<main>
-		<div class="page-title " id="Blogs" style="margin-left: 30px;">
-			<h3>Chia sẻ kiến thức</h3>
+		<div class="box all-products latest mt-30">
+			<div class="box-heading">
+				<div class="box-content">
+					<div class="page-title toggled">
+						<a style="font-size: 25px; font-weight: bold;" href="/">Trang
+							chủ</a>
+						<h3>Chia sẻ kiến thức - Blog</h3>
+					</div>
+					<div class="block_box row">
+						<div id="latest-carousel"
+							class="box-product product-carousel clearfix" data-items="4">
+							<th:block th:each="b: ${items}">
+								<div class="product-content">
+
+									<div class="product-layout col-xs-12">
+										<div class="product-thumb transition clearfix"
+											style="width: 100%; max-height: 100%; min-height: 100%;">
+											<div class="image">
+												<a th:href="@{|/blog/detail/${b.id}|}"> <img
+													th:src="@{|/assets/images/blog/${b.image1}|}" width="340px"
+													height="300px" alt="Hình ảnh"/>
+												</a>
+											</div>
+											<div class="thumb-description clearfix">
+												<div class="caption">
+													<h4 class="product-title">
+														<a th:href="@{|/blog/detail/${b.id}|}"
+															th:utext="${b.title}"
+															style="font-weight: bold; font-size: 20px;"></a>
+													</h4>
+
+													<span class="product-body price" style="font-size: 17px;">Ngày
+														đăng: <a style="font-size: 17px" class="price"
+														th:utext="${b.time}"></a>
+													</span>
+													<div th:utext="${b.content1}"
+														style="text-shadow: 0.5px 0.2px black; margin: 10px 10px; overflow: hidden; font-size: 18px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; text-overflow: ellipsis; text-align: justify;"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+						</div>
+						</th:block>
+
+					</div>
+				</div>
+			</div>
 		</div>
-				
-		<div class="row blog-list" >
+
+
+
+		<!-- <div class="row blog-list">
 			<div th:each="b: ${items}" class="col-lg-4 col-blog-6">
-				<div class="card border-success s-col-full mt-16" style="margin: 25px 5px 25px 105px;">
-					<div >
+				<div class="card border-success s-col-full mt-16"
+					style="margin: 25px 5px 25px 105px;">
+					<div>
 						<a th:href="@{|/blog/detail/${b.id}|}"> <img
-							th:src="@{|/assets/images/blog/${b.image1}|}" 
-							style="display: inline-block; margin:15px 20px; width:300px; height:279px; border-radius: 5px ;">
+							th:src="@{|/assets/images/blog/${b.image1}|}"
+							style="display: inline-block; margin: 15px 20px; width: 300px; height: 279px; border-radius: 5px;">
 						</a>
 					</div>
-					<div style="margin-left: 20px; ">
-					<span >Ngày đăng:</span> <a style="font-weight: bold;" th:utext="${b.time}"></a>
+					<div style="margin-left: 20px;">
+						<span>Ngày đăng:</span> <a style="font-weight: bold;"
+							th:utext="${b.time}"></a>
 					</div>
-					 
+
 					<div style="font-size: 17px; margin-left: 20px">
-						<span>Bài viết </span> <a th:href="@{|/blog/detail/${b.id}|}" th:utext="${b.title}" style="font-weight: bold; margin-top: 15px; margin-bottom: 25px"> </a>											
+						<span>Bài viết </span> <a th:href="@{|/blog/detail/${b.id}|}"
+							th:utext="${b.title}"
+							style="font-weight: bold; margin-top: 15px; margin-bottom: 25px">
+						</a>
 					</div>
 					<div class="card-footer pull-left">
 						<div th:utext="${b.content1}"
-							style="text-shadow: 0.5px 0.2px black; margin:10px 17.2px;  overflow: hidden;display: -webkit-box; -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical; text-overflow: ellipsis; width: 300px; text-align: justify;"></div>
+							style="text-shadow: 0.5px 0.2px black; margin: 10px 17.2px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; text-overflow: ellipsis; width: 300px; text-align: justify;"></div>
 					</div>
 				</div>
 
 			</div>
-		</div>
+		</div> -->
 	</main>
 </body>
 </html>

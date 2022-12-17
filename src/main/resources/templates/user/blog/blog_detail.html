@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <style>
 .card-body .img-inter{
-margin-left: 46.5%;
+margin-left: 47%;
 }
 .view-blog{
 display: block;
@@ -26,12 +26,9 @@ border-radius: 5px ;
     padding: 15px 18px;
     }
     
-    
-    
     .card-body .img-inter{
     margin-left: 41%;
     }
-
 }
 
 /* TABLET 740px 1023px */
@@ -61,6 +58,7 @@ border-radius: 5px ;
     
     .card-body .img-inter{
     margin-left: 37%;
+    text-align: justify;
     }
 }
 </style>
@@ -76,7 +74,7 @@ border-radius: 5px ;
 			<div id="blogcarousel" class="blogs-block  blog-carousel  clearfix"
 				data-items="2">
 				<div class="card-body" style="line-height: 25px;">					
-					<img class="img-blog" th:src="@{|/assets/images/blog/*{image1}|}" width="310px" height="280px" style="display: block;margin-left: auto; margin-right: auto;">
+					<img class="img-blog" th:src="@{|/assets/images/blog/*{image1}|}" width="400px" height="320px" style="display: block;margin-left: auto; margin-right: auto;">
 					<div>
 					<span class="img-inter">Hình ảnh từ Internet</span>
 					</div>					
@@ -84,16 +82,22 @@ border-radius: 5px ;
 					<div class="content-blog" th:text="*{content1}" 
 					style="text-shadow: 0.5px 0.2px black; font-size: 18px; margin-left:10px; margin-bottom: 8px;"></div>
 					
-					<img class="img-blog" th:src="@{|/assets/images/blog/*{image2}|}" width="310px" height="280px" style="display: block;margin-left: auto; margin-right: auto;">
+					<img class="img-blog" th:src="@{|/assets/images/blog/*{image2}|}" width="400px" height="320px" style="display: block;margin-left: auto; margin-right: auto;">
 					<span class="img-inter">Hình ảnh từ Internet</span>
 					
 					<div class="content-blog" th:text="*{content2}"
 					style="text-shadow: 0.5px 0.2px black; font-size: 18px; margin-left:10px; margin-bottom: 8px"></div>
 					
-					<img class="img-blog" th:src="@{|/assets/images/blog/*{image3}|}" width="310px" height="280px" style="display: block;margin-left: auto; margin-right: auto;">
+					<img class="img-blog" th:src="@{|/assets/images/blog/*{image3}|}" width="400px" height="320px" style="display: block;margin-left: auto; margin-right: auto;">
 					<span class="img-inter">Hình ảnh từ Internet</span>
 					
 					<div class="content-blog" th:text="*{content3}"
+					style="text-shadow: 0.5px 0.2px black; font-size: 18px; margin-left:10px; margin-bottom: 8px"></div>
+					
+					<img class="img-blog" th:src="@{|/assets/images/blog/*{image4}|}" width="400px" height="320px" style="display: block;margin-left: auto; margin-right: auto;">
+					<span class="img-inter">Hình ảnh từ Internet</span>
+					
+					<div class="content-blog" th:text="*{content4}"
 					style="text-shadow: 0.5px 0.2px black; font-size: 18px; margin-left:10px; margin-bottom: 8px"></div>
 					
 				</div>

@@ -66,7 +66,7 @@ public class LoginController {
 		// Hien thi trang login.html
 		return Constants.USER_DISPLAY_LOGIN;
 	}
-	
+
 	/**
 	 * Xu ly qua trinh login
 	 * 
@@ -86,7 +86,7 @@ public class LoginController {
 		// Hien thi trang chu nguoi dung
 		return Constants.USER_DISPLAY_INDEX;
 	}
-	
+
 	/**
 	 * Xu ly khi nguoi dung dang nhap thanh cong
 	 * 
@@ -97,6 +97,6 @@ public class LoginController {
 	@GetMapping("/login/success")
 	public String loginSuccess(Model model, HttpServletRequest request) {
 		// Hien thi trang chu nguoi dung
-		return "redirect:/index";
+		return "redirect:/home";
 	}
 }

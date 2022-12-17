@@ -1,171 +1,47 @@
-<div class="box mblog section mt-30">
-	<div class="box-content">
-		<div class="page-title section">
-			<h3>Kiến thức</h3>
-		</div>
-		<div class="block_box row">
-			<div id="blogcarousel" class="blogs-block  blog-carousel  clearfix" data-items="2">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
-				<div class="blog-block product-layout  col-xs-12">
-					<div class="item">
-						<div class="blog-info">
-							<div class="image">
-								<a href=""><img src="/assets/images/imageProduct/bidoholo-2.jpg" alt=""
-										title="Consectetur adipiscing..." class="img-responsive" /></a>
-								<div class="zoom-post">
-									<a class="hover-zoom" href="/assets/images/imageProduct/bidoholo-1.jpg"
-										data-lightbox="example-set" title="Consectetur adipiscing..."></a>
-									<a class="hover-post" href=""></a>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="box mblog section mt-30">
+		<div class="box-content">
+
+			<div class="page-title section">
+				<h3>Kiến thức</h3>
+			</div>
+
+			<div class="block_box row">
+				<div id="blogcarousel" class="blogs-block  blog-carousel  clearfix" data-items="2">
+					<div class="blog-block product-layout col-xs-12">
+						<div th:each="b: ${items}" class="item">
+							<div class="blog-info">
+								<div class="image">
+									<a th:href="@{|/blog/detail/${b.id}|}">
+										<img th:src="@{|/assets/images/blog/${b.image1}|}" class="img-responsive" />
+									</a>
 								</div>
 							</div>
+							<div class="caption blog-description">
+								<div class="link_info">
+									<span class="block-date">Ngày đăng:</span> <a style="font-weight: bold;"
+										th:utext="${b.time}"></a>
 
-						</div>
-						<div class="caption blog-description">
-							<div class="link_info">
-								<span class="block-date">December 05, 2019</span> <span class="blog-comment hidden">2
-									Comments</span>
-
-								<h4 class="">
-									<a href="">Consectetur adipiscing...</a>
-								</h4>
-								<div class="blog-text">
-									<span>Lorem Ipsum is simply dummy text of the printing
-										and typesetting indus...</span>
+									<h4 class="">
+										<a th:href="@{|/blog/detail/${b.id}|}" th:utext="${b.title}"></a>
+									</h4>
+									<div class="blog-text">
+										<div th:utext="${b.content1}"></div>
+									</div>
+									<a class="blog-read btn-default" th:href="@{|/blog/detail/${b.id}|}"
+										title="Read more">Read
+										more</a>
 								</div>
-								<a class="blog-read btn-default" onclick="" title="Read more">Read
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="blog-block product-layout  col-xs-12">
-					<div class="item">
-						<div class="blog-info">
-							<div class="image">
-								<a href=""><img src="/assets/images/imageProduct/BongCaiXanh-1.jpg" alt=""
-										title="Lorem Ipsum Dolo..." class="img-responsive" /></a>
-								<div class="zoom-post">
-									<a class="hover-zoom" href="/assets/images/imageProduct/BongCaiXanh-2.jpg"
-										data-lightbox="example-set" title="Lorem Ipsum Dolo..."></a> <a
-										class="hover-post" href=""></a>
-								</div>
-							</div>
-
-						</div>
-						<div class="caption blog-description">
-							<div class="link_info">
-								<span class="block-date">December 05, 2019</span> <span class="blog-comment hidden">1
-									Comments</span>
-
-								<h4 class="">
-									<a href="">Lorem Ipsum Dolo...</a>
-								</h4>
-								<div class="blog-text">
-									<span>Lorem Ipsum is simply dummy text of the printing
-										and typesetting indus...</span>
-								</div>
-								<a class="blog-read btn-default" onclick="" title="Read more">Read
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="blog-block product-layout  col-xs-12">
-					<div class="item">
-						<div class="blog-info">
-							<div class="image">
-								<a href=""><img src="/assets/images/imageProduct/cachua-1.jpg" alt=""
-										title="Nam nec rhoncus est ..." class="img-responsive" /></a>
-								<div class="zoom-post">
-									<a class="hover-zoom" href="/assets/images/imageProduct/cachua-2.jpg"
-										data-lightbox="example-set" title="Nam nec rhoncus est ..."></a>
-									<a class="hover-post" href=""></a>
-								</div>
-							</div>
-
-						</div>
-						<div class="caption blog-description">
-							<div class="link_info">
-								<span class="block-date">December 05, 2019</span> <span class="blog-comment hidden">1
-									Comments</span>
-
-								<h4 class="">
-									<a href="">Nam nec rhoncus est ...</a>
-								</h4>
-								<div class="blog-text">
-									<span>Lorem Ipsum is simply dummy text of the printing
-										and typesetting indus...</span>
-								</div>
-								<a class="blog-read btn-default" onclick="" title="Read more">Read
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="blog-block product-layout  col-xs-12">
-					<div class="item">
-						<div class="blog-info">
-							<div class="image">
-								<a href=""><img src="/assets/images/imageProduct/caibap-1.jpg" alt=""
-										title="Duis pulvinar augue nisi..." class="img-responsive" /></a>
-								<div class="zoom-post">
-									<a class="hover-zoom" href="/assets/images/imageProduct/caibap-2.jpg"
-										data-lightbox="example-set" title="Duis pulvinar augue nisi..."></a> <a
-										class="hover-post" href=""></a>
-								</div>
-							</div>
-
-						</div>
-						<div class="caption blog-description">
-							<div class="link_info">
-								<span class="block-date">March 12, 2021</span> <span class="blog-comment hidden">0
-									Comments</span>
-
-								<h4 class="">
-									<a href="">Duis pulvinar augue nisi...</a>
-								</h4>
-								<div class="blog-text">
-									<span>Lorem Ipsum is simply dummy text of the printing
-										and typesetting indus...</span>
-								</div>
-								<a class="blog-read btn-default" onclick="" title="Read more">Read
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="blog-block product-layout  col-xs-12">
-					<div class="item">
-						<div class="blog-info">
-							<div class="image">
-								<a href=""><img src="/assets/images/imageProduct/CaiBoXoi-1.jpg" alt=""
-										title="The standard Lorem Ipsum..." class="img-responsive" /></a>
-								<div class="zoom-post">
-									<a class="hover-zoom" href="/assets/images/imageProduct/CaiBoXoi-2.jpg"
-										data-lightbox="example-set" title="The standard Lorem Ipsum..."></a> <a
-										class="hover-post" href=""></a>
-								</div>
-							</div>
-
-						</div>
-						<div class="caption blog-description">
-							<div class="link_info">
-								<span class="block-date">December 05, 2019</span> <span class="blog-comment hidden">1
-									Comments</span>
-
-								<h4 class="">
-									<a href="">The standard Lorem Ipsum...</a>
-								</h4>
-								<div class="blog-text">
-									<span>Lorem Ipsum is simply dummy text of the printing
-										and typesetting indus...</span>
-								</div>
-								<a class="blog-read btn-default" onclick="" title="Read more">Read
-									more</a>
 							</div>
 						</div>
 					</div>
@@ -173,8 +49,7 @@
 			</div>
 		</div>
 	</div>
-</div>
-
+</body>
 <script>
 	$(document)
 		.ready(
@@ -218,3 +93,5 @@
 						});
 			});
 </script>
+
+</html>
