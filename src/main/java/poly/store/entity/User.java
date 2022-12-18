@@ -58,6 +58,9 @@ public class User implements Serializable {
 	// Thong tin dang ky nhan ban tin
 	private int subscribe;
 
+	// Thong tin hinh anh
+	private String img;
+
 	// Thong tin ngay tao
 	private String Createday;
 

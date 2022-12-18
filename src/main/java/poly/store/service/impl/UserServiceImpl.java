@@ -74,6 +74,7 @@ public class UserServiceImpl implements UserService {
 
 		InformationModel information = new InformationModel();
 
+		information.setImg(user.getImg());
 		information.setPassword(user.getPassword());
 		information.setFullName(user.getFullname());
 		information.setEmail(user.getEmail());
@@ -90,7 +91,7 @@ public class UserServiceImpl implements UserService {
 		String username = ((UserDetails) principal).getUsername();
 
 		User user = userDao.findUserByEmail(username);
-
+		user.setImg(informationModel.getImg());
 		user.setFullname(informationModel.getFullName());
 		user.setBirthday(informationModel.getBirthday());
 		user.setSubscribe(informationModel.getNews());

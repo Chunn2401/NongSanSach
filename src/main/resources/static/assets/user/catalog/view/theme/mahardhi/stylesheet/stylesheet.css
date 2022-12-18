@@ -2705,7 +2705,7 @@ button.pro_comper:hover,
     vertical-align: middle;
     border: none;
     background: var(--secondary-hover-color);
-    color: var(--primary-hover-color);
+    color: #ffffff;
     padding: 12px 30px;
     border-radius: 5px;
 }
