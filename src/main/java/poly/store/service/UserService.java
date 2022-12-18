@@ -31,10 +31,14 @@ public interface UserService {
 
 	List<User> findAllUserAnable();
 
+	List<User> findAllUsers();
+
 	InformationModel getUserAccount();
 
 	InformationModel update(InformationModel informationModel);
 
 	ChangePassModel updatePass(ChangePassModel changePassModel);
+
+	void delete(Integer id);
 
 }

@@ -66,6 +66,8 @@ public class Constants {
 	/* List man hinh admin */
 	// Duong dan den man hinh trang chu quan tri
 	public static final String USER_DISPLAY_ADMIN_INDEX = "admin/dashboard/index";
+	// Duong dan den man hinh trang quan ly danh sach nguoi dung
+	public static final String USER_DISPLAY_ADMIN_USER_LIST = "admin/users/list";
 	// Duong dan den man hinh trang quan ly danh sach nhan vien
 	public static final String USER_DISPLAY_ADMIN_EMPLOYEE_LIST = "admin/employees/list";
 	// Duong dan den man hinh trang quan ly thong tin nhan vien

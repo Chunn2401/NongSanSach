@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import poly.store.common.Constants;
 
 /**
- * Class hien thi man hinh loi 
+ * Class hien thi man hinh loi
  * khi nguoi dung truy cap khong dung vai tro
  * 
  * @author khoa-ph
@@ -17,7 +17,7 @@ import poly.store.common.Constants;
  */
 @Controller
 public class Page404Controller {
-	
+
 	/**
 	 * Hien thi page khi nguoi dung truy cap khong dung vai tro
 	 * 

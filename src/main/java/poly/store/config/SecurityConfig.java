@@ -84,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.passwordParameter("password").failureForwardUrl("/login").defaultSuccessUrl("/login/success", false);
 
 		// Cau hinh dang xuat khoi chuong trinh
-		http.authorizeRequests().and().logout().logoutUrl("/logout").logoutSuccessUrl("/index");
+		http.authorizeRequests().and().logout().logoutUrl("/logout").logoutSuccessUrl("/home");
 
 		// Cau hinh remember me
 		http.authorizeRequests().and().rememberMe().tokenValiditySeconds(86400);

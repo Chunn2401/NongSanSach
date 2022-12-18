@@ -1,6 +1,7 @@
 
 package poly.store.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService {
 	// Thong tin class User Dao
 	@Autowired
 	UserDao userDao;
-	
+
 	/**
 	 * Tim user bang email truyen vao
 	 * 
@@ -68,18 +69,18 @@ public class UserServiceImpl implements UserService {
 	public InformationModel getUserAccount() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
-		
+
 		User user = userDao.findUserByEmail(username);
-		
+
 		InformationModel information = new InformationModel();
-		
+
 		information.setPassword(user.getPassword());
 		information.setFullName(user.getFullname());
 		information.setEmail(user.getEmail());
 		information.setBirthday(user.getBirthday());
 		information.setGender(user.getSex());
 		information.setNews(user.getSubscribe());
-		
+
 		return information;
 	}
 
@@ -87,16 +88,16 @@ public class UserServiceImpl implements UserService {
 	public InformationModel update(InformationModel informationModel) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
-		
+
 		User user = userDao.findUserByEmail(username);
-		
+
 		user.setFullname(informationModel.getFullName());
 		user.setBirthday(informationModel.getBirthday());
 		user.setSubscribe(informationModel.getNews());
 		user.setSex(informationModel.getGender());
-		
+
 		userDao.save(user);
-		
+
 		return informationModel;
 	}
 
@@ -104,13 +105,38 @@ public class UserServiceImpl implements UserService {
 	public ChangePassModel updatePass(ChangePassModel changePassModel) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
-		
+
 		User user = userDao.findUserByEmail(username);
-		
+
 		user.setPassword(changePassModel.getNewPass());
-		
+
 		userDao.save(user);
-		
+
 		return changePassModel;
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+		return userDao.findAllUsers();
+	}
+
+	@Override
+	public void delete(Integer id) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username = ((UserDetails) principal).getUsername();
+		User temp = userDao.findUserByEmail(username);
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		User user = userDao.findById(id).get();
+
+		if (!temp.getEmail().equals(user.getEmail())) {
+			user.setDeleteday(timestamp.toString());
+			user.setPersondelete(temp.getId());
+			userDao.save(user);
+
+		}
+
+		else {
+			throw new RuntimeException();
+		}
 	}
 }

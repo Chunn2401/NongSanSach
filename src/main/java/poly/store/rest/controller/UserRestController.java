@@ -30,32 +30,33 @@ import poly.store.service.UserService;
 public class UserRestController {
 	@Autowired
 	UserService userService;
-	
+
 	@GetMapping("{email}")
 	public User getUserByEmail(@PathVariable("email") String email) {
 		return userService.findUserByEmail(email);
 	}
-	
+
 	@GetMapping()
 	public List<User> getAllUser() {
 		return userService.findAllUserAnable();
 	}
-	
+
+
 	@GetMapping("/account")
 	public InformationModel getUserAccount() {
 		return userService.getUserAccount();
 	}
-	
+
 	@PostMapping
 	public User create(@RequestBody User user) {
 		return userService.create(user);
 	}
-	
+
 	@PutMapping("/account/update")
 	public InformationModel update(@RequestBody InformationModel informationModel) {
 		return userService.update(informationModel);
 	}
-	
+
 	@PutMapping("/account/change-password")
 	public ChangePassModel changePass(@RequestBody ChangePassModel changePassModel) {
 		return userService.updatePass(changePassModel);

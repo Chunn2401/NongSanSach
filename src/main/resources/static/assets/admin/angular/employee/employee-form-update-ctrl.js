@@ -7,8 +7,8 @@ var checkSalary = 0;
 var checkRole = 0;
 var checkEmail = 0;
 
-$(document).ready(function() {
-	$.get("/rest/user", function(data, status) {
+$(document).ready(function () {
+	$.get("/rest/user", function (data, status) {
 		var index = data.findIndex(p => p.email == $("#email").val());
 		data.splice(index, 1);
 		var temp = [];
@@ -19,7 +19,7 @@ $(document).ready(function() {
 	});
 
 
-	$("#fullName").keyup(function() {
+	$("#fullName").keyup(function () {
 		var fullName = this.value;
 		if (fullName == "") {
 			$("#fullName").addClass("is-invalid");
@@ -47,7 +47,7 @@ $(document).ready(function() {
 		handlerButtonSave();
 	});
 
-	$("#department").keyup(function() {
+	$("#department").keyup(function () {
 		var fullName = this.value;
 		if (fullName == "") {
 			$("#department").addClass("is-invalid");
@@ -75,7 +75,7 @@ $(document).ready(function() {
 		handlerButtonSave();
 	});
 
-	$("#phone").keyup(function() {
+	$("#phone").keyup(function () {
 		var phone = this.value;
 		if (phone == "") {
 			$("#phone").addClass("is-invalid");
@@ -99,7 +99,7 @@ $(document).ready(function() {
 		handlerButtonSave();
 	});
 
-	$("#startDate").change(function() {
+	$("#startDate").change(function () {
 		var startDate = this.value;
 		if (startDate == "") {
 			$("#startDate").addClass("is-invalid");
@@ -114,7 +114,7 @@ $(document).ready(function() {
 		handlerButtonSave();
 	});
 
-	$("#position").keyup(function() {
+	$("#position").keyup(function () {
 		var position = this.value;
 		if (position == "") {
 			$("#position").addClass("is-invalid");
@@ -142,7 +142,7 @@ $(document).ready(function() {
 		handlerButtonSave();
 	});
 
-	$("#salary").keyup(function() {
+	$("#salary").keyup(function () {
 		var salary = this.value;
 		if (salary == 0) {
 			$("#salary").addClass("is-invalid");
@@ -166,7 +166,7 @@ $(document).ready(function() {
 		handlerButtonSave();
 	});
 
-	$("#role").change(function() {
+	$("#role").change(function () {
 		var role = this.value;
 		if (role == "") {
 			$("#role").addClass("is-invalid");
@@ -181,7 +181,7 @@ $(document).ready(function() {
 		handlerButtonSave();
 	});
 
-	$("#email").keyup(function() {
+	$("#email").keyup(function () {
 		var email = this.value;
 		if (email == "") {
 			$("#email").addClass("is-invalid");
@@ -248,11 +248,11 @@ function handlerButtonSave() {
 
 var app = angular.module("employee-form-app", []);
 
-app.controller("employee-form-ctrl", function($scope, $http) {
+app.controller("employee-form-ctrl", function ($scope, $http) {
 	$scope.form = {};
 	$scope.info = {};
-	$scope.load = function() {
-		$http.get("/rest/form/employee/"+$("#demo").val()).then(resp => {
+	$scope.load = function () {
+		$http.get("/rest/form/employee/" + $("#demo").val()).then(resp => {
 			$scope.form = resp.data;
 			$("#startDate").val($scope.form.startday);
 			$scope.form.role = String($scope.form.role);
@@ -262,22 +262,22 @@ app.controller("employee-form-ctrl", function($scope, $http) {
 	}
 	$scope.load();
 
-	$scope.update = function() {
-		if (checkForm()) {		
+	$scope.update = function () {
+		if (checkForm()) {
 			$scope.form.startday = String($("#startDate").val());
 			$scope.form.id = $("#demo").val();
 			var item = angular.copy($scope.form);
-            $http.put("/rest/form/employee/"+$("#demo").val(), item).then(resp => {
+			$http.put("/rest/form/employee/" + $("#demo").val(), item).then(resp => {
 				$scope.info.status = true;
 				$scope.info.content = "Bạn đã cập nhật tài khoản thành công!";
 				$("#modalSuccess").modal("show");
 				var path = "/admin/employees/update/" + $scope.form.id;
 				$("a").attr("href", path);
 				console.log(resp);
-            }).catch(error => {
-                alert("Lỗi thêm sản phẩm")             
-                console.log(error);
-            });         
+			}).catch(error => {
+				alert("Cập nhật nhân viên thất bại")
+				console.log(error);
+			});
 		}
 	}
 });
@@ -291,15 +291,15 @@ function isValidEmail(email) {
 }
 
 function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+	var d = new Date(date),
+		month = '' + (d.getMonth() + 1),
+		day = '' + d.getDate(),
+		year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
+	if (month.length < 2)
+		month = '0' + month;
+	if (day.length < 2)
+		day = '0' + day;
 
-    return [year, month, day].join('-');
+	return [year, month, day].join('-');
 }
