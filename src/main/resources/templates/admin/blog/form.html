@@ -24,7 +24,7 @@
 		<!-- Page -->
 		<div class="page">
 			<div class="page-header">
-				<h1 class="page-title">Thông Tin Sản Phẩm</h1>
+				<h1 class="page-title">Thông tin Blog</h1>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="../index.html">Trang
 							chủ</a></li>
@@ -65,17 +65,14 @@
 											<div class="input-group">
 												<span class="input-group-addon"> <i class="fa fa-id-badge"
 														aria-hidden="true"></i>
-												</span> <input id="name" ng-model="form.title" type="text" class="form-control" data-maxlength="
-													300" data-minlength="10"  placeholder="">
+												</span> <input id="name" ng-model="form.title" type="text"
+													class="form-control" data-maxlength="
+													300" data-minlength="10" placeholder="">
 												<div class="invalid-tooltip" id="showErrorName"></div>
 											</div>
 
 										</div>
 									</div>
-
-							
-
-								
 
 									<div class="form-group row">
 										<label class="col-xl-12 col-md-3 form-control-label">Hình
@@ -136,9 +133,6 @@
 
 										</div>
 									</div>
-								</div>
-
-								<div class="col-xl-6 form-horizontal">
 									<div class="form-group row">
 										<label class="col-xl-12 col-md-3 form-control-label">Hình
 											ảnh 4 <span class="required" style="color: red;">*</span>
@@ -159,101 +153,109 @@
 										</div>
 									</div>
 
+								</div>
+
+								<div class="col-xl-6 form-horizontal">
+
 									<div class="col-xl-12 form-horizontal">
-									<div class="form-group row">
-										<label class="col-xl-12 col-md-3 form-control-label">Nội dung 1</label>
-										<div class="col-xl-12 col-md-9">
-											<div class="input-group">
-												<span class="input-group-addon"> <i class="icon wb-info-circle"
-														aria-hidden="true"></i>
-												</span>
-												<textarea data-minlength="100" rows="3" cols="5" class="form-control"
-													id="content1" placeholder="Mô tả..."
-													ng-model="form.content1"></textarea>
-												<div class="invalid-tooltip" id="showErrorDescription1"></div>
-											</div>
+										<div class="form-group row">
+											<label class="col-xl-12 col-md-3 form-control-label">Nội dung 1</label>
+											<div class="col-xl-12 col-md-9">
+												<div class="input-group">
+													<span class="input-group-addon"> <i class="icon wb-info-circle"
+															aria-hidden="true"></i>
+													</span>
+													<textarea data-minlength="100" rows="3" cols="5"
+														class="form-control" id="content1" placeholder="Mô tả..."
+														ng-model="form.content1"></textarea>
+													<div class="invalid-tooltip" id="showErrorDescription1"></div>
+												</div>
 
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-xl-12 form-horizontal">
-									<div class="form-group row">
-										<label class="col-xl-12 col-md-3 form-control-label">Nội dung 2</label>
-										<div class="col-xl-12 col-md-9">
-											<div class="input-group">
-												<span class="input-group-addon"> <i class="icon wb-info-circle"
-														aria-hidden="true"></i>
-												</span>
-												<textarea data-minlength="100" rows="3" cols="5" class="form-control"
-													id="content2" placeholder="Mô tả..."
-													ng-model="form.content2"></textarea>
-												<div class="invalid-tooltip" id="showErrorDescription2"></div>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-xl-12 form-horizontal">
-									<div class="form-group row">
-										<label class="col-xl-12 col-md-3 form-control-label">Nội dung 3</label>
-										<div class="col-xl-12 col-md-9">
-											<div class="input-group">
-												<span class="input-group-addon"> <i class="icon wb-info-circle"
-														aria-hidden="true"></i>
-												</span>
-												<textarea data-minlength="100" rows="3" cols="5" class="form-control"
-													id="content3" placeholder="Mô tả..."
-													ng-model="form.content3"></textarea>
-												<div class="invalid-tooltip" id="showErrorDescription3"></div>
 											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="col-xl-12 form-horizontal">
-									<div class="form-group row">
-										<label class="col-xl-12 col-md-3 form-control-label">Nội dung 4</label>
-										<div class="col-xl-12 col-md-9">
-											<div class="input-group">
-												<span class="input-group-addon"> <i class="icon wb-info-circle"
-														aria-hidden="true"></i>
-												</span>
-												<textarea data-minlength="100" rows="3" cols="5" class="form-control"
-													id="content4" placeholder="Mô tả..."
-													ng-model="form.content4"></textarea>
-												<div class="invalid-tooltip" id="showErrorDescription4"></div>
+									<div class="col-xl-12 form-horizontal">
+										<div class="form-group row">
+											<label class="col-xl-12 col-md-3 form-control-label">Nội dung 2</label>
+											<div class="col-xl-12 col-md-9">
+												<div class="input-group">
+													<span class="input-group-addon"> <i class="icon wb-info-circle"
+															aria-hidden="true"></i>
+													</span>
+													<textarea data-minlength="100" rows="3" cols="5"
+														class="form-control" id="content2" placeholder="Mô tả..."
+														ng-model="form.content2"></textarea>
+													<div class="invalid-tooltip" id="showErrorDescription2"></div>
+												</div>
+
 											</div>
-
 										</div>
 									</div>
-								</div>
-								
-																
 
-								<div class="form-group col-xl-12 text-right padding-top-m">
-									<th:block th:if="${!enableBtnUpdate}">
-										<a th:href="@{/admin/blog/form}" class="btn btn-success text-light"
-											id="validateButton1">
-											<i class="fa fa-refresh" aria-hidden="true"></i> Làm mới
-										</a>
-										<button id="btnSave" type="button" ng-click="save()" class="btn btn-primary">
-											<i class="fa fa-save" aria-hidden="true"></i> Lưu
-										</button>
-									</th:block>
-									<th:block th:if="${enableBtnUpdate}">
-										<input type="hidden" id="demo" th:value="${blogId}" />
-										<a th:href="@{/admin/blog/update/{id}(id=${blogId})}"
-											class="btn btn-success text-light" id="validateButton1">
-											<i class="fa fa-refresh" aria-hidden="true"></i> Khôi phục
-										</a>
-										<button id="btnUpdate" type="button" ng-click="update()" class="btn btn-info">
-											<i class="fa fa-pencil" aria-hidden="true"></i> Cập nhật
-										</button>
-									</th:block>
+									<div class="col-xl-12 form-horizontal">
+										<div class="form-group row">
+											<label class="col-xl-12 col-md-3 form-control-label">Nội dung 3</label>
+											<div class="col-xl-12 col-md-9">
+												<div class="input-group">
+													<span class="input-group-addon"> <i class="icon wb-info-circle"
+															aria-hidden="true"></i>
+													</span>
+													<textarea data-minlength="100" rows="3" cols="5"
+														class="form-control" id="content3" placeholder="Mô tả..."
+														ng-model="form.content3"></textarea>
+													<div class="invalid-tooltip" id="showErrorDescription3"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xl-12 form-horizontal">
+										<div class="form-group row">
+											<label class="col-xl-12 col-md-3 form-control-label">Nội dung 4</label>
+											<div class="col-xl-12 col-md-9">
+												<div class="input-group">
+													<span class="input-group-addon"> <i class="icon wb-info-circle"
+															aria-hidden="true"></i>
+													</span>
+													<textarea data-minlength="100" rows="3" cols="5"
+														class="form-control" id="content4" placeholder="Mô tả..."
+														ng-model="form.content4"></textarea>
+													<div class="invalid-tooltip" id="showErrorDescription4"></div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+
+
+									<div class="form-group col-xl-12 text-right padding-top-m">
+										<a th:href="@{/admin/blog/list}" class="btn btn-warning text-light">
+											<i class="fa fa-list" aria-hidden="true"></i> Danh sách</a>
+										<th:block th:if="${!enableBtnUpdate}">
+											<a th:href="@{/admin/blog/form}" class="btn btn-success text-light"
+												id="validateButton1">
+												<i class="fa fa-refresh" aria-hidden="true"></i> Làm mới
+											</a>
+											<button id="btnSave" type="button" ng-click="save()"
+												class="btn btn-primary">
+												<i class="fa fa-save" aria-hidden="true"></i> Lưu
+											</button>
+										</th:block>
+										<th:block th:if="${enableBtnUpdate}">
+											<input type="hidden" id="demo" th:value="${blogId}" />
+											<a th:href="@{/admin/blog/update/{id}(id=${blogId})}"
+												class="btn btn-success text-light" id="validateButton1">
+												<i class="fa fa-refresh" aria-hidden="true"></i> Khôi phục
+											</a>
+											<button id="btnUpdate" type="button" ng-click="update()"
+												class="btn btn-info">
+												<i class="fa fa-pencil" aria-hidden="true"></i> Cập nhật
+											</button>
+										</th:block>
+									</div>
 								</div>
-							</div>
 						</form>
 					</div>
 				</div>

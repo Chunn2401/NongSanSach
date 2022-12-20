@@ -36,6 +36,7 @@
 				</ol>
 			</div>
 
+			
 			<div class="page-content container-fluid">
 				<!-- Panel Full Example -->
 				<div class="panel">
@@ -329,6 +330,8 @@
 								</div>
 
 								<div class="form-group col-xl-12 text-right padding-top-m">
+									<a th:href="@{/admin/product/list}" class="btn btn-warning text-light">
+										<i class="fa fa-list" aria-hidden="true"></i> Danh sách</a>
 									<th:block th:if="${!enableBtnUpdate}">
 										<a th:href="@{/admin/product/form}" class="btn btn-success text-light"
 											id="validateButton1">

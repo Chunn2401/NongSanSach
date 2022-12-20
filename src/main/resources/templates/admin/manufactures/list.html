@@ -26,16 +26,21 @@
 	<main ng-app="category-app" ng-controller="category-ctrl">
 		<div class="page">
 			<div class="page-header">
-				<h1 class="page-title">Danh Sách Thương Hiệu</h1>
+				<h1 class="page-title">Danh Sách Nhà Phân Phối</h1>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a th:href="@{/admin/index}">Trang
 							chủ</a></li>
-					<li class="breadcrumb-item"><a th:href="@{/admin/categories/list}">Thương hiệu</a></li>
+					<li class="breadcrumb-item"><a th:href="@{/admin/categories/list}">Nhà Phân Phối</a></li>
 					<li class="breadcrumb-item active">Danh sách</li>
 				</ol>
 			</div>
 
+			<div class="page-header">
+				<a th:href="@{/admin/manufactures/form}" class="btn btn-primary text-light">Thêm mới</a>
+			</div>
+			
 			<div class="page-content">
+
 				<!-- Panel Basic -->
 				<div class="panel">
 					<div class="panel-body">

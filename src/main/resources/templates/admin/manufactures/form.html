@@ -24,11 +24,11 @@
 		<!-- Page -->
 		<div class="page">
 			<div class="page-header">
-				<h1 class="page-title">Thông Tin Thương Hiệu</h1>
+				<h1 class="page-title">Thông Tin Nhà Phân Phối</h1>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="../index.html">Trang
 							chủ</a></li>
-					<li class="breadcrumb-item"><a href="javascript:void(0)">Thương hiệu</a></li>
+					<li class="breadcrumb-item"><a href="javascript:void(0)">Nhà Phân Phối</a></li>
 					<li class="breadcrumb-item active">Thông tin</li>
 				</ol>
 			</div>
@@ -44,7 +44,7 @@
 								<div class="col-xl-12 form-horizontal">
 									<div class="form-group row">
 										<label class="col-xl-12 col-md-3 form-control-label">Tên
-											thương hiệu <span class="required" style="color: red;">*</span>
+											Nhà Phân Phối <span class="required" style="color: red;">*</span>
 										</label>
 										<div class="col-xl-12 col-md-9">
 											<div class="input-group">
@@ -108,7 +108,7 @@
 								<div class="col-xl-12 form-horizontal">
 									<div class="form-group row">
 										<label class="col-xl-12 col-md-3 form-control-label">Mô
-											tả 
+											tả
 										</label>
 										<div class="col-xl-12 col-md-9">
 											<div class="input-group">
@@ -116,8 +116,7 @@
 														aria-hidden="true"></i>
 												</span>
 												<textarea data-maxlength="500" data-minlength="7" rows="3" cols="5"
-													class="form-control" id="describe"
-													placeholder="Mô tả..."
+													class="form-control" id="describe" placeholder="Mô tả..."
 													ng-model="form.describe"></textarea>
 												<div class="invalid-tooltip" id="showErrorDescribe"></div>
 											</div>
@@ -128,6 +127,8 @@
 
 
 								<div class="form-group col-xl-12 text-right padding-top-m">
+									<a th:href="@{/admin/manufactures/list}" class="btn btn-primary text-light">
+										<i class="fa fa-list" aria-hidden="true"></i> Danh sách</a>
 									<th:block th:if="${!enableBtnUpdate}">
 										<a th:href="@{/admin/manufactores/form}" class="btn btn-success text-light"
 											id="validateButton1">
@@ -137,6 +138,7 @@
 											<i class="fa fa-save" aria-hidden="true"></i> Lưu
 										</button>
 									</th:block>
+
 									<th:block th:if="${enableBtnUpdate}">
 										<input type="hidden" id="demo" th:value="${manufacturerId}" />
 										<a th:href="@{/admin/manufactores/update/{id}(id=${manufacturerId})}"
