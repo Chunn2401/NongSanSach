@@ -29,29 +29,31 @@ app.controller("information-ctrl", function ($scope, $http) {
     };
     $scope.initialize();
 
-    // // upload image 1
-    // $scope.imageImageChanged = function (files) {
-    //     var data = new FormData();
-    //     data.append("file", files[0]).name;
-   
-    //     $http
-    //         .post("/rest/upload/user", data, {
-    //             transformRequest: angular.identity,
-    //             headers: { "Content-Type": undefined },
-    //         })
-    //         .then((resp) => {
-    //             $scope.form.img = resp.data.name;
-    //         })
-    //         .catch((error) => {
-    //             alert("loi load hinh");
-    //             console.log(error);
-    //         });
-    // };
+    // upload sp
+    $scope.imageChanged = function (files) {
+        // tạo formdata
+        var data = new FormData();
+        // lấy file ngừ ta chọn bỏ vô form data
+        data.append('file', files[0]);
+        // post lên sv
+        $http.post('/rest/upload/user', data, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        }).then(resp => {
+            // lấy name của data bỏ vô cái form
+            $scope.form.img = resp.data.name;
+            // alert("Upload hình ảnh thành công !");
+        }).catch(error => {
+            alert("Lỗi upload hình ảnh !");
+            console.log("Error", error)
+        })
+    }
 
     $scope.update = function () {
         if (checkForm()) {
             // $scope.form.birthday = String($("#birthday").val());
             // $scope.form.img = String($("#img").val().split('C:\\fakepath\\'));
+
             var item = angular.copy($scope.form);
             $http.put(`/rest/user/account/update`, item).then(resp => {
 

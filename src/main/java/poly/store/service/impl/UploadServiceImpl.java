@@ -23,6 +23,7 @@ public class UploadServiceImpl implements UploadService {
 		if(!dir.exists()) {
 			dir.mkdirs();
 		}
+		// src/main/resources/static/assets/images/
 		String name = file.getOriginalFilename();
 		try {
 			File savedFile = new File(dir, name);

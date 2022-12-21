@@ -44,6 +44,12 @@
 										<span><strong>Đăng nhập</strong></span>
 									</th:block>
 									<th:block th:if="${#request.remoteUser}">
+
+										<!-- <label for="image">
+											<img ng-src="{{'/assets/images/user/' + form.img}}"
+												style="border-radius: 50%;" width="30" height="30">
+												
+										</label> -->
 										<Span><Strong>Thông tin cá nhân</Strong></Span>
 									</th:block>
 								</span>
@@ -177,7 +183,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="header-left col-lg-3 col-md-3 hidden-sm hidden-xs">
-							<a title="Happy Trade" href="/ " rel="home">
+							<a title="" href="/ " rel="home">
 								<img width="250" height="50" class="header_logo header-logo" alt="Happy Trade"
 									src="/assets/images/logo/Logo.jpg" /></a>
 						</div>
@@ -229,5 +235,6 @@
 		</header>
 	</div>
 </body>
+
 
 </html>
