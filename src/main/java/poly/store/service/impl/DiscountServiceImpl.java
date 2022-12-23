@@ -16,23 +16,23 @@ import poly.store.model.DiscountModel;
 import poly.store.service.DiscountService;
 
 @Service
-public class DiscountServiceImpl implements DiscountService{
+public class DiscountServiceImpl implements DiscountService {
 	@Autowired
 	DiscountDao discountDao;
-	
+
 	@Autowired
 	UserDao userDao;
-	
+
 	@Override
 	public DiscountModel createDiscount(DiscountModel discountModel) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
-		
+
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		User temp = userDao.findUserByEmail(username);
-		
+
 		Discount discount = new Discount();
-		
+
 		discount.setName(discountModel.getName());
 		discount.setCode(discountModel.getCode());
 		discount.setPrice(discountModel.getPrice());
@@ -40,7 +40,7 @@ public class DiscountServiceImpl implements DiscountService{
 		discount.setExpiration(discountModel.getExpiration());
 		discount.setQuality(discountModel.getQuality());
 		discount.setMoneylimit(discountModel.getMoneyLimit());
-		
+
 		discount.setPersoncreate(temp.getId());
 		discount.setCreateday(timestamp.toString());
 		discountDao.save(discount);
@@ -48,7 +48,7 @@ public class DiscountServiceImpl implements DiscountService{
 	}
 
 	@Override
-	public List<Discount> findAll() {	
+	public List<Discount> findAll() {
 		return discountDao.getListDiscount();
 	}
 
@@ -69,10 +69,10 @@ public class DiscountServiceImpl implements DiscountService{
 	@Override
 	public void delete(Integer id) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String username = ((UserDetails)principal).getUsername();
+		String username = ((UserDetails) principal).getUsername();
 		User temp = userDao.findUserByEmail(username);
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		
+
 		Discount discount = discountDao.findById(id).get();
 		discount.setPersondelete(temp.getId());
 		discount.setDeleteday(timestamp.toString());
@@ -83,10 +83,10 @@ public class DiscountServiceImpl implements DiscountService{
 	public DiscountModel updateDiscount(DiscountModel discountModel) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
-		
+
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		User temp = userDao.findUserByEmail(username);
-		
+
 		Discount discount = discountDao.findById(discountModel.getId()).get();
 		discount.setName(discountModel.getName());
 		discount.setCode(discountModel.getCode());
@@ -95,7 +95,7 @@ public class DiscountServiceImpl implements DiscountService{
 		discount.setExpiration(discountModel.getExpiration());
 		discount.setQuality(discountModel.getQuality());
 		discount.setMoneylimit(discountModel.getMoneyLimit());
-		
+
 		discount.setUpdateday(timestamp.toString());
 		discount.setPersonupdate(temp.getId());
 		discountDao.save(discount);

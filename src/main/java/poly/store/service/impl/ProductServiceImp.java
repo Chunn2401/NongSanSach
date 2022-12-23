@@ -227,18 +227,18 @@ public class ProductServiceImp implements ProductService {
 			int min = 0;
 			int max = 999999999;
 			if (price.equals("1")) {
-				max = 3000000;
+				max = 300000;
 			} else if (price.equals("2")) {
-				min = 3000000;
-				max = 5000000;
+				min = 300000;
+				max = 500000;
 			} else if (price.equals("3")) {
-				min = 5000000;
-				max = 8000000;
+				min = 500000;
+				max = 800000;
 			} else if (price.equals("4")) {
-				min = 8000000;
-				max = 13000000;
+				min = 800000;
+				max = 2000000;
 			} else {
-				min = 13000000;
+				min = 130000;
 			}
 			check = 1;
 			prePrice = cb.between(from.get("price"), min, max);

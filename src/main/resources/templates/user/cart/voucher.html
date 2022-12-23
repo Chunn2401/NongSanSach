@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/formtesst :: dynamic(
+                ~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="/assets/admin/global/vendor/datatables.net/jquery.dataTables599c.js?v4.0.2"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/assets/admin/angular/angular-datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+</th:block>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <main ng-app="discount-app" ng-controller="discount-ctrl">
+        <div ng-repeat="item in items" class="coupon">
+            <div class="aaaa" style="background-color:white">
+                <h3>{{item.name}}</h3>
+                <p>Lorem ipsum dolor sit amet, et nam pertinax gloriatur. Sea te minim soleat senserit,.</p>
+            </div>
+            <div class="aaaa">
+                <p>Mã giảm giá: <span class="promo">BOH232</span></p>
+                <p class="expire">Expires: Jan 03, 2021</p>
+            </div>
+        </div>
+    </main>
+</body>
+<th:block id="javascriptResource">
+    <script src="/assets/admin/base/assets/examples/js/tables/datatable.min599c.js?v4.0.2"></script>
+    <script src="/assets/admin/angular/discount/discount-list-ctrl.js"></script>
+</th:block>
+
+</html>

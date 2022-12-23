@@ -11,17 +11,22 @@
 							<div id="filter-group2">
 								<div class="checkbox">
 									<label> <input type="checkbox" name="gia" th:checked="${price=='1'}" value="1" />
-										Dưới 3 triệu
+										Dưới 300.000₫
 									</label>
 								</div>
 								<div class="checkbox">
 									<label> <input type="checkbox" name="gia" th:checked="${price=='2'}" value="2" />
-										Từ 3 - 5 triệu
+										Từ 300.000₫ - 500.000₫
 									</label>
 								</div>
 								<div class="checkbox">
 									<label> <input type="checkbox" name="gia" th:checked="${price=='3'}" value="3" />
-										Từ 5 - 8 triệu
+										Từ 500.000₫ - 800.000₫
+									</label>
+								</div>
+								<div class="checkbox">
+									<label> <input type="checkbox" name="gia" th:checked="${price=='4'}" value="4" />
+										Trên 800.000₫
 									</label>
 								</div>
 								<!-- <div class="checkbox">
@@ -38,7 +43,7 @@
 						</div>
 					</div>
 					<div class="list-group-items">
-						<a class="list-group-item">Hãng</a>
+						<a class="list-group-item">Nhà phân phối</a>
 						<div class="list-group-item">
 							<div id="filter-group3">
 								<th:block th:each="item: ${listManu}">
