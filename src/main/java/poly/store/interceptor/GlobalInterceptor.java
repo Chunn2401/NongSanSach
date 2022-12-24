@@ -13,18 +13,17 @@ import poly.store.service.InformationShopService;
 import poly.store.service.SessionService;
 import poly.store.service.ShoppingCartService;
 
-
 @Component
 public class GlobalInterceptor implements HandlerInterceptor {
 	@Autowired
 	CategoryService categoryService;
-	
+
 	@Autowired
 	InformationShopService informationService;
-	
+
 	@Autowired
 	SessionService sessionService;
-	
+
 	@Autowired
 	ShoppingCartService cartService;
 

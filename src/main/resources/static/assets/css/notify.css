@@ -1,0 +1,84 @@
+#notification-area {
+    position: fixed;
+    top: 0px;
+    right: 10px;
+    width: 300px;
+    display: none;
+    flex-direction: column;
+}
+
+#notification-area .notification {
+    position: relative;
+    padding-left: 50px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #111;
+    color: #34495E;
+    font-family: "Raleway";
+    font-size: 14px;
+    border-radius: 5px;
+    margin: 5px 0px;
+    opacity: 0;
+    left: 20px;
+    min-height: 6vh !important;
+    animation: showNotification 500ms ease-in-out forwards;
+}
+
+@keyframes showNotification {
+    to {
+        opacity: 1;
+        left: 0px;
+    }
+}
+
+
+#notification-area .notification-color.success {
+    position: absolute !important;
+    width: 5px !important;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: #6abd45 !important;
+}
+
+#notification-area .notification-color.danger {
+    position: absolute !important;
+    width: 5px !important;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: #E74C3C !important;
+
+}
+
+
+#notification-area .notification.success {
+    background: white;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+}
+
+#notification-area .notification.danger {
+    background: white;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+}
+
+
+
+#notification-area .notification-icon.success {
+    position: absolute !important;
+    left: 15px;
+    top: 17px;
+    color: #2ECC71 !important;
+}
+
+#notification-area .notification-icon.danger {
+    position: absolute !important;
+    left: 15px;
+    top: 17px;
+    color: #E74C3C !important;
+}

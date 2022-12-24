@@ -14,15 +14,17 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import poly.store.model.MailInfo;
+import poly.store.model.Mailform;
 import poly.store.service.MailerService;
 
 @Service
 public class MailerServiceImpl implements MailerService {
 	@Autowired
 	JavaMailSender sender;
-	
+
 	List<MailInfo> list = new ArrayList<>();
-	
+	List<Mailform> listfrom = new ArrayList<>();
+
 	@Override
 	public void send(MailInfo mail) throws MessagingException {
 		// TODO Auto-generated method stub
@@ -31,27 +33,27 @@ public class MailerServiceImpl implements MailerService {
 		helper.setFrom(mail.getFrom());
 		helper.setTo(mail.getTo());
 		helper.setSubject(mail.getSubject());
-		helper.setText(mail.getBody(),true);
+		helper.setText(mail.getBody(), true);
 		helper.setReplyTo(mail.getFrom());
-		
+
 		String[] cc = mail.getCc();
-		if(cc!=null && cc.length > 0) {
+		if (cc != null && cc.length > 0) {
 			helper.setCc(cc);
 		}
-		
+
 		String[] bcc = mail.getBcc();
-		if(bcc!=null && bcc.length > 0) {
+		if (bcc != null && bcc.length > 0) {
 			helper.setBcc(bcc);
 		}
-		
+
 		String[] attachments = mail.getAttachment();
-		if(attachments!=null && attachments.length>0) {
-			for(String path: attachments) {
+		if (attachments != null && attachments.length > 0) {
+			for (String path : attachments) {
 				File file = new File(path);
 				helper.addAttachment(file.getName(), file);
 			}
 		}
-		
+
 		sender.send(message);
 	}
 
@@ -72,17 +74,37 @@ public class MailerServiceImpl implements MailerService {
 		// TODO Auto-generated method stub
 		queue(new MailInfo(to, subject, body));
 	}
-	
+
 	@Scheduled(fixedDelay = 1000)
 	public void run() {
-		while(!list.isEmpty()) {
+		while (!list.isEmpty()) {
 			MailInfo mail = list.remove(0);
 			try {
 				this.send(mail);
-			}catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void sendfrom(Mailform mail) throws MessagingException {
+		// TODO Auto-generated method stub
+		MimeMessage message = sender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+		helper.setFrom(mail.getFrom());
+		helper.setTo(mail.getTo());
+		helper.setSubject("Có một lời nhắn từ " + mail.getSubject());
+		helper.setText(mail.getBody(), true);
+
+		sender.send(message);
+	}
+
+	@Override
+	public void sendfrom(String to, String subject, String body) throws MessagingException {
+
+		this.sendfrom(new Mailform(to, subject, body));
+
 	}
 
 }
