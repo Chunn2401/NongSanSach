@@ -326,4 +326,12 @@ public class ProductServiceImp implements ProductService {
 		productDao.save(product);
 	}
 
+	@Override
+	public List<Product> searchProducts(String name) {
+		List<Product> product = productDao.searchProducts(name);
+		return product;
+	}
+
+
+
 }

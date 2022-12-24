@@ -3,10 +3,13 @@ package poly.store.dao;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import poly.store.entity.Product;
 
@@ -40,6 +43,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
 	@Query(value = "SELECT TOP(10) * FROM Products WHERE DeleteDay is NULL and Active = 1 and Manu_Id = ?1 ORDER BY Views DESC", nativeQuery = true)
 	List<Product> getListProductRelated(int manuId);
+<<<<<<< Updated upstream
 
 	// @Query("SELECT p FORM Product p WHERE" +
 	// 		"p.name LIKE CONCAT('%',:name,'%')")
@@ -48,4 +52,16 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 	// @Query(value = "SELECT p FORM Products p WHERE" +
 	// 		"p.name LIKE CONCAT('%',:name,'%')", nativeQuery = true)
 	// List<Product> SearchProductSQL(String name);
+=======
+	
+	// JPQL
+	@Query("SELECT p FROM Product p WHERE " +
+			"p.name LIKE CONCAT('%',:name,'%')")
+	List<Product> searchProducts(String name);
+
+	//SQL
+	// @Query(value = "SELECT * FROM Products p WHERE" +
+	// 		"p.Name LIKE CONCAT('%',:name,'%')")
+	// List<Product> searchProductsSQL(String name);
+>>>>>>> Stashed changes
 }

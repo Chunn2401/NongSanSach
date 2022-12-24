@@ -48,4 +48,6 @@ public interface ProductService {
 
 	void updateQuality(Product product);
 
+	List<Product> searchProducts(String name);
+
 }
