@@ -32,8 +32,8 @@
 							<td class="text-left">
 								<form th:action="@{|/cart/update/${item.id}|}" method="post">
 									<div class="cart_input_block input-group btn-block" style="max-width: 200px;">
-										<input type="text" name="quantity" th:value="${item.quality}" size="1"
-											class="form-control" /> <span class="input-group-btn">
+										<input type="number" name="quantity" th:value="${item.quality}" min="0" step="1" size="1"
+											class="form-control" style="width: 90px"/> <span class="input-group-btn">
 											<button th:formaction="@{|/cart/update/${item.id}|}" type="submit"
 												data-toggle="tooltip" title="Cập nhật" class="btn btn-primary">
 												<i class="fa fa-refresh"></i>
