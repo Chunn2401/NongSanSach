@@ -62,6 +62,8 @@ public class Constants {
 	public static final String USER_DISPLAY_BLOGS = "user/blog/blog_form";
 	// Duong dan den man hinh blog chi tiet
 	public static final String USER_DISPLAY_BLOGS_DETAILS = "user/blog/blog_detail_form";
+	// Duong dan den man hinh blog chi tiet
+	public static final String USER_DISPLAY_SEARCH_DETAIL = "user/ketqua/search_form";
 
 	/* List man hinh admin */
 	// Duong dan den man hinh trang chu quan tri

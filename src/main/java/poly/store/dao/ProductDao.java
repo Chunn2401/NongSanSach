@@ -40,4 +40,12 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
 	@Query(value = "SELECT TOP(10) * FROM Products WHERE DeleteDay is NULL and Active = 1 and Manu_Id = ?1 ORDER BY Views DESC", nativeQuery = true)
 	List<Product> getListProductRelated(int manuId);
+
+	// @Query("SELECT p FORM Product p WHERE" +
+	// 		"p.name LIKE CONCAT('%',:name,'%')")
+	// List<Product> SearchProduct(String name);
+
+	// @Query(value = "SELECT p FORM Products p WHERE" +
+	// 		"p.name LIKE CONCAT('%',:name,'%')", nativeQuery = true)
+	// List<Product> SearchProductSQL(String name);
 }
