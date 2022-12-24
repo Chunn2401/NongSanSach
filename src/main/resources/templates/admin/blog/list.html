@@ -77,10 +77,10 @@
 									<td>{{item.id}}</td>
 									<td>{{item.title}}</td>
 									<td>{{item.time | date:'dd-MM-yyyy'}}</td>
-									<td>...</td>
-									<td>...</td>
-									<td>...</td>
-									<td>...</td>
+									<td>{{item.content1.slice(0,25)}}...</td>
+									<td>{{item.content2.slice(0,25)}}...</td>
+									<td>{{item.content3.slice(0,25)}}...</td>
+									<td>{{item.content4.slice(0,25)}}...</td>
 
 									<td><a ng-click="update(item)"
 											class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"
