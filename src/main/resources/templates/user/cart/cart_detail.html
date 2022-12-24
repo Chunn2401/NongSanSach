@@ -32,8 +32,9 @@
 							<td class="text-left">
 								<form th:action="@{|/cart/update/${item.id}|}" method="post">
 									<div class="cart_input_block input-group btn-block" style="max-width: 200px;">
-										<input type="number" name="quantity" th:value="${item.quality}" min="0" step="1" size="1"
-											class="form-control" style="width: 90px"/> <span class="input-group-btn">
+										<input type="number" name="quantity" th:value="${item.quality}" min="0" step="1"
+											size="1" class="form-control" style="width: 90px" /> <span
+											class="input-group-btn">
 											<button th:formaction="@{|/cart/update/${item.id}|}" type="submit"
 												data-toggle="tooltip" title="Cập nhật" class="btn btn-primary">
 												<i class="fa fa-refresh"></i>
@@ -53,54 +54,66 @@
 					</th:block>
 				</tbody>
 			</table>
-			<table class="table table-hover dataTable table-striped w-full dt-responsive nowrap" datatable="ng"
-				dt-options="vm.dtOptions" dt-instance="vm.dtInstance" dt-column-defs="vm.dtColumnDefs">
-				<thead>
-					<tr>
-						<th>Tên</th>
-						<th>Mã</th>
-						<th>Giá</th>
-						<th>Số lượng</th>
-						<th>Ngày áp dụng</th>
-						<th>Ngày hết hạn</th>
-						<th>Tiền giới hạn</th>
-						<th>Hoạt động</th>
-					</tr>
-				</thead>
-				<tfoot>
-					<tr>
-						<th>Tên</th>
-						<th>Mã</th>
-						<th>Giá</th>
-						<th>Số lượng</th>
-						<th>Ngày áp dụng</th>
-						<th>Ngày hết hạn</th>
-						<th>Tiền giới hạn</th>
-						<th>Hoạt động</th>
-					</tr>
-				</tfoot>
-				<tbody>
-					<tr ng-repeat="item in items">
-						<td>{{item.name}}</td>
-						<td>{{item.code}}</td>
-						<td>{{item.price | currency : '' : 0}}</td>
-						<td>{{item.quality}}</td>
-						<td>{{item.applyday |
-							date:'dd/MM/yyyy'}}</td>
-						<td>{{item.expiration |
-							date:'dd/MM/yyyy'}}</td>
-						<td>{{item.moneylimit | currency : '' : 0}}</td>
-						<td><a ng-click="update(item)"
-								class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row" title="Cập nhật">
-								<i class="icon wb-edit"></i>
-							</a> <a ng-click="showModal(item)"
-								class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row"><i
-									class="icon wb-trash" title="Xóa"></i></a></td>
-					</tr>
-				</tbody>
-			</table>
+
 		</div>
 	</form>
+	<main ng-app="discount-app" ng-controller="discount-ctrl">
+		<div class="page-content">
+			<!-- Panel Basic -->
+			<div class="panel">
+				<div class="panel-body">
+					<table class="table table-hover dataTable table-striped w-full dt-responsive nowrap" datatable="ng"
+						dt-options="vm.dtOptions" dt-instance="vm.dtInstance" dt-column-defs="vm.dtColumnDefs">
+						<thead>
+							<tr>
+								<th>Tên</th>
+								<th>Mã</th>
+								<th>Giá</th>
+								<th>Số lượng</th>
+								<th>Ngày áp dụng</th>
+								<th>Ngày hết hạn</th>
+								<th>Tiền giới hạn</th>
+								<th>Hoạt động</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th>Tên</th>
+								<th>Mã</th>
+								<th>Giá</th>
+								<th>Số lượng</th>
+								<th>Ngày áp dụng</th>
+								<th>Ngày hết hạn</th>
+								<th>Tiền giới hạn</th>
+								<th>Hoạt động</th>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr ng-repeat="item in items">
+								<td>{{item.name}}</td>
+								<td>{{item.code}}</td>
+								<td>{{item.price | currency : '' : 0}}</td>
+								<td>{{item.quality}}</td>
+								<td>{{item.applyday |
+									date:'dd/MM/yyyy'}}</td>
+								<td>{{item.expiration |
+									date:'dd/MM/yyyy'}}</td>
+								<td>{{item.moneylimit | currency : '' : 0}}</td>
+								<td><a ng-click="update(item)"
+										class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"
+										title="Cập nhật">
+										<i class="icon wb-edit"></i>
+									</a> <a ng-click="showModal(item)"
+										class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row"><i
+											class="icon wb-trash" title="Xóa"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- End Panel Basic -->
+		</div>
+	</main>
 	<h3>Bạn thích làm gì tiếp theo?</h3>
 	<p>Chọn xem bạn có mã giảm giá hoặc điểm thưởng muốn sử dụng hoặc
 		muốn ước tính chi phí giao hàng của mình.</p>
@@ -261,4 +274,3 @@
 		</div>
 	</div>
 </div>
-<script src="/assets/user/angular/discount-list-ctrl.js"></script>
