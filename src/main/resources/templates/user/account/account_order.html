@@ -65,10 +65,11 @@
 								<a th:href="@{|/account/order/invoice/${item.id}|}" title="Xem hóa đơn"
 									class="btn btn-primary"><i class="fas fa-receipt"></i>
 								</a>
-								<a data-toggle="tooltip" title="Hủy đơn" class="btn btn-danger"
+								<!-- <a data-toggle="tooltip" title="Hủy đơn" class="btn btn-danger"
 									th:classappend="${(item.status=='3') || (item.status=='2')?'disabled':''}"><i
 										class="fa fa-times"></i>
-								</a>
+								</a> -->
+
 							</td>
 						</tr>
 					</tbody>
@@ -84,6 +85,7 @@
 	</main>
 
 </body>
+
 <th:block id="material">
 </th:block>
 

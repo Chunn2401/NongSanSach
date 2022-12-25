@@ -6,7 +6,7 @@
         max-width: 500px;
         padding: 2px 16px;
         background-color: #ffffff;
-        float: left;
+        /* float: left; */
     }
 
     .promo {
@@ -18,17 +18,56 @@
         color: red;
     }
 </style>
-<th:block th:each="item: ${items}">
-    <div class="coupon">
-        <div class="" style="background-color:white">
-            <h2><b>[[${item.name}]]</b></h2>
-            <p>Điều kiện áp ụng: Có đơn hàng lớn hơn hoặc bằng [[${item.Moneylimit}]] VNĐ</p>
-        </div>
-        <div class="">
-            <p>Mã giảm giá: <span class="promo" id="coppy">[[${item.code}]]</span></p>
-            <p class="expire">Thời hạn: [[${item.expiration}]]</p>
-        </div>
 
+<div class="box all-products latest mt-30">
+    <div class="box-heading">
+        <div class="box-content">
+            <div class="page-title toggled">
+                <h3>Săn voucher</h3>
+            </div>
+            <div class="block_box row">
+                <div id="latest-carousel" class="box-product product-carousel clearfix" data-items="4">
+                    <th:block th:each="item: ${items}">
+                        <div class="product-content">
+                            <div class="product-layout col-mt-12">
+
+                                <div class="coupon">
+                                    <div class="" style="background-color:white">
+                                        <h2><b>[[${item.name}]]</b></h2>
+                                        <p>Điều kiện áp ụng: Có đơn hàng lớn hơn hoặc bằng
+                                            [[${item.Moneylimit}]] VNĐ</p>
+                                    </div>
+                                    <div class="">
+                                        <p>Mã giảm giá: <input style="border-radius: 5px;" class="promo"
+                                                th:value="${item.code}" />
+
+                                        </p>
+                                        <p class="expire">Thời hạn: [[${item.expiration}]]</p>
+
+                                    </div>
+
+                                </div>
+                                <br>
+
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
     </div>
-    <br>
-</th:block>
+</div>
+<!-- <script>
+    function selectText(containerid) {
+        if (document.selection) { // IE
+            var range = document.body.createTextRange();
+            range.moveToElementText(document.getElementById(containerid));
+            range.select();
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(document.getElementById(containerid));
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+        }
+    }
+</script> -->

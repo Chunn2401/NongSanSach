@@ -121,7 +121,7 @@ app.controller("address-add-ctrl", function ($scope, $http) {
     $scope.ward = [];
     $scope.form = {};
     $scope.initialize = function () {
-        
+
         $http.get("/rest/province").then((resp) => {
             $scope.province = resp.data;
         });
@@ -153,6 +153,7 @@ app.controller("address-add-ctrl", function ($scope, $http) {
             $http.post(`/rest/address/form`, item).then((resp) => {
                 $scope.form = {};
                 $("#alert").show();
+                window.open("/account/address")
             });
         }
     }
