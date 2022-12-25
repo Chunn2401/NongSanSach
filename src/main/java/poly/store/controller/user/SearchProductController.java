@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import poly.store.common.Constants;
 import poly.store.entity.Manufacturer;
 import poly.store.entity.Product;
-import poly.store.entity.User;
 import poly.store.model.ShowProduct;
 import poly.store.service.CommentService;
 import poly.store.service.ManufacturerService;
 import poly.store.service.ProductService;
 import poly.store.service.UserRoleService;
-import poly.store.service.UserService;
 
 /**
  * Class de hien thi trang chu nguoi dung
@@ -30,7 +28,7 @@ import poly.store.service.UserService;
  * @version 1.00
  */
 @Controller
-public class IndexController {
+public class SearchProductController {
 	@Autowired
 	UserRoleService userRoleService;
 
@@ -43,24 +41,17 @@ public class IndexController {
 	@Autowired
 	CommentService commentService;
 
-	@Autowired
-	UserService userService;
-
 	/**
 	 * Hien thi trang chu cua giao dien nguoi dung
 	 * 
 	 * @return trang index.html
 	 */
-	@GetMapping("/home")
-	public String index(Model model, String mail) {
-		User list = userService.findUserByEmail(mail);
-		model.addAttribute("in4", list);
-		return Constants.USER_DISPLAY_INDEX;
-	}
-
-	@GetMapping("/")
-	public String load(Model model) {
-		return Constants.USER_DISPLAY_LOAD;
+	@GetMapping("/search")
+    // @RequestParam("search") String search,
+	public String index(Model model) {
+        // List<Product> list = productService.searchProducts(search);
+        // model.addAttribute("searchProduct", list);
+		return Constants.USER_DISPLAY_SEARCH_DETAIL;
 	}
 
 	@ModelAttribute("manufacturer")
@@ -68,15 +59,20 @@ public class IndexController {
 		List<Manufacturer> list = manufacturerService.findAll();
 		return list;
 	}
+	
 
-	@ModelAttribute("latestProduct")
-	public List<List<ShowProduct>> getLatestProduct(Model model) {
-		List<Product> list = productService.getListLatestProduct();
+	@ModelAttribute("searchProduct")
+    // public ResponseEntity<List<Product>> searchProducts(@RequestParam("name") String name){
+	// 	return ResponseEntity.ok(productService.searchProducts(name));
+	// }
+	public List<List<ShowProduct>> searchProducts(@RequestParam("search") String search, Model model){
+
+		List<Product> list = productService.searchProducts(search);
 
 		List<ShowProduct> temp = new ArrayList<>();
 
 		List<List<ShowProduct>> result = new ArrayList<List<ShowProduct>>();
-
+		// hiển thị comment và đánh giá từ người dùng
 		for (int i = 0; i < list.size(); i++) {
 			int totalStar = commentService.getAllStarCommentByProductNameSearch(list.get(i).getNamesearch());
 
@@ -95,39 +91,9 @@ public class IndexController {
 				}
 			}
 		}
-
 		return result;
 	}
-
-	// @ModelAttribute("searchProduct")
-	// public List<List<ShowProduct>> searchProducts(@RequestParam("search") String search, Model model){
-
-	// 	List<Product> list = productService.searchProducts(search);
-
-	// 	List<ShowProduct> temp = new ArrayList<>();
-
-	// 	List<List<ShowProduct>> result = new ArrayList<List<ShowProduct>>();
-	// 	// hiển thị comment và đánh giá từ người dùng
-	// 	for (int i = 0; i < list.size(); i++) {
-	// 		int totalStar = commentService.getAllStarCommentByProductNameSearch(list.get(i).getNamesearch());
-
-	// 		ShowProduct showProduct = new ShowProduct();
-	// 		showProduct.setProduct(list.get(i));
-	// 		showProduct.setTotalStar(totalStar);
-	// 		temp.add(showProduct);
-	// 		if (i % 2 != 0) {
-	// 			result.add(temp);
-	// 			temp = new ArrayList<>();
-	// 		}
-	// 		if (i == (list.size() - 1)) {
-	// 			if (i % 2 == 0) {
-	// 				result.add(temp);
-	// 				temp = new ArrayList<>();
-	// 			}
-	// 		}
-	// 	}
-	// 	return result;
-	// }
+    
 
 	@ModelAttribute("viewsProduct")
 	public List<ShowProduct> getViewsProduct(Model model) {

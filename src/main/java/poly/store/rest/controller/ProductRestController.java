@@ -43,10 +43,10 @@ public class ProductRestController {
 		return productService.findAll();
 	}
 
-	@GetMapping("/search")
-	public ResponseEntity<List<Product>> searchProducts(@RequestParam("name") String name){
-		return ResponseEntity.ok(productService.searchProducts(name));
-	}
+	// @GetMapping("/search")
+	// public ResponseEntity<List<Product>> searchProducts(@RequestParam("name") String name){
+	// 	return ResponseEntity.ok(productService.searchProducts(name));
+	// }
 
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Integer id) {
