@@ -65,6 +65,8 @@ public class Constants {
 	// Duong dan den man hinh blog chi tiet
 	public static final String USER_DISPLAY_SEARCH_DETAIL = "user/ketqua/search_form";
 
+	public static final String USER_DISPLAY_DISCOUNT = "user/cart/voucher";
+
 	/* List man hinh admin */
 	// Duong dan den man hinh trang chu quan tri
 	public static final String USER_DISPLAY_ADMIN_INDEX = "admin/dashboard/index";

@@ -1,0 +1,34 @@
+<style>
+    .coupon {
+        border: 5px dotted rgb(43, 43, 43);
+        width: 80%;
+        border-radius: 15px;
+        max-width: 500px;
+        padding: 2px 16px;
+        background-color: #ffffff;
+        float: left;
+    }
+
+    .promo {
+        background: #ffffff;
+        padding: 3px;
+    }
+
+    .expire {
+        color: red;
+    }
+</style>
+<th:block th:each="item: ${items}">
+    <div class="coupon">
+        <div class="" style="background-color:white">
+            <h2><b>[[${item.name}]]</b></h2>
+            <p>Điều kiện áp ụng: Có đơn hàng lớn hơn hoặc bằng [[${item.Moneylimit}]] VNĐ</p>
+        </div>
+        <div class="">
+            <p>Mã giảm giá: <span class="promo" id="coppy">[[${item.code}]]</span></p>
+            <p class="expire">Thời hạn: [[${item.expiration}]]</p>
+        </div>
+
+    </div>
+    <br>
+</th:block>
