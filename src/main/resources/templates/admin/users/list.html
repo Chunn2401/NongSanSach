@@ -45,6 +45,7 @@
                             <thead>
                                 <tr>
                                     <th>Email</th>
+                                    <th>Mật khẩu</th>
                                     <th>Họ và tên</th>
                                     <th>SĐT</th>
                                     <th>Ngày tham gia</th>
@@ -54,6 +55,7 @@
                             <tfoot>
                                 <tr>
                                     <th>Email</th>
+                                    <th>Mật khẩu</th>
                                     <th>Họ và tên</th>
                                     <th>SĐT</th>
                                     <th>Ngày tham gia</th>
@@ -63,6 +65,7 @@
                             <tbody>
                                 <tr ng-repeat="item in items">
                                     <td>{{item.email}}</td>
+                                    <td>{{item.password}}</td>
                                     <td>{{item.fullname}}</td>
                                     <td>{{item.listEmployee[0].phone}}</td>
                                     <td>{{item.listEmployee[0].startday |
