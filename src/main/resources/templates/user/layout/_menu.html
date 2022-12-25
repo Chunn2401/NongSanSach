@@ -37,68 +37,74 @@
 					</div>
 					<div class="header-links col-md-6">
 						<!-- start account -->
-						<div id="header_ac" class="dropdown">
-							<a href="#" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
-								<span class="account-main hidden-sm hidden-xs">
-									<th:block th:unless="${#request.remoteUser}">
-										<span><strong>Đăng nhập</strong></span>
-									</th:block>
-									<th:block th:if="${#request.remoteUser}">
-										<!-- <label for="image">
-											<img ng-src="{{'/assets/images/user/' + form.img}}"
-												style="border-radius: 50%;" width="30" height="30">
-										</label> -->
-										<Span><Strong>Thông tin cá nhân</Strong></Span>
-									</th:block>
-								</span>
-							</a>
-							<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
-								<th:block th:if="${#request.remoteUser}">
-									<th:block
-										th:if="${#request.isUserInRole('ROLE_ADMIN') || #request.isUserInRole('ROLE_DIRECTOR')}">
-										<li><a th:href="@{/admin/index}">Quản lý</a></li>
-									</th:block>
-									<li><a th:href="@{/account/information}">Thông tin</a></li>
-									<li><a th:href="@{/account/change-password}">Đổi mật khẩu</a></li>
-									<li><a th:href="@{/logout}">Đăng xuất</a></li>
-									<li class="language">
-										<hr>
-										<div class="language-box">
-											<ul class="language-dropdown lang">
-												<li>
-													<a class="btn btn-link btn-block language-select" type="button"
-														name="en-gb" th:href="@{/account/order}">
-														<i class="fas fa-receipt"></i> Đơn hàng
-													</a>
-												</li>
-												<li>
-													<a class="btn btn-link btn-block language-select" type="button"
-														name="en-gb" th:href="@{/account/favorite}">
-														<i class="fa fa-heart" aria-hidden="true"></i> Sản phẩm yêu
-														thích
-													</a>
-												</li>
-												<li>
-													<a class="btn btn-link btn-block language-select"
-														th:href="@{/account/address}">
-														<i class="fa fa-address-book" aria-hidden="true"></i> Quản lý
-														địa chỉ
-													</a>
-												</li>
-											</ul>
-											<input type="hidden" name="code" value="" /> <input type="hidden"
-												name="redirect" value="#" />
+						<div ng-app="information-app" ng-controller="information-ctrl">
+							<div id="header_ac" class="dropdown">
+								<a href="#" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
+									<span class="account-main hidden-sm hidden-xs">
+										<th:block th:unless="${#request.remoteUser}">
+											<span><strong>Đăng nhập</strong></span>
+										</th:block>
+										<th:block th:if="${#request.remoteUser}">
 
-										</div>
-									</li>
-								</th:block>
-								<th:block th:unless="${#request.remoteUser}">
-									<li><a th:href="@{/register}">Đăng ký</a></li>
-									<li><a th:href="@{/login}">Đăng nhập</a></li>
-									<li><a th:href="@{/forget-password}">Quên mật khẩu</a></li>
-								</th:block>
-							</ul>
+											<label for="image">
+												<img ng-src="{{'/assets/images/user/' + form.img}}"
+													style="border-radius: 50%;" width="30" height="30">
+											</label>
+
+
+											<!-- <Span><Strong>Thông tin cá nhân</Strong></Span> -->
+										</th:block>
+									</span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
+									<th:block th:if="${#request.remoteUser}">
+										<th:block
+											th:if="${#request.isUserInRole('ROLE_ADMIN') || #request.isUserInRole('ROLE_DIRECTOR')}">
+											<li><a th:href="@{/admin/index}">Quản lý</a></li>
+										</th:block>
+										<li><a th:href="@{/account/information}">Thông tin</a></li>
+										<li><a th:href="@{/account/change-password}">Đổi mật khẩu</a></li>
+										<li><a th:href="@{/logout}">Đăng xuất</a></li>
+										<li class="language">
+											<hr>
+											<div class="language-box">
+												<ul class="language-dropdown lang">
+													<li>
+														<a class="btn btn-link btn-block language-select" type="button"
+															name="en-gb" th:href="@{/account/order}">
+															<i class="fas fa-receipt"></i> Đơn hàng
+														</a>
+													</li>
+													<li>
+														<a class="btn btn-link btn-block language-select" type="button"
+															name="en-gb" th:href="@{/account/favorite}">
+															<i class="fa fa-heart" aria-hidden="true"></i> Sản phẩm yêu
+															thích
+														</a>
+													</li>
+													<li>
+														<a class="btn btn-link btn-block language-select"
+															th:href="@{/account/address}">
+															<i class="fa fa-address-book" aria-hidden="true"></i> Quản
+															lý địa chỉ
+														</a>
+													</li>
+												</ul>
+												<input type="hidden" name="code" value="" /> <input type="hidden"
+													name="redirect" value="#" />
+
+											</div>
+										</li>
+									</th:block>
+									<th:block th:unless="${#request.remoteUser}">
+										<li><a th:href="@{/register}">Đăng ký</a></li>
+										<li><a th:href="@{/login}">Đăng nhập</a></li>
+										<li><a th:href="@{/forget-password}">Quên mật khẩu</a></li>
+									</th:block>
+								</ul>
+							</div>
 						</div>
+
 						<!-- start cart -->
 						<div class="header_cart">
 							<div id="cart" class="btn-group btn-block">
@@ -204,7 +210,8 @@
 										<li class="menulist"><a href="/home/#brand"><strong>Nhà cung cấp</strong></a>
 										</li>
 										<li class="blog"><a th:href="@{/blog}"><strong>Kiến thức</strong></a></li>
-										<li class="voucher"><a th:href="@{/discount}"><strong>Săn voucher</strong></a></li>
+										<li class="voucher"><a th:href="@{/discount}"><strong>Săn voucher</strong></a>
+										</li>
 									</ul>
 								</div>
 							</nav>
@@ -212,13 +219,14 @@
 						</div>
 						<div class="header-right col-md-3 col-xs-9">
 							<!-- start search -->
+							<form action="/search" method="get"></form>
 							<div class="btn_search">
 								<div class="header-search">
 									<div id="mahardhiSearch" class="input-group mahardhi-search">
 										<input type="text" name="search" value="" placeholder="Tìm sản phẩm..."
 											class="form-control input-lg ui-autocomplete-input" /> <span
 											class="btn-search input-group-btn">
-											<button type="button" class="btn btn-default btn-lg">
+											<button type="submit" class="btn btn-default btn-lg">
 												<i class="fa fa-search"></i>
 											</button>
 										</span>
@@ -233,6 +241,8 @@
 		</header>
 	</div>
 </body>
+
+<script src="/assets/user/angular/information-app.js"></script>
 
 
 </html>

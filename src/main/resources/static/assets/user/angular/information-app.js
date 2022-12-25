@@ -42,7 +42,7 @@ app.controller("information-ctrl", function ($scope, $http) {
         }).then(resp => {
             // lấy name của data bỏ vô cái form
             $scope.form.img = resp.data.name;
-            // alert("Upload hình ảnh thành công !");
+            alert("Upload hình ảnh thành công !");
         }).catch(error => {
             alert("Lỗi upload hình ảnh !");
             console.log("Error", error)
@@ -51,7 +51,7 @@ app.controller("information-ctrl", function ($scope, $http) {
 
     $scope.update = function () {
         if (checkForm()) {
-            // $scope.form.birthday = String($("#birthday").val());
+            $scope.form.birthday = String($("#birthday").val());
             // $scope.form.img = String($("#img").val().split('C:\\fakepath\\'));
 
             var item = angular.copy($scope.form);
