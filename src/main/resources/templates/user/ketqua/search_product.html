@@ -1,0 +1,65 @@
+<div class="box all-products latest mt-30">
+	<div class="box-heading">
+		<div class="box-content">
+			<div class="page-title toggled">
+				<h3>Kết quả tìm kiếm</h3>
+			</div>
+			<div class="block_box row">
+				<div id="latest-carousel" class="box-product product-carousel clearfix" data-items="4">
+					<th:block th:each="item: ${searchProduct}">
+						<div class="product-content">
+							<th:block th:each="item2: ${item}">
+								<div class="product-layout col-xs-12">
+									<div class="product-thumb transition clearfix"
+										style="width: 100%; max-height: 100%; min-height: 100%;">
+										<div class="image">
+											<a th:href="@{|/san-pham/${item2.product.Namesearch}|}">
+												<img th:src="@{|/assets/images/imageProduct/${item2.product.image1}|}"
+													alt="Fridge" th:title="${item2.product.name}"
+													class="img-responsive" /> <img class="img-responsive hover-img"
+													th:src="@{|/assets/images/imageProduct/${item2.product.image2}|}"
+													th:title="${item2.product.name}" alt="Fridge" />
+											</a>
+										</div>
+										<div class="thumb-description clearfix">
+											<div class="caption">
+												<h4 class="product-title">
+													<a
+														th:href="@{|/san-pham/${item2.product.Namesearch}|}">[[${item2.product.name}]]</a>
+												</h4>
+												<!-- </th:block> -->
+												<p class="price">
+													[[${#numbers.formatInteger(item2.product.price,3,'POINT')}]]₫</p>
+												<!-- <div class="rating">
+													<th:block th:if="${item2.totalStar != 0}">
+														<th:block th:each="i: ${#numbers.sequence(1, item2.totalStar)}">
+															<span class="fa fa-stack"><i
+																	class="fa fa-star fa-stack-1x"></i><i
+																	class="fa fa-star-o fa-stack-1x"></i></span>
+														</th:block>
+													</th:block>
+													<th:block th:if="${item2.totalStar != 5}">
+														<th:block
+															th:each="i: ${#numbers.sequence(1, 5 - item2.totalStar)}">
+															<span class="fa fa-stack"><i
+																	class="fa fa-star-o fa-stack-1x"></i></span>
+														</th:block>
+													</th:block>
+												</div> -->
+												<input type="hidden" id="productId" th:value="${item2.product.id}" />
+
+												<button type="button" class="addcart" title="Add to Cart"
+													th:onclick="location.href = '/san-pham/[(${item2.product.Namesearch})]'">Chọn Mua</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</th:block>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
