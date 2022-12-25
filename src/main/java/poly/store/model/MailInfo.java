@@ -25,7 +25,7 @@ public class MailInfo {
 	String[] attachment;
 
 	public MailInfo(String to, String subject, String body) {
-		this.from = "NongSanSach";
+		this.from = "Nông Sản Sạch";
 		this.to = to;
 		this.subject = subject;
 		this.body = body;

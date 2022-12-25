@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import poly.store.common.Constants;
 import poly.store.entity.Manufacturer;
 import poly.store.entity.Product;
-import poly.store.entity.User;
 import poly.store.model.ShowProduct;
 import poly.store.service.CommentService;
 import poly.store.service.ManufacturerService;
 import poly.store.service.ProductService;
 import poly.store.service.UserRoleService;
-import poly.store.service.UserService;
 
 /**
  * Class de hien thi trang chu nguoi dung
@@ -43,25 +41,20 @@ public class IndexController {
 	@Autowired
 	CommentService commentService;
 
-	@Autowired
-	UserService userService;
-
 	/**
 	 * Hien thi trang chu cua giao dien nguoi dung
 	 * 
 	 * @return trang index.html
 	 */
 	@GetMapping("/home")
-	public String index(Model model, String mail) {
-		User list = userService.findUserByEmail(mail);
-		model.addAttribute("in4", list);
+	public String index(Model model) {
 		return Constants.USER_DISPLAY_INDEX;
 	}
 
 	@GetMapping("/")
-	public String load(Model model) {
-		return Constants.USER_DISPLAY_LOAD;
-	}
+		public String load(Model model) {
+			return Constants.USER_DISPLAY_LOAD;
+		}
 
 	@ModelAttribute("manufacturer")
 	public List<Manufacturer> manufacture(Model model) {
